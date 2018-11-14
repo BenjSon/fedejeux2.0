@@ -8,9 +8,38 @@
   <script src="script.js"></script>
 </head>
 <body>
-  ...
-  <!-- Le reste du contenu  bonjour-->
-
-  ...
+    <div id="header"></div>
+	<div id="connexion"></div>
+	<div id="accueil"></div>
+	<div id="salles">
+        
+        
+        <a href="#accueil">Retour à l'accueil</a>
+        <div class="titre">
+            <h1> AFFLUENCE</h1>
+            <div class="salle"> {{ salle concernée }} </div>
+            <img src="image de la salle"/>
+        </div>
+        <div class="affluence actuelle">
+            <h3> Affluence actuelle</h3>
+        </div>
+        <div class="affluence totale">
+            <h5> Affluence totale</h5>
+            <span> Limite </span>
+        </div>
+        Graphique
+        <div class="alerte">
+            <img src="panneau attention"/>
+            <span> Capacité maximale :{{ valeurMax }}</span>
+            <span> seuil d'alerte :{{ valeurAlerte }}</span>
+        </div>
+        <a href="#admin">Page d'administration</a>
+        -
+        <a href="#deconnection">Déconnexion</a>
+         
+        
+    </div>
+	<div id="admin"></div>
+	<div id="footer"></div>
 </body>
 </html>
