@@ -16,10 +16,8 @@
         
         <a href="#accueil">Retour à l'accueil</a>
         <div class="titre">
-            <div class="salle"> 
-                AFFLUENCE - {{ salle concernée }} 
-                <img src="image de la salle"/>
-            </div>
+            AFFLUENCE - {{ salle concernée }} 
+            <img src="{{image de la salle}}"/>
         </div>
         <div class="affluence actuelle">
             <h3> Affluence actuelle</h3>
@@ -27,11 +25,11 @@
         </div>
         <div class="affluence totale">
             <h5> Affluence totale</h5>
-            <span> Limite </span>
+            <span> {{ Limite }} </span>
         </div>
         Graphique
         <div class="alerte">
-            <img src="panneau attention"/>
+            <img src="ressources/attention-bleu.png"/>
             <span> Capacité maximale :{{ valeurMax }}</span>
             <span> seuil d'alerte :{{ valeurAlerte }}</span>
         </div>
@@ -39,7 +37,24 @@
         -
         <a href="#deconnection">Déconnexion</a>
         
-        
+        <script>
+            new Vue({
+                el:'#salles',
+                data: {
+                    
+                },
+                methods: {
+
+                },
+                computed: {
+
+                },
+                watch: {
+                    
+                }
+
+            });
+        </script>
         
     </div>
 	<div id="admin"></div>
