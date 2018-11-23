@@ -35,15 +35,32 @@ button.img {
 
 button {
 
-	background-color : lightblue;
-	text-align: center;
-	font-family: "Lato Light";
-	font-size: 33.43px ;
+	background-color: #1d4d66;
 	color: white;
+	font-family: "Lato Thin";
+	font-size: 49.1px ;
+	text-align: center;
 
-	width: 80%;
+
+
 	padding-left: 50px;
 	padding-top: 50px;
-	width: 311.82px;
-	height: 232.38px;
+	width: 343.45px;
+	height: 87.3px;
+}
+
+
+textarea {
+
+	background-color: #173f59;
+	color: white;
+	font-family: "Lato Thin";
+	font-size: 36.47px ;
+
+
+
+	padding-left: 0px;
+	padding-top: 0px;
+	width: 460.21px;
+	height: 69.89px;
 }
