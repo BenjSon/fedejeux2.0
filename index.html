@@ -16,20 +16,20 @@
         
         <a href="#accueil">Retour à l'accueil</a>
         <div class="titre">
-            AFFLUENCE - {{ salle concernée }} 
-            <img src="{{image de la salle}}"/>
+            AFFLUENCE - {{ salle }} 
+            <img src="{{imageDeLaSalle}}"/>
         </div>
         <div class="affluence actuelle">
             <h3> Affluence actuelle</h3>
-            <span>{{ Chiffre à récupérer }}</span>
+            <span>{{ affluence }}</span>
         </div>
         <div class="affluence totale">
             <h5> Affluence totale</h5>
-            <span> {{ Limite }} </span>
+            <span> {{ limite }} </span>
         </div>
         Graphique
         <div class="alerte">
-            <img src="ressources/attention-bleu.png"/>
+            <img src="ressources/WARNING.png"/>
             <span> Capacité maximale :{{ valeurMax }}</span>
             <span> seuil d'alerte :{{ valeurAlerte }}</span>
         </div>
@@ -38,21 +38,35 @@
         <a href="#deconnection">Déconnexion</a>
         
         <script>
+            
+            
             new Vue({
                 el:'#salles',
                 data: {
-                    
+                    salle: "" ,
+                    imageDeLaSalle: "" ,
+                    affluence: "" ,
+                    limite: "",
+                    valeurMax : "" ,
+                    valeurAlerte:"" 
                 },
                 methods: {
 
                 },
                 computed: {
-
+                    salle:function(){
+                        this.salle="";
+                        this.imageDeLaSalle="";
+                        this.affluence="";
+                        this.valeurMax="";
+                        this.valeurAlerte="";
+                    } 
                 },
                 watch: {
-                    
+                    BDD: function(){
+                        this.valeur="";
+                    }
                 }
-
             });
         </script>
         
