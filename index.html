@@ -21,6 +21,16 @@
 	<div id="admin"></div>
 
 
+	<script> 
+
+		var bouton ="";
+		function changerSalle(context){
+			console.log("changement");
+			bouton = context.id;
+			return bouton;
+		};
+
+	</script>
 
 	<div id="AffluenceTotale"> 
 		<h1> AFFLUENCE TOTALE </h1>
@@ -54,13 +64,6 @@
 	</div>
 
 
-	<script> 
-
-		var bouton;
-		function changerSalle(event){
-			bouton = event.id;
-			return bouton;
-		};
 
 	<div id="footer"></div>
 </body>
