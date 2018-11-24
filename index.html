@@ -29,28 +29,38 @@
 
 	<div id= "partie boutons 1">
 
-			<button class="bouton" id="fort">
+			<button class="bouton" id="fort" onclick = "changerSalle(event);">
+
 				<img src="./Ressources/sand-castle.png" id="logo">	
 				SALLE DU FORT</button>
 
 
 				
-			<button class="bouton" id="MONTAIGNE">
+			<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
 				<img src="./Ressources/students-cap.png" id="logo">
 				SALLE MONTAIGNE</button>
 	</div>
 
 	<div id= "partie boutons 2">
-			<button class="bouton" id="CHAPITEAU">
+			<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
 				CHAPITEAU
 				<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 				</button>
 
 
-			<button class="bouton" id="ADMINISTRATION">
+			<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
 				<img src="./Ressources/settings.png" id="logo">
 				PAGE D'ADMINISTRATION </button>
 	</div>
+
+
+	<script> 
+
+		var bouton;
+		function changerSalle(event){
+			bouton = event.id;
+			return bouton;
+		};
 
 	<div id="footer"></div>
 </body>
