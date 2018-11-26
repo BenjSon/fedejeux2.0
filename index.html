@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <title>Titre de la page</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
   <script src="script.js"></script>
 </head>
 <body>
+<<<<<<< HEAD
 
 	<div id="header">
 		<img src="./Ressources/logo-ludinord.png"> 
@@ -140,5 +142,72 @@
 
 	<div id="footer"></div>
 
+=======
+    <div id="header"></div>
+	<div id="connexion"></div>
+	<div id="accueil"></div>
+	<div id="salles">
+        
+        
+        <a href="#accueil">Retour à l'accueil</a>
+        <div class="titre">
+            AFFLUENCE - {{ salle }} 
+            <img src="{{imageDeLaSalle}}"/>
+        </div>
+        <div class="affluence actuelle">
+            <h3> Affluence actuelle</h3>
+            <span>{{ affluence }}</span>
+        </div>
+        <div class="affluence totale">
+            <h5> Affluence totale</h5>
+            <span> {{ limite }} </span>
+        </div>
+        Graphique
+        <div class="alerte">
+            <img src="ressources/WARNING.png"/>
+            <span> Capacité maximale :{{ valeurMax }}</span>
+            <span> seuil d'alerte :{{ valeurAlerte }}</span>
+        </div>
+        <a href="#admin">Page d'administration</a>
+        -
+        <a href="#deconnection">Déconnexion</a>
+        
+        <script>
+            
+            
+            new Vue({
+                el:'#salles',
+                data: {
+                    salle: "" ,
+                    imageDeLaSalle: "" ,
+                    affluence: "" ,
+                    limite: "",
+                    valeurMax : "" ,
+                    valeurAlerte:"" 
+                },
+                methods: {
+
+                },
+                computed: {
+                    salle:function(){
+                        this.salle="";
+                        this.imageDeLaSalle="";
+                        this.affluence="";
+                        this.valeurMax="";
+                        this.valeurAlerte="";
+                    } 
+                },
+                watch: {
+                    BDD: function(){
+                        this.valeur="";
+                    }
+                }
+            });
+        </script>
+        
+    </div>
+	<div id="admin"></div>
+	<div id="footer"></div>
+>>>>>>> pr/1
 </body>
 </html>
