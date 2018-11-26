@@ -15,56 +15,130 @@
 
 
 
-	<div id="connexion"></div>
-	<div id="accueil"></div>
-	<div id="salles"></div>
-	<div id="admin"></div>
+<div id="connexion"></div>
+<div id="accueil"></div>
+<div id="salles"></div>
 
 
-	<script> 
 
-		var bouton ="";
-		function changerSalle(context){
-			console.log("changement");
-			bouton = context.id;
-			return bouton;
-		};
+			<script> 
 
-	</script>
+				var bouton ="";
+				function changerSalle(context){
+					console.log("changement");
+					bouton = context.id;
+					return bouton;
+				};
 
-	<div id="AffluenceTotale"> 
-		<h1> AFFLUENCE TOTALE </h1>
+			</script>
+
+			<div id="AffluenceTotale"> 
+				<h1> AFFLUENCE TOTALE </h1>
+			</div>
+
+				<div id= "partie boutons 1">
+
+						<button class="bouton" id="fort" onclick = "changerSalle(event);">
+
+							<img src="./Ressources/sand-castle.png" id="logo">	
+							SALLE DU FORT</button>
+
+
+							
+						<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
+							<img src="./Ressources/students-cap.png" id="logo">
+							SALLE MONTAIGNE</button>
+				</div>
+
+				<div id= "partie boutons 2">
+						<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
+							CHAPITEAU
+							<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
+							</button>
+
+
+						<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
+							<img src="./Ressources/settings.png" id="logo">
+							PAGE D'ADMINISTRATION </button>
+			</div>
+
+<div id="admin" v-if="showAdmin"></div>
+
+		<div v-on:click="showAccueil = !showAccueil & showAdmin= !showAdmin"> Retour à l'accueil </div>
+
+		<div>Page d'administration</div>
+
+		<div id="remiseZero">
+
+			<form action="remiseAZero">
+
+			<div>
+
+				<div>
+					Salle Montaigne
+					<input type="checkbox" name="salleMontaigne">
+				</div>
+
+				<div>
+					Salle du Fort
+					<input type="checkbox" name="salleDuFort">
+				</div>
+
+				<div>
+					Le Chapiteau
+					<input type="checkbox" name="leChapiteau">
+				</div>
+
+			</div>
+
+			<input type="submit" value="REMISE A ZERO">
+
+			</form>
 
 		</div>
 
-	<div id= "partie boutons 1">
+		<hr>
 
-			<button class="bouton" id="fort" onclick = "changerSalle(event);">
+		<div id="modifData">
 
-				<img src="./Ressources/sand-castle.png" id="logo">	
-				SALLE DU FORT</button>
+			<form action="modifData">
+			<table>
+					<tr>
+    					<td>&nbsp;</td>
+    					<td>Seuil</td>
+    					<td>Capacité</td>
+  					</tr>
+ 					<tr>
+    					<td>Salle Montaigne</td>
+    					<td><input type="text" name="seuilM"></td>
+    					<td><input type="text" name="capM"></td>
+  					</tr>
+ 					<tr>
+    					<td>Salle du Fort</td>
+    					<td><input type="text" name="seuilF"></td>
+    					<td><input type="text" name="capF"></td>
+  					</tr>
+ 					<tr>
+    					<td>Le Chapiteau</td>
+    					<td><input type="text" name="seuilC"></td>
+    					<td><input type="text" name="capC"></td>
+  					</tr>
+
+			</table>
+
+			<input type="submit" value="ENREGISTREMENT">
+
+			</form>
+			
+
+		</div>
 
 
-				
-			<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
-				<img src="./Ressources/students-cap.png" id="logo">
-				SALLE MONTAIGNE</button>
-	</div>
 
-	<div id= "partie boutons 2">
-			<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
-				CHAPITEAU
-				<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
-				</button>
-
-
-			<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
-				<img src="./Ressources/settings.png" id="logo">
-				PAGE D'ADMINISTRATION </button>
-	</div>
 
 
 
 	<div id="footer"></div>
+
 </body>
 </html>
