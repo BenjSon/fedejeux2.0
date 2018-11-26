@@ -3,19 +3,58 @@
 <head>
   <meta charset="utf-8">
   <title>Titre de la page</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <script src="./ressources/vue.js"></script>
-  <script src="./js/rooms.js"></script>
 </head>
 <body>
+		<div id="header"></div>
 
-	<div id="header"></div>
-	<div id="connexion"></div>
-	<div id="accueil"></div>
-	<div id="rooms">{{title}}</div>
-	<div id="admin"></div>
-	<div id="footer"></div>
+
+		<div class="nav" v-if="CONNEXION">
+			<div id="connexion"> connexion
+				<button class="backButton" v-on:click="toAcceuil"> vers accueuil</button>
+			</div>
+		</div>
+
+
+		<div class="nav" v-if="ACCEUIL">
+			<div id="accueil"> acceuil 
+			</div>
+		</div>
+
+
+		<div class="nav" v-if="ROOM">
+			<div id="rooms">
+				<div class="backButton" v-on:click="toAcceuil">back</div>
+				<div id="numbers">
+					<div id="roomName">AFFLUENCE {{title}}</div>
+					<div id="numbersNow"> Affluence actuelle </br> {{ nombreNow }} </div>
+					<div id="numbersTotal"> Affluence totale </br> {{ nombreTot }}</div>
+				</div>
+				<div id="graphe"></div>
+				<div id="limites"> 
+							Capacité max:  {{max}} </br> Seuil d'alerte:  {{alerte}}
+				</div>
+			</div>
+		</div>	
+	
+
+		<div class="nav" v-if="ADMIN">
+			<div id="admin">
+				<div class="backButton" v-on:click="toAcceuil">back</div>
+				Admin
+			</div>
+		</div>
+
+
+		<div id="footer">
+			<div  class="footerButton" v-on:click="toAdmin"> {{button}} </div>
+			<div class="footerButton" v-on:click="toDeconnect"> {{button}} </div>
+		</div>
+		
+	<script src="./js/nav.js"></script>
 	<script src="./js/rooms.js"></script>
+	
 
 </body>
 </html>
