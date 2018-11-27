@@ -8,61 +8,67 @@
 </head>
 <body>
 
+	
+
 	<div id="header">
 		<img src="./Ressources/logo-ludinord.png", id="ludinord">
-<!-		<img src="./Ressources/logo-fedejeux.png">   
-->
 		<img src="./Ressources/Association Fédéjeux.png", id="assoFédéjeux">	
 	</div>
 
 
 
-<div id="connexion"></div>
-<div id="accueil"></div>
-<div id="salles"></div>
+		<div id="connexion"></div>
+		<div id="accueil"></div>
+		<div id="salles"></div>
+
+			<div class="grid-container">
 
 
+				<script> 
 
-			<script> 
+					var bouton ="";
+					function changerSalle(context){
+						console.log("changement");
+						bouton = context.id;
+						return bouton;
+					};
 
-				var bouton ="";
-				function changerSalle(context){
-					console.log("changement");
-					bouton = context.id;
-					return bouton;
-				};
+				</script>
 
-			</script>
-
-			<div id="AffluenceTotale"> 
-				<h1> AFFLUENCE TOTALE </h1>
-			</div>
-
-				<div id= "partie boutons 1">
-
-						<button class="bouton" id="fort" onclick = "changerSalle(event);">
-
-							<img src="./Ressources/sand-castle.png" id="logo">	
-							SALLE DU FORT</button>
-
-
-							
-						<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
-							<img src="./Ressources/students-cap.png" id="logo">
-							SALLE MONTAIGNE</button>
+				<div id="AffluenceTotale"> 
+					<h1> AFFLUENCE TOTALE </h1>
 				</div>
 
-				<div id= "partie boutons 2">
-						<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
-							CHAPITEAU
-							<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
-							</button>
+
+					<div id= "partie boutons 1">
+
+							<button class="bouton" id="FORT" onclick = "changerSalle(event);">
+								<img src="./Ressources/sand-castle.png" id="logo">	
+								SALLE DU FORT </button>
 
 
-						<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
-							<img src="./Ressources/settings.png" id="logo">
-							PAGE D'ADMINISTRATION </button>
+							<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
+								<img src="./Ressources/students-cap.png" id="logo">
+								SALLE MONTAIGNE</button>
+					</div>
+
+
+					<div id= "partie boutons 2">
+							<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
+								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
+								CHAPITEAU </button>
+
+
+							<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
+								<img src="./Ressources/settings.png" id="logo">
+								PAGE D'ADMINISTRATION </button>
+					</div>
+			
+
 			</div>
+		</div>
+
+
 
 <div id="admin" v-if="showAdmin"></div>
 
