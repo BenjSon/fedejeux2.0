@@ -3,211 +3,174 @@
 <head>
   <meta charset="utf-8">
   <title>Titre de la page</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./CSS/ARENOMERSVP.css">
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-  <script src="script.js"></script>
 </head>
 <body>
-<<<<<<< HEAD
 
-	<div id="header">
-		<img src="./Ressources/logo-ludinord.png"> 
-		<img src="./Ressources/logo-fedejeux.png">
+<div id="navigation"></div>
+
+	<div id="connexion">
+		<template  v-if="showConnexion">
+				<div onclick="NAV.toAccueil()">connexion</div>
+		</template>
 	</div>
 
+	<div id="header">
+		<template v-if="showHeader">
+			<div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
+			<img src="./Ressources/logo-ludinord.png"> 
+			<img src="./Ressources/logo-fedejeux.png">
+		</template>
+	</div>
 
+	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
-<div id="connexion"></div>
-<div id="accueil"></div>
-<div id="salles"></div>
-
-
-
-			<script> 
-
-				var bouton ="";
-				function changerSalle(context){
-					console.log("changement");
-					bouton = context.id;
-					return bouton;
-				};
-
-			</script>
-
-			<div id="AffluenceTotale"> 
-				<h1> AFFLUENCE TOTALE </h1>
-			</div>
-
-				<div id= "partie boutons 1">
-
-						<button class="bouton" id="fort" onclick = "changerSalle(event);">
-
-							<img src="./Ressources/sand-castle.png" id="logo">	
-							SALLE DU FORT</button>
-
-
-							
-						<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
-							<img src="./Ressources/students-cap.png" id="logo">
-							SALLE MONTAIGNE</button>
-				</div>
-
-				<div id= "partie boutons 2">
-						<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
-							CHAPITEAU
-							<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
-							</button>
-
-
-						<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
-							<img src="./Ressources/settings.png" id="logo">
-							PAGE D'ADMINISTRATION </button>
-			</div>
-
-<div id="admin" v-if="showAdmin"></div>
-
-		<div v-on:click="showAccueil = !showAccueil & showAdmin= !showAdmin"> Retour à l'accueil </div>
-
-		<div>Page d'administration</div>
-
-		<div id="remiseZero">
-
-			<form action="remiseAZero">
-
-			<div>
-
-				<div>
-					Salle Montaigne
-					<input type="checkbox" name="salleMontaigne">
-				</div>
-
-				<div>
-					Salle du Fort
-					<input type="checkbox" name="salleDuFort">
-				</div>
-
-				<div>
-					Le Chapiteau
-					<input type="checkbox" name="leChapiteau">
-				</div>
-
-			</div>
-
-			<input type="submit" value="REMISE A ZERO">
-
-			</form>
-
-		</div>
-
-		<hr>
-
-		<div id="modifData">
-
-			<form action="modifData">
-			<table>
-					<tr>
-    					<td>&nbsp;</td>
-    					<td>Seuil</td>
-    					<td>Capacité</td>
-  					</tr>
- 					<tr>
-    					<td>Salle Montaigne</td>
-    					<td><input type="text" name="seuilM"></td>
-    					<td><input type="text" name="capM"></td>
-  					</tr>
- 					<tr>
-    					<td>Salle du Fort</td>
-    					<td><input type="text" name="seuilF"></td>
-    					<td><input type="text" name="capF"></td>
-  					</tr>
- 					<tr>
-    					<td>Le Chapiteau</td>
-    					<td><input type="text" name="seuilC"></td>
-    					<td><input type="text" name="capC"></td>
-  					</tr>
-
-			</table>
-
-			<input type="submit" value="ENREGISTREMENT">
-
-			</form>
-			
-
-		</div>
-
-
-
-
-
-
-	<div id="footer"></div>
-
-=======
-    <div id="header"></div>
-	<div id="connexion"></div>
-	<div id="accueil"></div>
 	<div id="salles">
-        
-        
-        <a href="#accueil">Retour à l'accueil</a>
-        <div class="titre">
-            AFFLUENCE - {{ salle }} 
-            <img src="{{imageDeLaSalle}}"/>
-        </div>
-        <div class="affluence actuelle">
-            <h3> Affluence actuelle</h3>
-            <span>{{ affluence }}</span>
-        </div>
-        <div class="affluence totale">
-            <h5> Affluence totale</h5>
-            <span> {{ limite }} </span>
-        </div>
-        Graphique
-        <div class="alerte">
-            <img src="ressources/WARNING.png"/>
-            <span> Capacité maximale :{{ valeurMax }}</span>
-            <span> seuil d'alerte :{{ valeurAlerte }}</span>
-        </div>
-        <a href="#admin">Page d'administration</a>
-        -
-        <a href="#deconnection">Déconnexion</a>
-        
-        <script>
-            
-            
-            new Vue({
-                el:'#salles',
-                data: {
-                    salle: "" ,
-                    imageDeLaSalle: "" ,
-                    affluence: "" ,
-                    limite: "",
-                    valeurMax : "" ,
-                    valeurAlerte:"" 
-                },
-                methods: {
+		<template v-if="showSalles">
 
-                },
-                computed: {
-                    salle:function(){
-                        this.salle="";
-                        this.imageDeLaSalle="";
-                        this.affluence="";
-                        this.valeurMax="";
-                        this.valeurAlerte="";
-                    } 
-                },
-                watch: {
-                    BDD: function(){
-                        this.valeur="";
-                    }
-                }
-            });
-        </script>
-        
-    </div>
-	<div id="admin"></div>
-	<div id="footer"></div>
->>>>>>> pr/1
+				<div id="AffluenceTotale"> 
+					<h1> AFFLUENCE TOTALE </h1>
+				</div>
+				<div id= "partie boutons 1">
+							<button class="bouton" id="fort" onclick = "changerSalle(event);">
+								<img src="./Ressources/sand-castle.png" id="logo">	
+								SALLE DU FORT
+							</button>
+							<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
+								<img src="./Ressources/students-cap.png" id="logo">
+								SALLE MONTAIGNE
+							</button>
+				</div>
+				<div id= "partie boutons 2">
+							<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
+								CHAPITEAU
+								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
+							</button>
+							<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
+								<img src="./Ressources/settings.png" id="logo">
+								PAGE D'ADMINISTRATION 
+							</button>
+				</div>
+
+		</template>
+	</div>
+
+	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+	<div id="admin">
+		<template v-if="showAdmin">
+			<div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
+
+			<div>Page d'administration</div>
+
+			<div id="remiseZero">
+
+				<form action="remiseAZero">
+
+				<div>
+
+					<div>
+						Salle Montaigne
+						<input type="checkbox" name="salleMontaigne">
+					</div>
+
+					<div>
+						Salle du Fort
+						<input type="checkbox" name="salleDuFort">
+					</div>
+
+					<div>
+						Le Chapiteau
+						<input type="checkbox" name="leChapiteau">
+					</div>
+
+				</div>
+
+				<input type="submit" value="REMISE A ZERO">
+
+				</form>
+
+			</div>
+
+			<hr>
+
+			<div id="modifData">
+
+				<form action="modifData">
+				<table>
+						<tr>
+	    					<td>&nbsp;</td>
+	    					<td>Seuil</td>
+	    					<td>Capacité</td>
+	  					</tr>
+	 					<tr>
+	    					<td>Salle Montaigne</td>
+	    					<td><input type="text" name="seuilM"></td>
+	    					<td><input type="text" name="capM"></td>
+	  					</tr>
+	 					<tr>
+	    					<td>Salle du Fort</td>
+	    					<td><input type="text" name="seuilF"></td>
+	    					<td><input type="text" name="capF"></td>
+	  					</tr>
+	 					<tr>
+	    					<td>Le Chapiteau</td>
+	    					<td><input type="text" name="seuilC"></td>
+	    					<td><input type="text" name="capC"></td>
+	  					</tr>
+
+				</table>
+
+				<input type="submit" value="ENREGISTREMENT">
+
+				</form>
+			</div>
+
+		</template>
+	</div>
+
+	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+	<div id="accueil" > 
+		<template v-if="showAccueil">  
+	        <a href="#accueil">Retour à l'accueil</a>
+	        <div class="titre">
+	            AFFLUENCE - {{ salle }} 
+	            <img src="imageDeLaSalle"/>
+	        </div>
+	        <div class="affluence actuelle">
+	            <h3> Affluence actuelle</h3>
+	            <span> {{ affluence }} </span>
+	        </div>
+	        <div class="affluence totale">
+	            <h5> Affluence totale</h5>
+	            <span> {{ limite }} </span>
+	        </div>
+	        Graphique
+	        <div class="alerte">
+	            <img src="ressources/WARNING.png"/>
+	            <span> Capacité maximale :{{ valeurMax }}</span>
+	            <span> seuil d'alerte :{{ valeurAlerte }}</span>
+	        </div>
+	        <a onclick="NAV.toAdmin()">Page d'administration</a>
+	        -
+	        <a href="#deconnection">Déconnexion</a>
+	    </template>
+	</div>    
+	     
+	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+	        
+<div id="footer">
+	
+</div>
+
+<script src="./JS/navigation.js"></script>
+<script src="./JS/connexion.js"></script>
+<script src="./JS/accueil.js"></script>
+<script src="./JS/admin.js"></script>
+<script src="./JS/salles.js"></script>
+<script src="./JS/header.js"></script>
+
 </body>
 </html>
