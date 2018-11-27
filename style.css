@@ -1,14 +1,12 @@
 body {
-
 	background-color: #173f59;
 	margin: 0px;
-
 }
-
 
 
 img {
 	width: 100%;
+	margin: 0px;
 }
 
 
@@ -17,11 +15,24 @@ h1 {
 	font-family: "Lato Light";
 	font-style: bold;
 	font-size: 110px ;
-
 	text-align: center;
+	white-space: nowrap;
+
 	position : absolute;
-	top : 20%; left: 10%;
+	top : 470px ; left: 50%;
+	transform: translate(-50%);
+	} 
+
+
+h2 {
+	width: 28%;
+	margin: 0px;
+	position : absolute;
+	top : 220px ; left: 50%;
+	transform: translate(-50%);
 }
+
+
 
 div {
     background-color: #173f59; 
@@ -29,70 +40,48 @@ div {
 }
 
 
-/*
-
-button {
-
-	background-color: #1d4d66;
-	color: white;
-	font-family: "Lato Thin";
-	font-size: 49.1px ;
-	text-align: center;
-
-	width: 45.79%;
-	height: 6.54%;
-	border-radius: 30px;
-	border: none;
-}
-
-
-textarea {
-
-	background-color: #173f59;
-	color: white;
-	font-family: "Lato Thin";
-	font-size: 36.47px ;
-
-	padding-left: 20px;
-
-	width: 61.36%;
-	height: 5.24%;
-	border-radius: 30px;
-}
-
-
-*/
-
 input[type=text], select {
-    width: 61.36%;
-    height: 5.24%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    width: 600px;
+    height: 90px;
+    padding: 0px 20px;
+    margin-top: 130px;
 
     background-color: #173f59;
 	font-family: "Lato";
-	font-size: 36.47px ;
+	font-size: 50px ;
+	color: white;
 
     display: inline-block;
     border: 2px solid #ccc;
     border-radius: 30px;
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
+
+    position : absolute;
+	left: 50%;
+	transform: translate(-50%);
 }
 
+
 input[type=password], select {
-    width: 61.36%;
-    height: 5.24%;
-    padding: 12px 20px;
-    margin: 8px 0;
+    width: 600px;
+    height: 90px;
+    padding: 0px 20px;
+    margin-top: 280px;
     
     background-color: #173f59;
 	font-family: "Lato";
-	font-size: 36.47px ;
+	font-size: 50px ;
+	color: white;
 
     display: inline-block;
     border: 2px solid #ccc;
     border-radius: 30px;
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
+
+    position : absolute;
+	left: 50%;
+	transform: translate(-50%);
+    
 }
 
 input[type=submit] {
@@ -102,14 +91,18 @@ input[type=submit] {
    	background-color: #1d4d66;
 	color: #d6dbdf;
 	font-family: "Lato Light";
-	font-size: 49.1px ;
-	text-align: center;
+	font-size: 65px ;
+	
 
     padding: 14px 20px;
-    margin: 8px 0;
+    margin-top: 460px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
+
+    position : absolute;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 input[type=submit]:hover {
