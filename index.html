@@ -86,72 +86,28 @@
 	<div id="admin">
 		<template v-if="showAdmin">
 			<div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
-
 			<div>Page d'administration</div>
-
 			<div id="remiseZero">
-
 				<form action="remiseAZero">
-
-				<div>
-
-					<div>
-						Salle Montaigne
-						<input type="checkbox" name="salleMontaigne">
-					</div>
-
-					<div>
-						Salle du Fort
-						<input type="checkbox" name="salleDuFort">
-					</div>
-
-					<div>
-						Le Chapiteau
-						<input type="checkbox" name="leChapiteau">
-					</div>
-
-				</div>
-
+				<div>	<div>	Salle Montaigne <input type="checkbox" name="salleMontaigne">	</div>
+						<div>	Salle du Fort	<input type="checkbox" name="salleDuFort">		</div>
+						<div>	Le Chapiteau	<input type="checkbox" name="leChapiteau">		</div>	</div>
 				<input type="submit" value="REMISE A ZERO">
-
 				</form>
-
-			</div>
-
-			<hr>
-
+			</div> <hr>
 			<div id="modifData">
-
 				<form action="modifData">
 				<table>
-						<tr>
-	    					<td>&nbsp;</td>
-	    					<td>Seuil</td>
-	    					<td>Capacité</td>
-	  					</tr>
-	 					<tr>
-	    					<td>Salle Montaigne</td>
-	    					<td><input type="text" name="seuilM"></td>
-	    					<td><input type="text" name="capM"></td>
-	  					</tr>
-	 					<tr>
-	    					<td>Salle du Fort</td>
-	    					<td><input type="text" name="seuilF"></td>
-	    					<td><input type="text" name="capF"></td>
-	  					</tr>
-	 					<tr>
-	    					<td>Le Chapiteau</td>
-	    					<td><input type="text" name="seuilC"></td>
-	    					<td><input type="text" name="capC"></td>
-	  					</tr>
-
+						<tr>	<td>&nbsp;</td>	<td>Seuil</td>	<td>Capacité</td>	</tr>
+	 					<tr>	<td>Salle Montaigne</td>	<td><input type="text" name="seuilM"></td>
+								<td><input type="text" name="capM"></td>	</tr>
+	 					<tr>	<td>Salle du Fort</td>	<td><input type="text" name="seuilF"></td>
+	    						<td><input type="text" name="capF"></td>	</tr>
+	 					<tr>	<td>Le Chapiteau</td>	<td><input type="text" name="seuilC"></td>
+	    						<td><input type="text" name="capC"></td>	</tr>
 				</table>
-
-				<input type="submit" value="ENREGISTREMENT">
-
-				</form>
+				<input type="submit" value="ENREGISTREMENT">	</form>
 			</div>
-
 		</template>
 	</div>
 
