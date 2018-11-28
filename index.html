@@ -45,8 +45,8 @@
 	<div id="header">
 		<template v-if="showHeader">
 			<div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
-			<img src="./Ressources/logo-ludinord.png"> 
-			<img src="./Ressources/logo-fedejeux.png">
+			<img src="./Ressources/logo-ludinord.png" id="ludinord"> 
+			<img src="./Ressources/Association Fédéjeux.png" id="assoFédéjeux">
 		</template>
 	</div>
 
@@ -55,30 +55,41 @@
 	<div id="accueil">
 		<template v-if="showAccueil">
 
-				<div id="AffluenceTotale"> 
-					<h1> AFFLUENCE TOTALE </h1>
+			<div class="container">	
+				<div class="row" id="AffluenceTotale"> 
+					<div class="col-xs-12">
+						<h1> AFFLUENCE TOTALE </h1>
+					</div>
 				</div>
-				<div id= "partie boutons 1">
+				<div class="row" id= "partie boutons 1">
+					<div class="col-xs-6">
 							<button class="bouton" id="fort" onclick = "NAV.toSalles()">
 								<img src="./Ressources/sand-castle.png" id="logo">	
 								SALLE DU FORT
 							</button>
+					</div>
+					<div class="col-xs-6">
 							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
 								<img src="./Ressources/students-cap.png" id="logo">
 								SALLE MONTAIGNE
 							</button>
+					</div>
 				</div>
-				<div id= "partie boutons 2">
+				<div class="row" id= "partie boutons 2">
+					<div class="col-xs-6">
 							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
 								CHAPITEAU
 								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 							</button>
+					</div>
+					<div class="col-xs-6">
 							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toSalles()">
 								<img src="./Ressources/settings.png" id="logo">
 								PAGE D'ADMINISTRATION 
 							</button>
+					</div>
 				</div>
-
+			</div>		
 		</template>
 	</div>
 
