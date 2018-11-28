@@ -1,5 +1,5 @@
 getHistory = function(salle){
-
+	
 	return historique;
 };
 
