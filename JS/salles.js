@@ -1,14 +1,33 @@
-var bouton ="";
-function changerSalle(context){
-	console.log("changement");
-	bouton = context.id;
-	return bouton;
-};
-
 var SALLES = new Vue({
-	el: "#salles",
-	data: {
-		showSalles: false
-	},
-	methods:{}
+      el:'#salles',
+      
+      data: {
+  		  showAccueil: false,
+        //salle: "" ,
+        imageDeLaSalle: "" ,
+        affluence: "" ,
+       	limite: "",
+        valeurMax : "" ,
+        valeurAlerte:""
+      },
+
+      methods: {
+      },
+
+      computed: {
+  		  salle:function(){
+     			this.salle="";
+    			this.imageDeLaSalle="";
+     			this.affluence="";
+    			this.valeurMax="";
+    			this.valeurAlerte="";
+     		} 
+     	},
+
+   	  watch: {
+    		BDD: function(){
+    			this.valeur="";
+  		  }
+      }
+
 });

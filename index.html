@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Titre de la page</title>
 
-<!-- 				stylesheet 			-->
+ <!-- 				stylesheet 			-->
   <link rel="stylesheet" href="./CSS/ARENOMERSVP.css">
   <link rel="stylesheet" href="./CSS/global.css">
   <link rel="stylesheet" href="./CSS/connexion.css">
@@ -13,12 +13,6 @@
   <link rel="stylesheet" href="./CSS/salles.css">
 <!-- 				SCRIPTS				 -->
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-<script src="./JS/navigation.js"></script>
-<script src="./JS/connexion.js"></script>
-<script src="./JS/accueil.js"></script>
-<script src="./JS/admin.js"></script>
-<script src="./JS/salles.js"></script>
-<script src="./JS/header.js"></script>
 
 
 
@@ -43,28 +37,28 @@
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
-	<div id="salles">
-		<template v-if="showSalles">
+	<div id="accueil">
+		<template v-if="showAccueil">
 
 				<div id="AffluenceTotale"> 
 					<h1> AFFLUENCE TOTALE </h1>
 				</div>
 				<div id= "partie boutons 1">
-							<button class="bouton" id="fort" onclick = "changerSalle(event);">
+							<button class="bouton" id="fort" onclick = "NAV.toSalles()">
 								<img src="./Ressources/sand-castle.png" id="logo">	
 								SALLE DU FORT
 							</button>
-							<button class="bouton" id="MONTAIGNE" onclick = "changerSalle(event);">
+							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
 								<img src="./Ressources/students-cap.png" id="logo">
 								SALLE MONTAIGNE
 							</button>
 				</div>
 				<div id= "partie boutons 2">
-							<button class="bouton" id="CHAPITEAU" onclick = "changerSalle(event);">
+							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
 								CHAPITEAU
 								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 							</button>
-							<button class="bouton" id="ADMINISTRATION" onclick = "changerSalle(event);">
+							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toSalles()">
 								<img src="./Ressources/settings.png" id="logo">
 								PAGE D'ADMINISTRATION 
 							</button>
@@ -149,30 +143,32 @@
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
-	<div id="accueil" > 
-		<template v-if="showAccueil">  
-	        <a href="#accueil">Retour à l'accueil</a>
-	        <div class="titre">
-	            AFFLUENCE - {{ salle }} 
-	            <img src="imageDeLaSalle"/>
-	        </div>
-	        <div class="affluence actuelle">
-	            <h3> Affluence actuelle</h3>
-	            <span> {{ affluence }} </span>
-	        </div>
-	        <div class="affluence totale">
-	            <h5> Affluence totale</h5>
-	            <span> {{ limite }} </span>
-	        </div>
-	        Graphique
-	        <div class="alerte">
-	            <img src="ressources/WARNING.png"/>
-	            <span> Capacité maximale :{{ valeurMax }}</span>
-	            <span> seuil d'alerte :{{ valeurAlerte }}</span>
-	        </div>
-	        <a onclick="NAV.toAdmin()">Page d'administration</a>
-	        -
-	        <a href="#deconnection">Déconnexion</a>
+	<div id="salles" > 
+		<template v-if="showSalles">  
+	  		<div id="contenu">
+		        <div class="titre">
+		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
+		        </div>
+
+		        <div id="affluences">
+			        <div id="actuelle">
+			            <span> Affluence actuelle </span> {{ affluence }} 
+			        </div>
+
+			        <div id="totale">
+			           <span> Affluence totale </span> {{ limite }} 
+			        </div>
+		        </div>
+	        	<!-- Graphique -->
+		        <div id="tauxLimites">
+		            <img src="ressources/WARNING.png"/>
+		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
+		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
+		        </div>
+		    </div>
+
+	        <div class="bottomlink" onclick="NAV.toAdmin()">Page d'administration</div> - 
+	        <div class="bottomlink" onclick="NAV.toConnexion()">Déconnexion</div>
 	    </template>
 	</div>    
 	     
@@ -181,6 +177,13 @@
 <div id="footer">
 	
 </div>
+
+<script src="./JS/navigation.js"></script>
+<script src="./JS/connexion.js"></script>
+<script src="./JS/accueil.js"></script>
+<script src="./JS/admin.js"></script>
+<script src="./JS/salles.js"></script>
+<script src="./JS/header.js"></script>
 
 </body>
 </html>

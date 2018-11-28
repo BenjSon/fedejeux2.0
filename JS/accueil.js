@@ -1,30 +1,14 @@
-var ACCUEIL = new Vue({
-    el:'#accueil',
-	data: {
-		showAccueil: false,
-        //salle: "" ,
-        imageDeLaSalle: "" ,
-        affluence: "" ,
-       	limite: "",
-        valeurMax : "" ,
-        valeurAlerte:""
-        
-    },
-    methods: {
+var bouton ="";
+function changerSalle(context){
+	console.log("changement");
+	bouton = context.id;
+	return bouton;
+};
 
-    },
-	computed: {
-		salle:function(){
- 			this.salle="";
-			this.imageDeLaSalle="";
- 			this.affluence="";
-			this.valeurMax="";
-			this.valeurAlerte="";
-   		} 
-   	},
- 	watch: {
-  		BDD: function(){
-  			this.valeur="";
-		}
-    }
+var ACCUEIL = new Vue({
+	el: "#accueil",
+	data: {
+		showAccueil: false
+	},
+	methods:{}
 });
