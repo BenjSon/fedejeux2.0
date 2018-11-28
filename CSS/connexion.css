@@ -1,16 +1,16 @@
-body {
+#connexion {
 	background-color: #173f59;
 	margin: 0px;
 }
 
 
-img {
+#fond {
 	width: 100%;
 	margin: 0px;
 }
 
 
-h1 {
+#connexion>h1 {
 	color: #173f59;
 	font-family: "Lato Light";
 	font-style: bold;
@@ -24,7 +24,7 @@ h1 {
 	} 
 
 
-h2 {
+#fedejeux {
 	width: 28%;
 	margin: 0px;
 	position : absolute;
@@ -34,13 +34,13 @@ h2 {
 
 
 
-div {
+#connexion>div {
     background-color: #173f59; 
     padding: 20px;
 }
 
 
-input[type=text], select {
+#login {
     width: 600px;
     height: 90px;
     padding: 0px 20px;
@@ -62,7 +62,7 @@ input[type=text], select {
 }
 
 
-input[type=password], select {
+#passe {
     width: 600px;
     height: 90px;
     padding: 0px 20px;
@@ -84,7 +84,7 @@ input[type=password], select {
     
 }
 
-input[type=submit] {
+#action {
     width: 45.79%;
 	height: 6.54%;
 
