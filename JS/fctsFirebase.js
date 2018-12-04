@@ -12,11 +12,14 @@ getLastofH = function(historique){
 
 ResetToZero = function(nombreSalles){
 	// 3 salles étant la base initiale du projet 
-	if((nombreSalles===undefined)){
+	if((nombreSalles === undefined)){
 		var nombreSalles = 3;
 	}
+	//var test = db.collection("Salle1").doc("48u1lLAZdYND9XAgYRRX").get().then(function(doc){console.log(doc)});
+	//console.log(test);
+	//db.collection("historiqueSalles").doc("décompte1").add();
 	for(var i = 1; i<=nombreSalles;i++){
-		db.collection("HistoriqueSalles").doc("décompte1").collection("Salle"+i).add({
+		db.collection("HistoriqueSalles").doc("current").collection("Salle"+i).add({
 			"nbr": 0,
 			"temps": 0
 		});
