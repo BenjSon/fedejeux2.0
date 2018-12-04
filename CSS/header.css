@@ -1,0 +1,21 @@
+#header {
+	display: block;
+	margin-bottom: : auto;
+	background-color: #14364c;
+	height: 180px;
+}
+
+#ludinord{
+	display : block;
+	width: 250px;
+	position : absolute;
+	top: 50px; left: 55px;
+}
+
+
+#assoFédéjeux {
+	display : block;
+	width : 230px;
+	position : absolute;
+	top: 55px; right: 60px;
+}

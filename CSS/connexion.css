@@ -1,16 +1,28 @@
+<<<<<<< HEAD
 body {
+=======
+#connexion {
+>>>>>>> Felix_dev1
 	background-color: #173f59;
 	margin: 0px;
 }
 
+#connexion>div {
+	background-color: #173f59;
+}
 
+<<<<<<< HEAD
 img {
+=======
+
+#fond {
+>>>>>>> Felix_dev1
 	width: 100%;
 	margin: 0px;
 }
 
 
-h1 {
+#connexion>h1 {
 	color: #173f59;
 	font-family: "Lato Light";
 	font-style: bold;
@@ -24,7 +36,11 @@ h1 {
 	} 
 
 
+<<<<<<< HEAD
 h2 {
+=======
+#fedejeux {
+>>>>>>> Felix_dev1
 	width: 28%;
 	margin: 0px;
 	position : absolute;
@@ -34,13 +50,21 @@ h2 {
 
 
 
+<<<<<<< HEAD
 div {
+=======
+#connexion>div {
+>>>>>>> Felix_dev1
     background-color: #173f59; 
     padding: 20px;
 }
 
 
+<<<<<<< HEAD
 input[type=text], select {
+=======
+#login {
+>>>>>>> Felix_dev1
     width: 600px;
     height: 90px;
     padding: 0px 20px;
@@ -62,7 +86,11 @@ input[type=text], select {
 }
 
 
+<<<<<<< HEAD
 input[type=password], select {
+=======
+#passe {
+>>>>>>> Felix_dev1
     width: 600px;
     height: 90px;
     padding: 0px 20px;
@@ -84,7 +112,7 @@ input[type=password], select {
     
 }
 
-input[type=submit] {
+#action {
     width: 45.79%;
 	height: 6.54%;
 
@@ -105,7 +133,7 @@ input[type=submit] {
 	transform: translate(-50%);
 }
 
-input[type=submit]:hover {
+#action:hover {
     background-color: #45a049;
 }
 
