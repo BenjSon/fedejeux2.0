@@ -56,11 +56,11 @@
   <div id="header">
     <template v-if="showHeader">
       <div class="container"> 
-        <div class="row" id="logo-ludinord"> 
-          <div class="col-xs-3">
-            <img src="./Ressources/logo-ludinord.png">
-          <div class="col-xs-3" id="assoFédéjeux"> 
-            <img src="./Ressources/Association Fédéjeux.png">
+        <div class="row"> 
+          <div class="col-xs-6">
+            <img src="./Ressources/logo-ludinord.png" class="logoLud">
+          <div class="col-xs-6"> 
+            <img src="./Ressources/Association Fédéjeux.png" class="assoFed">
         <div onclick="NAV.toAccueil()" class="btn btn-primary"> Retour à l'accueil </div>
     </template>
   </div>
@@ -71,35 +71,35 @@
     <template v-if="showAccueil">
         <div class="row"> 
           <div class="col-xs-12">
-            <h1 class=" bouton text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
+            <h1 class="bouton text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
           </div>
         </div>
         <div class="row" id="bouton-partie1">
           <div class="col-xs-6">
-              <button class="bouton text-center" id="FORT" onclick = "NAV.toSalles()">
-                <img src="./Ressources/sand-castle.png" class="icone">  
-                <h1>SALLE DU FORT</h1>
-              </button>
+              <div class="bouton" id="FORT" onclick = "NAV.toSalles()">
+                 <h1 class="nom text-center ">SALLE DU FORT</h1>
+                <img src="./Ressources/sand-castle.png" class="icone">
+              </div> -->
           </div>
-          <div class="col-xs-3">
-              <button class="bouton text-center" id="MONTAIGNE" onclick = "NAV.toSalles();">
+          <div class="col-xs-6">
+              <div class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
+                <h1 class="nom text-center ">SALLE MONTAIGNE</h1>
                 <img src="./Ressources/students-cap.png" class="icone">
-                <h1>SALLE MONTAIGNE</h1>
-              </button>
+              </div>
           </div>
         </div>
         <div class="row" id="bouton-partie2">
           <div class="col-xs-6">
-              <button class="bouton text-center" id="CHAPITEAU" onclick = "NAV.toSalles()">
+              <div class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
+                <h1 class="nom text-center">CHAPITEAU</h1>
                 <img src="./Ressources/park-tent-of-a-circus.png" class="icone">
-                <h1>CHAPITEAU</h1>
-              </button>
+              </div>
           </div>
           <div class="col-xs-6">
-              <button class="bouton text-center" id="ADMINISTRATION" onclick = "NAV.toSalles()">
+              <div class="bouton" id="ADMINISTRATION" onclick = "NAV.toSalles()">
+                <h1 class="nom text-center ">PAGE D'ADMINISTRATION</h1>
                 <img src="./Ressources/settings.png" class="icone">
-                <h1>PAGE D'ADMINISTRATION</h1>
-              </button>
+              </div>
           </div>
         </div>
       </div>    

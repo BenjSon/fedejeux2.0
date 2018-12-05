@@ -20,19 +20,19 @@ body {
 	font-size: 40px ;
 	text-align: center;
 	white-space: nowrap;
+
+	position: absolute;
+	top : 192.5px; left: 50%;
+	transform: translate(-50%);
 }
 
 #fedejeux {
 	width: 100px;
 	margin: 0px;
 	position : absolute;
-	top : 110px ; left: 50%;
+	top : 85px ; left: 50%;
 	transform: translate(-50%);
-}	
-
-	/*position : absolute;
-	top : 470px ; left: 50%;
-	transform: translate(-50%);*/
+}
 
 .zone {
     width: 220px;

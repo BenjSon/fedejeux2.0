@@ -4,7 +4,7 @@
 	height: 10px;
 }
 
-#logo-ludinord{
+.logoLud {
 	display: block;
 	width: 10%;
 	position : absolute;
@@ -12,7 +12,7 @@
 }
 
 
-#assoFédéjeux {
+.assoFed {
 	display: block;
 	width : 10px;
 	position : absolute;

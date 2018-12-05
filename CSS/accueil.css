@@ -7,40 +7,43 @@ body {
 	background-color : #5e8d57;
 	border: none;
 
-	margin-bottom: 50px;
-	margin-left: 20px ;
-	margin-right: 20px;
+	/*width: 262.5px;*/
+	width: 100%;
+	height : 130px;
 
-	text-align: center;
+}
+
+.bouton:hover {
+    background-color: #45a049;
+}
+
+.nom {
 	font-family: "Lato Light";
-	font-size: 33.43px ;
+	font-size: 152%;
 	color: white;
-	white-space: nowrap;
-	vertical-align: top;
-
-	width: 500px;
-	height : 200px;
-
+	padding-top: 10px;
 }
 
 #ADMINISTRATION {
 	background-color: #456699;
 }
 
+#ADMINISTRATION:hover {
+    background-color: #335a98;
+}
+
 #AffluenceTotale {
 	font-family: "Lato Light";
-	font-size: 75px ;
+	font-size: 300%;
 	color: white;
 
 	background-color: #2e778d;
 
-	padding-top: 30px;
-
-	width: 100%;
+	height: 230px;
 }
 
 .icone {
-	width: 20%;
+	height: 100%;
 }
 
 
