@@ -1,20 +1,13 @@
 #header {
-	display: block;
 	background-color: #14364c;
-	height: 10px;
+	height: 70px;
 }
 
-.logoLud {
-	display: block;
+#logoLud {
 	width: 10%;
-	position : absolute;
-	top: 50px; left: 55px;
 }
 
 
-.assoFed {
-	display: block;
+#assoFed {
 	width : 10px;
-	position : absolute;
-	top: 55px; right: 60px;
 }

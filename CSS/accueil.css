@@ -2,14 +2,40 @@ body {
 	background-color: #173f59;
 }
 
+/*----- header------*/
+#header { background-color: #14364c; height: 60px; }
+
+.logo-entete { height: 35px; margin-top: 13px; }
+
+#Ld { position: absolute; left: 20px; }
+
+#Af { position: absolute; right: 25px; }
+/*----- fin header------*/
+
+
+
+#AffluenceTotale {
+	font-family: "Lato Light";
+	font-size: 200%;
+	color: white;
+
+	background-color: #2e778d;
+
+	height: 200px;
+	margin-top: 10px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-top: 10px;
+}
+
 
 .bouton {
 	background-color : #5e8d57;
 	border: none;
 
 	/*width: 262.5px;*/
-	width: 100%;
-	height : 130px;
+	width: 98%;
+	height : 100px;
 
 }
 
@@ -19,7 +45,7 @@ body {
 
 .nom {
 	font-family: "Lato Light";
-	font-size: 152%;
+	font-size: 110%;
 	color: white;
 	padding-top: 10px;
 }
@@ -32,18 +58,37 @@ body {
     background-color: #335a98;
 }
 
-#AffluenceTotale {
-	font-family: "Lato Light";
-	font-size: 300%;
-	color: white;
-
-	background-color: #2e778d;
-
-	height: 230px;
-}
-
 .icone {
-	height: 100%;
+	height: 40%;
 }
 
+.salle {
+	padding-left: 20px;
+}
+
+
+
+
+
+.gauche {
+	margin-left: 6px;
+}
+
+.droite {
+	margin-left: -3px;
+}
+
+.haut {
+	margin-top:-6px;
+}
+
+.bas {
+	margin-top: -15px;
+}
+
+#footer {
+	position : absolute;
+	bottom : 85px ; left: 50%;
+	transform: translate(-50%);
+}
 
