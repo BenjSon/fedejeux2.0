@@ -13,7 +13,6 @@ getLastofH = function(historique){
 	return historique[taille-1];
 };
 
-
 ResetToZero = function(nombreSalles){
 	// 3 salles étant la base initiale du projet 
 	if((nombreSalles === undefined)){
@@ -23,9 +22,13 @@ ResetToZero = function(nombreSalles){
 	//console.log(test);
 	//db.collection("historiqueSalles").doc("décompte1").add();
 	for(var i = 1; i<=nombreSalles;i++){
-		db.collection("HistoriqueSalles").doc("current").collection("Salle"+i).add({
+		db.ref("HistoriqueSalles/current/salle"+i+"/mesure"+i+"0").set({
 			"nbr": 0,
 			"temps": 0
 		});
+		// db.collection("HistoriqueSalles").doc("current").collection("Salle"+i).add({
+		// 	"nbr": 0,
+		// 	"temps": 0
+		// });
 	}
 }
