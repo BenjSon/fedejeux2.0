@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
+  <title>Ludinord 2019</title>
 
  <!-- 				stylesheet 			-->
   <link rel="stylesheet" href="./CSS/global.css">
@@ -25,19 +25,21 @@
 
 	<div id="connexion">
 		<template  v-if="showConnexion">
+			<!-- <img src="./Ressources/jeux-societe-android.jpg" id="fond"> -->
+			<div id="Ludinord">
+				<h1> LUDINORD 2019 </h1> 
+				<img src="./Ressources/logo-fedejeux.png" id="fedejeux">
+			</div>
+			<div id="identification">
+				<form action="controleur.php" method="GET">
+					<input type="text" id="login" class="zone" placeholder="Identifiant"/><br />
+					<input type="password" id="passe" class="zone" placeholder="Mot de passe"/><br />
+					<input type="submit" id="action" class="text" value="CONNEXION" />
+				</form>
+			</div>
 			<!-- pour test -->
 			<div onclick="NAV.toAccueil()">connexion</div>
 			<!-- pour test -->
-			<img src="./Ressources/jeux-societe-android.jpg" id="fond">
-			<h1>LUDINORD 2019</h1>
-			<img src="./Ressources/logo-fedejeux.png" id="fedejeux">
-			<div>
-				<form action="controleur.php" method="GET">
-					<input type="text" id="login" placeholder="Identifiant"/><br />
-					<input type="password" id="passe" placeholder="Mot de passe"/><br />
-					<input type="submit" id="action" value="CONNEXION" />
-				</form>
-			</div>
 		</template>
 	</div>
 
