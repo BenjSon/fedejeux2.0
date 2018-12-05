@@ -1,4 +1,4 @@
-#accueil {
+body {
 	margin : 0px;
 	background-color: #173f59;
 }
@@ -16,7 +16,6 @@ grid-container {
 }
 
 
-/*LAISSER EN COMM
 #header {
 	display: block;
 	margin-bottom: : auto;
@@ -38,7 +37,6 @@ grid-container {
 	position : absolute;
 	top: 55px; right: 60px;
 }
-LAISSER EN COMM*/
 
 
 #AffluenceTotale {
@@ -54,7 +52,7 @@ LAISSER EN COMM*/
 	transform: translate(-50%);*/
 }
 
-#accueil>h1 {
+h1 {
 	text-align: center;
 	font-family: "Lato Thin";
 	font-size: 75px ;
@@ -62,8 +60,7 @@ LAISSER EN COMM*/
 }
 
 
-/*
-button.img {
+/*button.img {
 
 	display: block;
 	width:50px;
@@ -71,9 +68,9 @@ button.img {
 	margin-right: auto;
 
 
-}
+}*/
 
-button {
+/*button {
 	display: block;
 	background-color : #5e8d57;
 
@@ -89,8 +86,7 @@ button {
 	width: 420px;
 
 }
-LAISSER EN COMM*/
-
+*/
 
 #FORT {
 	background-color : #5e8d57;
@@ -172,4 +168,3 @@ LAISSER EN COMM*/
 
 	width: 420px;
 }
-
