@@ -1,10 +1,17 @@
-var dataAffluence = firebase.database().ref('Affluence');
-dataAffluence.on('value')
-	.then(function(snapshot){
-		var fort = snapshot.child(salle1).val();
-		var montaigne = snapshot.child(salle2).val();
-		var chapiteau = snapshot.child(salle3).val();
-	})
+// var dataAffluence = firebase.database().ref('HistoriqueSalles/current');
+// dataAffluence.on('value')
+// 	.then(function(snapshot){
+// 		var fort = snapshot.child(salle1).val();
+// 		var montaigne = snapshot.child(salle2).val();
+// 		var chapiteau = snapshot.child(salle3).val();
+// 	})
+
+var dataAffluence = firebase.database().ref('HistoriqueSalles/current');
+dataAffluence.on('value', function(snapshot){
+	var nombre = snapshot.val();
+	console.log(nombre.salle1.mesure0.nbr);
+})
+
 
 
 getHistory = function(salle){
