@@ -1,99 +1,80 @@
-#connexion {
-	background-color: #173f59;
-	margin: 0px;
+body {
+	margin: 0px 0px 0px 0px;
 }
 
-#connexion>div {
-	background-color: #173f59;
+.text {
+	font-family: "Lato Light"
 }
 
-#fond {
-	width: 100%;
-	margin: 0px;
+#Ludinord {
+	background-color: white;
+	background-image: url("./Ressources/jeux-societe-android.jpg")
+	background-position: center;
+  	height: 250px;
 }
 
-#connexion>h1 {
-	color: #173f59;
-	font-family: "Lato Light";
+#Ludinord>h1 {
+  	color: #173f59;
 	font-style: bold;
-	font-size: 110px ;
+	font-family: "Lato Light";
+	font-size: 40px ;
 	text-align: center;
 	white-space: nowrap;
-
-	position : absolute;
-	top : 470px ; left: 50%;
-	transform: translate(-50%);
-} 
+}
 
 #fedejeux {
-	width: 28%;
+	width: 100px;
 	margin: 0px;
 	position : absolute;
-	top : 220px ; left: 50%;
+	top : 110px ; left: 50%;
 	transform: translate(-50%);
-}
+}	
 
-#connexion>div {
-    background-color: #173f59; 
-    padding: 20px;
-}
+	/*position : absolute;
+	top : 470px ; left: 50%;
+	transform: translate(-50%);*/
 
-#login {
-    width: 600px;
-    height: 90px;
-    padding: 0px 20px;
-    margin-top: 130px;
+.zone {
+    width: 220px;
+    height: 33px;
+    padding: 0px 10px;
 
     background-color: #173f59;
 	font-family: "Lato";
-	font-size: 50px ;
+	font-size: 20px ;
 	color: white;
 
     display: inline-block;
-    border: 2px solid #ccc;
-    border-radius: 30px;
+    border: 0.5px solid #ccc;
+    border-radius: 13px;
     /*box-sizing: border-box;*/
 
     position : absolute;
 	left: 50%;
 	transform: translate(-50%);
+}
+
+#login{
+	margin-top: 30px;
 }
 
 #passe {
-    width: 600px;
-    height: 90px;
-    padding: 0px 20px;
-    margin-top: 280px;
-    
-    background-color: #173f59;
-	font-family: "Lato";
-	font-size: 50px ;
-	color: white;
-
-    display: inline-block;
-    border: 2px solid #ccc;
-    border-radius: 30px;
-    /*box-sizing: border-box;*/
-
-    position : absolute;
-	left: 50%;
-	transform: translate(-50%);   
+	margin-top: 80px;
 }
 
 #action {
-    width: 45.79%;
-	height: 6.54%;
+    width: 168px;
+	height: 47px;
 
    	background-color: #1d4d66;
 	color: #d6dbdf;
 	font-family: "Lato Light";
-	font-size: 65px ;
+	font-size: 25px ;
+	text-align: center;
 	
-
-    padding: 14px 20px;
-    margin-top: 460px;
+    margin-top: 130px;
     border: none;
-    border-radius: 30px;
+    border-radius: 13px;
     cursor: pointer;
 
     position : absolute;

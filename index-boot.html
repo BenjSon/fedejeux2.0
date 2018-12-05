@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ludinord 2019</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+  <!--        stylesheet      -->
+    <link rel="stylesheet" href="./CSS/global.css">
+    <link rel="stylesheet" href="./CSS/connexion.css">
+    <link rel="stylesheet" href="./CSS/accueil.css">
+    <link rel="stylesheet" href="./CSS/admin.css">
+    <link rel="stylesheet" href="./CSS/salles.css">
+  <!--        SCRIPTS        -->
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <script src="./JS/conf_firebase.js"></script>
+     <script src="./JS/fctsFirebase.js"></script>
+    
+  </head>
+
+<body>
+
+<div id="navigation"></div>
+
+  <div id="connexion">
+    <template  v-if="showConnexion">
+      <!-- <img src="./Ressources/jeux-societe-android.jpg" id="fond"> -->
+      <div id="Ludinord">
+        <img src="./Ressources/logo-fedejeux.png" id="fedejeux">
+        <h1>LUDINORD 2019</h1> 
+      </div>
+      <div id="identification">
+        <form action="controleur.php" method="GET">
+          <input type="text" id="login" class="zone" placeholder="Identifiant"/><br />
+          <input type="password" id="passe" class="zone" placeholder="Mot de passe"/><br />
+          <!-- <input type="submit" id="action" class="button" value="CONNEXION" /> -->
+          <!-- pour test -->
+          <div onclick="NAV.toAccueil()" class="btn btn-primary" id="action">CONNEXION</div>
+          <!-- pour test -->
+        </form>
+      </div>
+    </template>
+  </div>
+
+  <!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+
+  <div id="header">
+    <template v-if="showHeader">
+      <div class="container"> 
+        <div class="row" id="logo-ludinord"> 
+          <div class="col-xs-3">
+            <img src="./Ressources/logo-ludinord.png">
+          <div class="col-xs-3" id="assoFédéjeux"> 
+            <img src="./Ressources/Association Fédéjeux.png">
+        <div onclick="NAV.toAccueil()" class="btn btn-primary"> Retour à l'accueil </div>
+    </template>
+  </div>
+
+  <!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+  <div class="container" id="accueil">
+    <template v-if="showAccueil">
+        <div class="row"> 
+          <div class="col-xs-12">
+            <h1 class=" bouton text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
+          </div>
+        </div>
+        <div class="row" id="bouton-partie1">
+          <div class="col-xs-6">
+              <button class="bouton text-center" id="FORT" onclick = "NAV.toSalles()">
+                <img src="./Ressources/sand-castle.png" class="icone">  
+                <h1>SALLE DU FORT</h1>
+              </button>
+          </div>
+          <div class="col-xs-3">
+              <button class="bouton text-center" id="MONTAIGNE" onclick = "NAV.toSalles();">
+                <img src="./Ressources/students-cap.png" class="icone">
+                <h1>SALLE MONTAIGNE</h1>
+              </button>
+          </div>
+        </div>
+        <div class="row" id="bouton-partie2">
+          <div class="col-xs-6">
+              <button class="bouton text-center" id="CHAPITEAU" onclick = "NAV.toSalles()">
+                <img src="./Ressources/park-tent-of-a-circus.png" class="icone">
+                <h1>CHAPITEAU</h1>
+              </button>
+          </div>
+          <div class="col-xs-6">
+              <button class="bouton text-center" id="ADMINISTRATION" onclick = "NAV.toSalles()">
+                <img src="./Ressources/settings.png" class="icone">
+                <h1>PAGE D'ADMINISTRATION</h1>
+              </button>
+          </div>
+        </div>
+      </div>    
+    </template>
+  </div>
+
+  <!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+  <div id="admin">
+    <template v-if="showAdmin">
+      <div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
+      <div>Page d'administration</div>
+      <div id="remiseZero">
+        <form action="remiseAZero">
+        <div> <div> Salle Montaigne <input type="checkbox" name="salleMontaigne"> </div>
+            <div> Salle du Fort <input type="checkbox" name="salleDuFort">    </div>
+            <div> Le Chapiteau  <input type="checkbox" name="leChapiteau">    </div>  </div>
+        <input type="submit" value="REMISE A ZERO">
+        </form>
+      </div> <hr>
+      <div id="modifData">
+        <form action="modifData">
+        <table>
+            <tr>  <td>&nbsp;</td> <td>Seuil</td>  <td>Capacité</td> </tr>
+            <tr>  <td>Salle Montaigne</td>  <td><input type="text" name="seuilM"></td>
+                <td><input type="text" name="capM"></td>  </tr>
+            <tr>  <td>Salle du Fort</td>  <td><input type="text" name="seuilF"></td>
+                  <td><input type="text" name="capF"></td>  </tr>
+            <tr>  <td>Le Chapiteau</td> <td><input type="text" name="seuilC"></td>
+                  <td><input type="text" name="capC"></td>  </tr>
+        </table>
+        <input type="submit" value="ENREGISTREMENT">  </form>
+      </div>
+    </template>
+  </div>
+
+  <!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+
+  <div id="salles" > 
+    <template v-if="showSalles">  
+        <div id="contenu">
+            <div class="titre">
+                AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
+            </div>
+
+            <div id="affluences">
+              <div id="actuelle">
+                  <span> Affluence actuelle </span> {{ affluence }} 
+              </div>
+
+              <div id="totale">
+                 <span> Affluence totale </span> {{ limite }} 
+              </div>
+            </div>
+            <!-- Graphique -->
+            <div id="tauxLimites">
+                <img src="ressources/WARNING.png"/>
+                <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
+                <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
+            </div>
+        </div>
+
+          <div class="bottomlink" onclick="NAV.toAdmin()">Page d'administration</div> - 
+          <div class="bottomlink" onclick="NAV.toConnexion()">Déconnexion</div>
+      </template>
+  </div>    
+       
+  <!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+          
+<div id="footer">
+  
+</div>
+
+<script src="./JS/navigation.js"></script>
+<script src="./JS/connexion.js"></script>
+<script src="./JS/accueil.js"></script>
+<script src="./JS/admin.js"></script>
+<script src="./JS/salles.js"></script>
+<script src="./JS/header.js"></script>
+
+
+
+    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
