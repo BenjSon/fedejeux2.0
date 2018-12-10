@@ -67,13 +67,13 @@
 				</div>
 				<div class="row" id= "partie boutons 1">
 					<div class="col-xs-6" :style="myStyle(salle1)">
-							<button class="bouton" id="fort" onclick = "NAV.toSalles()">
+							<button class="bouton" id="fort" onclick = "NAV.toSalles(salle1)">
 								<img src="./Ressources/sand-castle.png" id="logo">	
 								SALLE DU FORT
 							</button>
 					</div>
 					<div class="col-xs-6" :style="myStyle(salle2)">
-							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
+							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles(salle2);">
 								<img src="./Ressources/students-cap.png" id="logo">
 								SALLE MONTAIGNE
 							</button>
@@ -81,13 +81,13 @@
 				</div>
 				<div class="row" id= "partie boutons 2">
 					<div class="col-xs-6" :style="myStyle(salle3)">
-							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
+							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles(salle3)">
 								CHAPITEAU
 								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 							</button>
 					</div>
 					<div class="col-xs-6">
-							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toSalles()">
+							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toAdmin()">
 								<img src="./Ressources/settings.png" id="logo">
 								PAGE D'ADMINISTRATION 
 							</button>
@@ -133,7 +133,7 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
-		<template v-if="showSalles">  
+		<template v-for="(showed,salle) in salles" v-if="showed">  
 	  		<div id="contenu">
 		        <div class="titre" :style="myStyle(salle)">
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
@@ -151,8 +151,8 @@
 	        	<!-- Graphique -->
 		        <div id="tauxLimites">
 		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
+		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
+		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
 		        </div>
 		    </div>
 

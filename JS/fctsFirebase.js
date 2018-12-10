@@ -43,6 +43,6 @@ ResetToZero = function(nombreSalles){
 }
 
 modifParametres = function(){
-//		console.log(parametres);
+	console.log(parametres);
 	db.ref('Paramètres').set(parametres);
 }
