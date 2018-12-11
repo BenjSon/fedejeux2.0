@@ -69,28 +69,28 @@
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 1">
-					<div class="col-xs-6">
-							<button class="bouton" id="fort" onclick = "NAV.toSalles()">
+					<div class="col-xs-6" :style="myStyle(salle1)">
+							<button class="bouton" id="fort" onclick = "NAV.toSalles(salle1)">
 								<img src="./Ressources/sand-castle.png" id="logo">	
 								SALLE DU FORT
 							</button>
 					</div>
-					<div class="col-xs-6">
-							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
+					<div class="col-xs-6" :style="myStyle(salle2)">
+							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles(salle2);">
 								<img src="./Ressources/students-cap.png" id="logo">
 								SALLE MONTAIGNE
 							</button>
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 2">
-					<div class="col-xs-6">
-							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
+					<div class="col-xs-6" :style="myStyle(salle3)">
+							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles(salle3)">
 								CHAPITEAU
 								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 							</button>
 					</div>
 					<div class="col-xs-6">
-							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toSalles()">
+							<button class="bouton" id="ADMINISTRATION" onclick = "NAV.toAdmin()">
 								<img src="./Ressources/settings.png" id="logo">
 								PAGE D'ADMINISTRATION 
 							</button>
@@ -115,15 +115,18 @@
 				</form>
 			</div> <hr>
 			<div id="modifData">
-				<form action="modifData">
+				<form action="modifParametres()">
 				<table>
 						<tr>	<td>&nbsp;</td>	<td>Seuil</td>	<td>Capacité</td>	</tr>
-	 					<tr>	<td>Salle Montaigne</td>	<td><input type="text" name="seuilM"></td>
-								<td><input type="text" name="capM"></td>	</tr>
-	 					<tr>	<td>Salle du Fort</td>	<td><input type="text" name="seuilF"></td>
-	    						<td><input type="text" name="capF"></td>	</tr>
-	 					<tr>	<td>Le Chapiteau</td>	<td><input type="text" name="seuilC"></td>
-	    						<td><input type="text" name="capC"></td>	</tr>
+	 					<tr>	<td>Salle du Fort</td>
+	 							<td><input type="text" v-model="parametres.salle1.seuil"></td>
+	    						<td><input type="text" v-model="parametres.salle1.capacité"></td>	</tr>
+	 					<tr>	<td>Salle Montaigne</td>
+	 							<td><input type="text" v-model="parametres.salle2.seuil"></td>
+								<td><input type="text" v-model="parametres.salle2.capacité"></td>	</tr>
+	 					<tr>	<td>Le Chapiteau</td>
+	 							<td><input type="text" v-model="parametres.salle3.seuil"></td>
+	    						<td><input type="text" v-model="parametres.salle3.capacité"></td>	</tr>
 				</table>
 				<input type="submit" value="ENREGISTREMENT">	</form>
 			</div>
@@ -133,9 +136,9 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
-		<template v-if="showSalles">  
+		<template v-for="(showed,salle) in salles" v-if="showed">  
 	  		<div id="contenu">
-		        <div class="titre">
+		        <div class="titre" :style="myStyle(salle)">
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
 		        </div>
 
@@ -152,8 +155,8 @@
 	        	<!-- Graphique -->
 		        <div id="tauxLimites">
 		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
+		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
+		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
 		        </div>
 		    </div>
 
