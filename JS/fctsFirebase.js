@@ -1,3 +1,8 @@
+var db = firebase.database();
+var CurrentRef = db.ref("HistoriqueSalles/current");
+
+// ----- Variables de ref() ----- //
+
 
 var dataAffluence = firebase.database().ref('Affluence');
 dataAffluence.on('child_added', function(snapshot){
@@ -14,29 +19,53 @@ dataParametres.once('value')
 //		console.log(parametres);
 	})
 
-getHistory = function(salle){
-	
-	return historique;
+
+
+
+getHistory = function(numSalle){
+	CurrentRef.child("salle" + numSalle).on('child_added',snapshot=>{
+		var historique = snapshot.val();
+		console.log(historique);
+		return historique;
+	});
 };
 
-getLastofH = function(historique){
-	var taille = historique.length;
-	return historique[taille-1];
+getLastofH = function(numSalle){
+	var lastMesureFocus = db.ref("HistoriqueSalles/current/salle" + numSalle).orderByChild("id").limitToLast(1);
+	lastMesureFocus.on('child_added', snapshot=>{
+    		let LastMesure = snapshot.val();
+    		console.log(LastMesure);
+    		return LastMesure;
+	});
+	console.log(LastMesure);
 };
 
+GetNumberLastHist = function(){
+	GetNumberLastHist.LastHistorique=null;
+	var Placenumber = db.ref("HistoriqueSalles").orderByChild("idHist").limitToLast(1);
+	Placenumber.once('value', function(snapshot) {
+  		snapshot.forEach( function(childSnapshot) {
+    		GetNumberLastHist.LastHistorique = childSnapshot.val();
+    		console.log(GetNumberLastHist.LastHistorique.idHist);
+    		// return LastHistorique.idHist;
+    	});
+	});
+	return GetNumberLastHist.LastHistorique.idHist;
+}
 ResetToZero = function(nombreSalles){
 	// 3 salles étant la base initiale du projet 
 	if((nombreSalles === undefined)){
 		var nombreSalles = 3;
 	}
-	//var test = db.collection("Salle1").doc("48u1lLAZdYND9XAgYRRX").get().then(function(doc){console.log(doc)});
-	//console.log(test);
-	//db.collection("historiqueSalles").doc("décompte1").add();
+
+	db.ref("HistoriqueSalles/current3").set({"idHist":1});
 	for(var i = 1; i<=nombreSalles;i++){
-		db.ref("HistoriqueSalles/current/salle"+i+"/mesure"+i+"0").set({
+		db.ref("HistoriqueSalles/current3/salle"+i+"/mesure"+i+"0").set({
 			"nbr": 0,
-			"temps": 0
+			"temps": 0,
+			"id": 0
 		});
+
 		// db.collection("HistoriqueSalles").doc("current").collection("Salle"+i).add({
 		// 	"nbr": 0,
 		// 	"temps": 0
