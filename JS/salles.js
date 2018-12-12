@@ -2,9 +2,10 @@ var SALLES = new Vue({
       el:'#salles',
       
       data: {
-  		  showSalles:{
-          salle1:false, salle2:false, salle3:false
-        },
+          showAccueil: false,
+//  		  showSalles:{
+//          salle1:false, salle2:false, salle3:false
+//        },
 //      salles: "" ,
         imageDeLaSalle: "" ,
         affluence: "" ,
