@@ -2,9 +2,7 @@ var SALLES = new Vue({
       el:'#salles',
       
       data: {
-  		  showSalles:{
-          salle1:false, salle2:false, salle3:false
-        },
+        showSalles: false,
 //      salles: "" ,
         imageDeLaSalle: "" ,
         affluence: "" ,
@@ -14,11 +12,12 @@ var SALLES = new Vue({
       },
 
       methods: {
-        myStyle: function(salle){
-          color='green';
-          if (salle.affluence>=parametres.salle.capacité) color='red';
-          else if(salle.affluence>=parametres.salle.seuil) color='orange';
-          return {backgroundColor: color}
+//        myStyle: function(salle){
+//          color='green';
+//          if (salle.affluence>=parametres.salle.capacité) color='red';
+//          else if(salle.affluence>=parametres.salle.seuil) color='orange';
+//          return {backgroundColor: color}
+//        }
       },
 
       computed: {
