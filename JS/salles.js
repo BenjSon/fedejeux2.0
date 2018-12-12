@@ -12,6 +12,7 @@ var SALLES = new Vue({
       },
 
       methods: {
+
 //        myStyle: function(salle){
 //          color='green';
 //          if (salle.affluence>=parametres.salle.capacité) color='red';

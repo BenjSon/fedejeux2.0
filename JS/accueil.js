@@ -1,9 +1,3 @@
-var bouton ="";
-function changerSalle(context){
-	console.log("changement");
-	bouton = context.id;
-	return bouton;
-};
 
 var ACCUEIL = new Vue({
 	el: "#accueil",
@@ -17,5 +11,6 @@ var ACCUEIL = new Vue({
 //          else if(salle.affluence>=parametres.salle.seuil) color='orange';
 //          return {backgroundColor: color}
 //        }
+
 	}
 });
