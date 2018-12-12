@@ -23,7 +23,7 @@ var NAV = new Vue({
 			ACCUEIL.showAccueil = false,
 			ADMIN.showAdmin = false,
 			SALLES.showSalles = false,
-			HEADER.showHeader = true
+			HEADER.showHeader = false
 		},
 		toSalles:function(){
 			CONNEXION.showConnexion = false,
