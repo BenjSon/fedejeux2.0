@@ -1,0 +1,78 @@
+/*----- header------*/
+#retourAcc { 
+	position: absolute; 
+	left : 25px;
+	background-color: #173f59;
+	border: none;
+
+	font-family: "Lato Light";
+	font-size: 90%;
+	color: #ffd800;
+
+	margin-top: 12px;
+}
+/*----- fin header------*/
+
+#titreAdmin {
+	width : 285px;
+	height: 45px;
+
+	font-family: "Lato Light";
+	font-size: 200%;
+	color: white;
+
+	background-color: #2e778d;
+
+	padding-top: 5px;
+
+	position : absolute;
+	left: 50%; top : 75px;
+	transform: translate(-50%);
+
+	
+}
+
+#cocherSalles { 
+	margin-top : 100px;
+	margin-left: 15px;
+	font-family: "Lato Light";
+	font-size: 15px;
+	line-height: 17px;
+	color: white;
+	border: none;
+ }
+
+.coche {
+	width: 50px;
+}
+
+.form-check-input {
+	padding-top: 50px;
+}
+
+#RAZ {
+	width: 135px;
+	height: 30px;
+
+   	background-color: #20556e;
+	color: white;
+	font-family: "Lato Light";
+	font-size: 16px ;
+	line-height: 16px;
+	text-align: center;
+	
+    margin-top: 10px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+
+    position : absolute;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+#separation {
+	background-color: #2e778d;
+	height : 4px;
+	margin-top : 65px;
+}
