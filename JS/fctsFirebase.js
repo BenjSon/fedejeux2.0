@@ -16,17 +16,18 @@ var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
 	.then(function(snapshot){
 		var parametres = snapshot.val();
-//		console.log(parametres);
+		// console.log(parametres);
 	})
 
-
+console.log("loooooo"+parametres);
 
 
 getHistory = function(numSalle){
 	CurrentRef.child("salle" + numSalle).on('child_added',snapshot=>{
 		var historique = snapshot.val();
 		console.log(historique);
-		return historique;
+		TracerGraphe(LastMesure,)
+		
 	});
 };
 
@@ -35,7 +36,8 @@ getLastofH = function(numSalle){
 	lastMesureFocus.on('child_added', snapshot=>{
     		let LastMesure = snapshot.val();
     		console.log(LastMesure);
-    		return LastMesure;
+    		TracerGraphe(LastMesure,)
+    		
 	});
 	console.log(LastMesure);
 };

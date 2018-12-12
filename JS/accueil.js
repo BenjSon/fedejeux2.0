@@ -1,9 +1,3 @@
-var bouton ="";
-function changerSalle(context){
-	console.log("changement");
-	bouton = context.id;
-	return bouton;
-};
 
 var ACCUEIL = new Vue({
 	el: "#accueil",
@@ -13,9 +7,9 @@ var ACCUEIL = new Vue({
 	methods:{
         myStyle: function(salle){
           color='green';
-          if (salle.affluence>=parametres.salle.capacité) color='red';
-          else if(salle.affluence>=parametres.salle.seuil) color='orange';
-          return {backgroundColor: color}
+          // if (salle.affluence>=parametres.salle.capacité) color='red';
+          // else if(salle.affluence>=parametres.salle.seuil) color='orange';
+          // return {backgroundColor: color}
         }
 	}
 });
