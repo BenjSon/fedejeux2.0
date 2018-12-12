@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Ludinord 2019</title>
 
- <!-- 				stylesheet 			-->
+ <!-- 				stylesheet 				-->
   <link rel="stylesheet" href="./CSS/global.css">
   <link rel="stylesheet" href="./CSS/connexion.css">
   <link rel="stylesheet" href="./CSS/accueil.css">
@@ -18,8 +18,20 @@
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script> -->
   <script src="./JS/conf_firebase.js"></script>
   <script src="./JS/fctsFirebase.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="./JS/graphes.js"></script>
+<!-- 				HIGHCHARTS 				-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+			<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
 
 
 </head>
@@ -71,6 +83,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 				<div class="row" id="AffluenceTotale"> 
 					<div class="col-xs-12">
 						<h1> AFFLUENCE TOTALE </h1>
+						<div id="containerGraphe" style="width:100%; height:400px;"></div>
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 1">
@@ -88,6 +101,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 2">
+
 					<div class="col-xs-6" >
 							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
 								CHAPITEAU
