@@ -15,7 +15,7 @@
   };
   firebase.initializeApp(config);
 
-var db = firebase.database();
+
 
 // Initialize Cloud Firestore through Firebase
 // var db = firebase.firestore();
