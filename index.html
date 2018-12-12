@@ -135,7 +135,7 @@
 	<div id="salles" > 
 		<template v-if="showSalles">  
 	  		<div id="contenu">
-		        <div class="titre" :style="myStyle(salle)">
+		        <div class="titre">
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
 		        </div>
 
@@ -151,8 +151,8 @@
 	        	<!-- Graphique -->
 		        <div id="tauxLimites">
 		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
+		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
+		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
 		        </div>
 		    </div>
 
