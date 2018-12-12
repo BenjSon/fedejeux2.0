@@ -66,22 +66,22 @@
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 1">
-					<div class="col-xs-6" :style="myStyle(salle1)">
-							<button class="bouton" id="fort" onclick = "NAV.toSalles(salle1)">
+					<div class="col-xs-6">
+							<button class="bouton" id="fort" onclick = "NAV.toSalles()">
 								<img src="./Ressources/sand-castle.png" id="logo">	
 								SALLE DU FORT
 							</button>
 					</div>
-					<div class="col-xs-6" :style="myStyle(salle2)">
-							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles(salle2);">
+					<div class="col-xs-6" >
+							<button class="bouton" id="MONTAIGNE" onclick = "NAV.toSalles();">
 								<img src="./Ressources/students-cap.png" id="logo">
 								SALLE MONTAIGNE
 							</button>
 					</div>
 				</div>
 				<div class="row" id= "partie boutons 2">
-					<div class="col-xs-6" :style="myStyle(salle3)">
-							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles(salle3)">
+					<div class="col-xs-6" >
+							<button class="bouton" id="CHAPITEAU" onclick = "NAV.toSalles()">
 								CHAPITEAU
 								<img src="./Ressources/park-tent-of-a-circus.png" id="logo">
 							</button>
@@ -133,7 +133,7 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
-		<template v-for="(showed,salle) in salles" v-if="showed">  
+		<template v-if="showSalles">  
 	  		<div id="contenu">
 		        <div class="titre" :style="myStyle(salle)">
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>

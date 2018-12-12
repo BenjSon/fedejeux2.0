@@ -25,13 +25,11 @@ var NAV = new Vue({
 			SALLES.showSalles = false,
 			HEADER.showHeader = true
 		},
-		toSalles:function(salle){
+		toSalles:function(){
 			CONNEXION.showConnexion = false,
 			ACCUEIL.showAccueil = false,
 			ADMIN.showAdmin = false,
-//On passe toutes les salles en false pour s'assurer qu'il n'y en a pas en true
-//avant de changer seulement la salle modifier
-			SALLES.showSalles = false,
+			SALLES.showSalles = true,
 			HEADER.showHeader = true
 		}
 	}
