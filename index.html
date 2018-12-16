@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ludinord 2019</title>
+  <title>index</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
@@ -29,8 +29,8 @@
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="./JS/graphes.js"></script>
 
-
 </head>
+
 <body>
 
 <div id="navigation"></div>
@@ -58,10 +58,10 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 
-	<div id="header">
+	<div id="header" onclick="NAV.toAccueil()">
 		<template v-if="showHeader">
 			<!-- <div onclick="NAV.toAccueil()"> Retour à l'accueil </div> -->
-			<div onclick="NAV.toAccueil()">
+			<div>
 				<img src="./Ressources/logo-ludinord.png" class="logo-entete" id="Ld"> 
 				<img src="./Ressources/Association Fédéjeux.png" class="logo-entete" id="Af">
 			</div>
@@ -105,6 +105,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
         	</div>
+        	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
 
@@ -114,38 +115,95 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 	<div id="admin">
 		<template v-if="showAdmin">
-			<div onclick="NAV.toAccueil()"> Retour à l'accueil </div>
-			<div>Page d'administration</div>
-			<div id="remiseZero">
-				<form action="remiseAZero">
-				<div>	<div>	Salle Montaigne <input type="checkbox" name="salleMontaigne">	</div>
-						<div>	Salle du Fort	<input type="checkbox" name="salleDuFort">		</div>
-						<div>	Le Chapiteau	<input type="checkbox" name="leChapiteau">		</div>	</div>
-				<input type="submit" value="REMISE A ZERO">
-				</form>
-			</div> <hr>
-			<div id="modifData">
-				<form action="modifParametres()">
-				<table>
-						<tr>	<td>&nbsp;</td>	<td>Seuil</td>	<td>Capacité</td>	</tr>
-	 					<tr>	<td>Salle du Fort</td>
-	 							<td><input type="text" v-model="parametres.salle1.seuil"></td>
-	    						<td><input type="text" v-model="parametres.salle1.capacité"></td>	</tr>
-	 					<tr>	<td>Salle Montaigne</td>
-	 							<td><input type="text" v-model="parametres.salle2.seuil"></td>
-								<td><input type="text" v-model="parametres.salle2.capacité"></td>	</tr>
-	 					<tr>	<td>Le Chapiteau</td>
-	 							<td><input type="text" v-model="parametres.salle3.seuil"></td>
-	    						<td><input type="text" v-model="parametres.salle3.capacité"></td>	</tr>
-				</table>
-				<input type="submit" value="ENREGISTREMENT">	</form>
-			</div>
-		</template>
-	</div>
+			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
+			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
+			<div class="container" id="remiseZero">
+       			<form action="remiseAZero">
+          			<div class="row" id="cocherSalles"> 
+            			<div class="col-sm-2 col-xs-4">
+              				<div class="form-check text-center coche" id="CheckMontaigne"> 
+                				<p>Salle Montaigne</p> 
+                				<input type="checkbox" class="form-check-input"></input>   </div> </div>
+            			<div class="col-sm-2 col-xs-4">
+              				<div class="form-check text-center coche" id="CheckFort"> 
+                				<p> Salle du Fort</p> 
+                				<input type="checkbox" class="form-check-input"></input>    </div> </div>
+            			<div class="col-sm-2 col-xs-4">  
+              				<div class="form-check text-center coche" id="CheckChapiteau">
+                				<p>Le Chapiteau</p> 
+                				<input type="checkbox" class="form-check-input"></input>   </div> </div> </div>
+          			<div class="btn btn-primary validation" id="RAZ">REMISE A ZERO</div>
+        		</form>
+      		</div>
+			<div id="separation"> </div>
+      		<div id="modifData">
+        		<form action="modifData">
+        		<table>
+            			<tr>  
+            				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</td> </tr>
+            			<tr>  
+            				<td class="nm elt">Salle Montaigne</td>  
+            				<td><input type="text" name="seuilM" class="zoneText elt"></td>
+                			<td><input type="text" name="capM" class="zoneText elt"></td>  </tr>
+            			<tr>  
+            				<td class="nm elt">Salle du Fort</td>  
+            			    <td><input type="text" name="seuilF" class="zoneText elt"></td>
+                  			<td><input type="text" name="capF" class="zoneText elt"></td>  </tr>
+           				<tr>  
+           					<td class="nm elt">Le Chapiteau</td> 
+           					<td><input type="text" name="seuilC" class="zoneText elt"></td>
+                            <td><input type="text" name="capC" class="zoneText elt"></td>  </tr>
+        		</table>
+        		<div class="btn btn-primary validation" id="save">ENREGISTREMENT</div>
+        		</form>
+      		</div>
+      		<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+    	</template>
+  	</div>
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
+		<template v-if="showSalles">
+			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
+			<h1 class="text-center" id="titreSalle"> AFFLUENCE - {{ salle }} Salle du Fort <img src="imageDeLaSalle"/> </h1>
+			<div class="container">
+				<div class="row" id="affluences"> 
+            		<div class="col-sm-2 col-xs-6 text-center" id="actuelle">					
+			           		<span> Affluence actuelle </span> {{ affluence }} <p>867</p>		      		
+			       	</div>
+			       	<div class="col-sm-2 col-xs-6">
+		        		<div id="totale" class="text-center">
+		           			<span> Affluence totale </span> {{ limite }} <p>1437</p>
+		        		</div>		
+		        	</div>
+		    	</div>
+		    	<div class="row" id="graph">
+		    		<div class="col-xs-12 col-sm-6">
+		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures</div>
+		    		<!-- Graphique -->
+		    		</div>
+		    	</div>
+		    	<div class="row" id="tauxLimites">
+					<div class="col-xs-2">
+		            	<img src="./ressources/WARNING.png" class="warn">
+		            </div>
+		            <div class="col-xs-10" id="infos">
+			            <!--
+		    	        <h2>Capacité maximale : {{ parametres.salle.capacité }} </h2>
+		        	    <h2>Seuil d'alerte : {{ parametres.salle.seuil }} </h2>
+		        		-->
+		            	<h2>Capacité maximale : 800</h2>
+		            	<h2>Seuil d'alerte : 700</h2>
+		    		</div> 
+		    	</div>	
+	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
+	    	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
+    	</template>
+    </div>
+
+
+<!--
 		<template v-if="showSalles">  
 	  		<div id="contenu">
 		        <div class="titre" :style="myStyle(salle)">
@@ -162,8 +220,10 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			        </div>
 		        </div>
 		        <div id="container" style="width:100%; height:400px;"></div>
+-->
+
 	        	<!-- Graphique -->
-		        <div id="tauxLimites">
+<!--		        <div id="tauxLimites">
 		            <img src="ressources/WARNING.png"/>
 		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
 		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
@@ -174,6 +234,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	        <div class="bottomlink" onclick="NAV.toConnexion()">Déconnexion</div>
 	    </template>
 	</div>    
+-->
 	     
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 	        
