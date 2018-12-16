@@ -4,19 +4,22 @@ var CurrentRef = db.ref("HistoriqueSalles/current");
 // ----- Variables de ref() ----- //
 
 
-var dataAffluence = firebase.database().ref('Affluence');
+var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
 dataAffluence.on('child_added', function(snapshot){
-		var fort = snapshot.child('salle1').val();
-		var montaigne = snapshot.child('salle2').val();
-		var chapiteau = snapshot.child('salle3').val();
+		var affFort = snapshot.child('nbr').val();
+		console.log('affFort',affFort);
+		// ACCUEIL.salleStyle(affFort, 'salle1', 'FORT');
+		ACCUEIL.getAffluence(affFort)
 	})
 
 
 var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
 	.then(function(snapshot){
-		var parametres = snapshot.val();
-//		console.log(parametres);
+		var dataParametres = snapshot.val();
+//		var data = snapshot..child('salle1/seuil').val();
+//		console.log('dataparametres:',dataParametres);
+		ADMIN.getParametres(dataParametres);
 	})
 
 
@@ -74,6 +77,6 @@ ResetToZero = function(nombreSalles){
 }
 
 modifParametres = function(){
-	console.log(parametres);
-	db.ref('Paramètres').set(parametres);
+	console.log(ADMIN.parametres);
+	db.ref('Paramètres').set(ADMIN.parametres);
 }

@@ -11,11 +11,14 @@ var ACCUEIL = new Vue({
 		showAccueil: false
 	},
 	methods:{
-//        myStyle: function(salle){
-//          color='green';
-//          if (salle.affluence>=parametres.salle.capacité) color='red';
-//          else if(salle.affluence>=parametres.salle.seuil) color='orange';
-//          return {backgroundColor: color}
-//        }
+//        salleStyle: function(data,salle,id){
+// 			var elmt = document.getElementById(id);
+// 			console.log(elmt);
+// //			var data = JSON.stringify(data);
+// 			console.log(data);
+//         	if (data>=ADMIN.parametres[salle].capacité) elmt.style.backgroundColor='red';
+//          	else if(data>=ADMIN.parametres[salle].seuil) elmt.style.backgroundColor='orange';
+//        },
+		getAffluence: function(affluence){}
 	}
 });
