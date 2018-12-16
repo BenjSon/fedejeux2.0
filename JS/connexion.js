@@ -13,25 +13,25 @@
                 //si quelqu'un est connecté on le déconnecte
                 firebase.auth().signOut();
             }
-             var identifiant = this.user.identifiant;
-             var mdp = this.user.mdp;
-                //on se connecte
-                firebase.auth().signInWithEmailAndPassword(identifiant, mdp)
-                                .catch(function(error) {
-                                    //on gère les erreurs ici
-                                    var errorCode = error.code;
-                                    var errorMessage = error.message;
-                                    //on affiche les erreurs possibles
-                                    if (errorCode === 'auth/wrong-password') {
-                                        alert('Mauvais mot de passe');
-                                    } else {
-                                        alert(errorMessage);
-                                    }
-                                    //console.log(error);
-                                });
-                if (firebase.auth().currentUser){
-                    return NAV.toAccueil();
-                }                
-        },
+            var identifiant = this.user.identifiant;
+            var mdp = this.user.mdp;
+            //on se connecte
+            firebase.auth().signInWithEmailAndPassword(identifiant, mdp)
+                            .catch(function(error) {
+                                //on gère les erreurs ici
+                                var errorCode = error.code;
+                                var errorMessage = error.message;
+                                //on affiche les erreurs possibles
+                                if (errorCode === 'auth/wrong-password') {
+                                    alert('Mauvais mot de passe');
+                                } else {
+                                    alert(errorMessage);
+                                }
+                                console.log(error);
+                            });
+            if (firebase.auth().currentUser){
+                return NAV.toAccueil();
+            }                
+        }
     }
 });
