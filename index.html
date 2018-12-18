@@ -80,7 +80,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		<template v-if="showAccueil">
 
 			<div class="container">	
-				<div class="row" id="AffluenceTotale"> 
+				<div class="row" id="AffluenceTotale" :style="fct"> 
 					<div class="col-xs-12">
 						<h1> AFFLUENCE TOTALE </h1>
 						<div id="containerGraphe" style="width:100%; height:400px;"></div>
@@ -157,7 +157,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<div id="salles" > 
 		<template v-if="showSalles">  
 	  		<div id="contenu">
-		        <div class="titre" :style="myStyle(salle)">
+		        <div class="titre" <!-- :style="myStyle(salle)" -->>
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
 		        </div>
 
@@ -178,9 +178,6 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
 		        </div>
 		    </div>
-
-	        <div class="bottomlink" onclick="NAV.toAdmin()">Page d'administration</div> - 
-	        <div class="bottomlink" onclick="NAV.toConnexion()">Déconnexion</div>
 	    </template>
 	</div>    
 	     

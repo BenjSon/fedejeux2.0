@@ -11,6 +11,8 @@ var ACCUEIL = new Vue({
 //          else if(salle.affluence>=parametres.salle.seuil) color='orange';
 //          return {backgroundColor: color}
 //        }
-
+		fct: function(){
+			return getLastofH();
+		}
 	}
 });
