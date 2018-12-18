@@ -13,20 +13,44 @@ body {
 /*----- fin header------*/
 
 
-
-#AffluenceTotale {
-	font-family: "Lato Light";
-	font-size: 200%;
-	color: white;
-
+#blocTot {
 	background-color: #2e778d;
 
 	height: 200px;
-	margin-top: 10px;
+	margin-top: -8px;
 	margin-left: 6px;
 	margin-right: 6px;
-	padding-top: 10px;
+
+	color: white;
+	font-family: "Lato Light";
+
 }
+
+
+#AffluenceTotale {
+	font-size: 210%;
+	padding-top: 5px;
+}
+
+#blocTot>h2 {
+	font-size: 275%;
+	margin-left: -55%;
+	margin-top: 35px;
+}
+
+#blocTot>h3 {
+	font-size: 137.5%;
+	margin-left: -55%;
+	margin-top: -10px;
+}
+
+#blocTot>h4 {
+	font-size: 190%;
+	font-weight: bold;
+	margin-left: -55%;
+	margin-top: 15px;
+}
+
 
 
 .bouton {
@@ -79,7 +103,7 @@ body {
 }
 
 .haut {
-	margin-top:-6px;
+	margin-top:-1px;
 }
 
 .bas {
@@ -92,3 +116,13 @@ body {
 	transform: translate(-50%);
 }
 
+
+h5 {
+	margin-top: -33px;
+	margin-left : 55%;
+
+	font-family: "Lato";
+	font-size: 27.5px;
+	color: white;
+
+}

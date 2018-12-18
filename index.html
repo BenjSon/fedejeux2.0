@@ -52,6 +52,8 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 				</form>
                 <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
 			</div>
+			<!-- <div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div> -->
+			<div class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
 		</template>
 	</div>
 
@@ -74,7 +76,12 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		<template v-if="showAccueil">
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
-            		<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
+					<div id="blocTot">
+            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
+            			<h2>2000</h2>
+            			<h3>festivaliers</h3>
+            			<h4>91%</h4>
+            		</div>
           		</div>
         	</div>
         	<div class="row" id="bouton-partie1">
@@ -82,12 +89,14 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles()">
                  		<h1 class="nom text-center ">SALLE DU FORT</h1>
                 		<img src="./Ressources/sand-castle.png" class="icone salle">
+                		<h5>0%</h5>
               		</div>
             	</div>
             	<div class="col-sm-3 col-xs-6">
               		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles();">
                 		<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
                 		<img src="./Ressources/students-cap.png" class="icone salle">
+                		<h5>0%</h5>
               		</div>
             	</div>
             </div>
@@ -96,6 +105,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles()">
                 		<h1 class="nom text-center">CHAPITEAU</h1>
                 		<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
+                		<h5>0%</h5>
               		</div>
           		</div>
           		<div class="col-sm-3 col-xs-6">
