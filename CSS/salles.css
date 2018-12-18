@@ -1,0 +1,125 @@
+#titreSalle {
+	width : 290px;
+	height: 45px;
+
+	font-family: "Lato Light";
+	font-size: 140%;
+	color: white;
+
+	background-color: #5e8d57;
+
+	padding-top: 12px;
+
+	position : absolute;
+	left: 50%; top : 75px;
+	transform: translate(-50%);
+}
+
+
+#affluences {
+	margin-top : 110px;
+	height: 120px;
+}
+
+#actuelle {
+	font-family: "Lato Light";
+	color: white;
+
+	border: 5px solid;
+	border-color: #2e778d;
+
+	margin-left: 43px;
+	margin-right: -10px;
+	padding-top: 3px;
+	width: 150px;
+}
+
+#actuelle>span {
+	font-size: 18px ;
+	line-height: 18px;
+	font-style: italic;
+	margin-left: -20px;
+	margin-right: -20px;
+}
+
+#actuelle>p {
+	font-weight: bold;
+	font-size: 50px ;
+	margin-top: -9px;
+	margin-bottom: -4px;
+}
+
+#totale {
+	font-family: "Lato Light";
+	color: #96e7ff;
+	font-weight: bold;
+
+	width: 150px;
+
+	margin-top: 13px;
+}
+
+#totale>span {
+	font-size: 15px ;
+	font-style: italic;
+}
+
+#totale>p {
+	font-size: 37.5px ;
+	margin-top: -8px;
+}
+
+#blocGraph {
+	font-family: "Lato Light";
+	color: white;
+	font-size: 14.5px;
+	font-style: italic;
+
+	background-color: #2e778d;
+
+	padding-top: 10px;
+	height: 185px;
+}
+
+#graph {
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+#tauxLimites {
+	margin-top: 5px;
+}
+
+.warn {
+	width: 50px;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+#infos>h2 {
+	font-family: "Lato Light";
+	font-weight: bold;
+	color: #96e7ff;
+	font-size: 18px;
+	line-height: 10px;
+
+	margin-left: 30px;
+}
+
+.lien {
+	background-color: #173f59;
+	font-family: "Lato Thin";
+	text-decoration: underline;
+	color: white;
+	border: none;
+}
+
+#lienAdmin {
+	position: absolute;
+	bottom: 20px; left: 17%
+}
+
+#lienDeco {
+	position: absolute;
+	bottom: 20px; right: 17%;
+}
