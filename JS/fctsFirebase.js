@@ -3,15 +3,27 @@ var CurrentRef = db.ref("HistoriqueSalles/current");
 
 // ----- Variables de ref() ----- //
 
-
-var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
-dataAffluence.on('child_added', function(snapshot){
-		var affFort = snapshot.child('nbr').val();
-		console.log('affFort',affFort);
-		// ACCUEIL.salleStyle(affFort, 'salle1', 'FORT');
-		ACCUEIL.getAffluence(affFort)
+// C'est vraiment pas très beau d'écrire le même code, on améliorera quand ça marchera
+var dataAffluence1 = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
+dataAffluence1.on('child_added', function(snapshot){
+		var aff = snapshot.child('nbr').val();
+		// console.log('aff',aff);
+		ACCUEIL.getAffluence(aff,'salle1');
 	})
 
+var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
+dataAffluence2.on('child_added', function(snapshot){
+		var aff = snapshot.child('nbr').val();
+		// console.log('aff',aff);
+		ACCUEIL.getAffluence(aff,'salle2');
+	})
+
+var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
+dataAffluence3.on('child_added', function(snapshot){
+		var aff = snapshot.child('nbr').val();
+		// console.log('aff',aff);
+		ACCUEIL.getAffluence(aff,'salle3');
+	})
 
 var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
