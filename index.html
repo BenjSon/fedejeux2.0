@@ -22,8 +22,8 @@
 <!-- 				SCRIPTS				 -->
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
+<!--   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script> -->
   <!-- <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script> -->
   <script src="./JS/conf_firebase.js"></script>
   <script src="./JS/fctsFirebase.js"></script>
@@ -41,6 +41,19 @@
 <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBo63Tx09gzjbjNgQ76neGSNHalvpLeorY",
+    authDomain: "interface-ludinord.firebaseapp.com",
+    databaseURL: "https://interface-ludinord.firebaseio.com",
+    projectId: "interface-ludinord",
+    storageBucket: "interface-ludinord.appspot.com",
+    messagingSenderId: "965924361390"
+  };
+  firebase.initializeApp(config);
+</script>
 
 </head>
 
@@ -91,23 +104,23 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
             			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
-            			<h2>2000</h2>
-            			<h3>festivaliers</h3>
-            			<h4>91%</h4>
+            			<h1> AFFLUENCE TOTALE </h1>
+            {{affluenceTotale()}} festivaliers -
+            {{pourcentageTotal()}}%
             		</div>
           		</div>
         	</div>
         	<div class="row" id="bouton-partie1">
         		<div class="col-sm-3 col-xs-6">
-        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles()">
-                 		<h1 class="nom text-center ">SALLE DU FORT</h1>
+        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles()" :style="myStyle('salle1')">
+                 		<h1 class="nom text-center ">SALLE DU FORT - {{pourcentage('salle1')}}%</h1>
                 		<img src="./Ressources/sand-castle.png" class="icone salle">
                 		<h5>0%</h5>
               		</div>
             	</div>
             	<div class="col-sm-3 col-xs-6">
-              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles();">
-                		<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
+              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles();" :style="myStyle('salle2')">
+                		<h1 class="nom text-center ">SALLE MONTAIGNE - {{pourcentage('salle2')}}%</h1>
                 		<img src="./Ressources/students-cap.png" class="icone salle">
                 		<h5>0%</h5>
               		</div>
@@ -115,8 +128,8 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
             </div>
             <div class="row" id="bouton-partie2">
           		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles()">
-                		<h1 class="nom text-center">CHAPITEAU</h1>
+              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles()" :style="myStyle('salle3')">
+                		<h1 class="nom text-center">CHAPITEAU - {{pourcentage('salle3')}}%</h1>
                 		<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
                 		<h5>0%</h5>
               		</div>
@@ -131,7 +144,6 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
-
 
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
@@ -163,19 +175,16 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         		<form action="modifData">
         		<table>
             			<tr>  
-            				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</td> </tr>
-            			<tr>  
-            				<td class="nm elt">Salle Montaigne</td>  
-            				<td><input type="text" name="seuilM" class="zoneText elt"></td>
-                			<td><input type="text" name="capM" class="zoneText elt"></td>  </tr>
-            			<tr>  
-            				<td class="nm elt">Salle du Fort</td>  
-            			    <td><input type="text" name="seuilF" class="zoneText elt"></td>
-                  			<td><input type="text" name="capF" class="zoneText elt"></td>  </tr>
-           				<tr>  
-           					<td class="nm elt">Le Chapiteau</td> 
-           					<td><input type="text" name="seuilC" class="zoneText elt"></td>
-                            <td><input type="text" name="capC" class="zoneText elt"></td>  </tr>
+            				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</t> </tr>
+            			<tr> <td>Salle du Fort</td>
+                <td><input type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
+                  <td><input type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
+                  <tr>  <td>Salle Montaigne</td>
+                <td><input type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
+                <td><input type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
+                  <tr>  <td>Le Chapiteau</td>
+                <td><input type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
+                  <td><input type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
         		<div class="btn btn-primary validation" id="save">ENREGISTREMENT</div>
         		</form>
@@ -183,6 +192,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
       		<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
     	</template>
   	</div>
+
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
@@ -229,7 +239,8 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 		<template v-if="showSalles">  
 	  		<div id="contenu">
-		        <div class="titre" :style="myStyle(salle)" 
+
+		        <div class="titre" :style="myStyle(salle)"> 
 		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
 		        </div>
 
@@ -248,8 +259,8 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	        	<!-- Graphique -->
 			        <div id="tauxLimites">
 		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
+		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
+		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
 		        </div>
 		    </div>
 	    </template>

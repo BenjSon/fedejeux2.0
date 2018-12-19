@@ -3,7 +3,7 @@ var SALLES = new Vue({
       
       data: {
         showSalles: false,
-//      salles: "" ,
+        salles: "" ,
         imageDeLaSalle: "" ,
         affluence: "" ,
        	limite: "",
@@ -13,23 +13,28 @@ var SALLES = new Vue({
 
       methods: {
 
-//        myStyle: function(salle){
-//          color='green';
-//          if (salle.affluence>=parametres.salle.capacité) color='red';
-//          else if(salle.affluence>=parametres.salle.seuil) color='orange';
-//          return {backgroundColor: color}
-//        }
+        // myStyle: function(salle){
+        //   color='green';
+        //   // console.log("salle.affluence",salle.affluence)
+        //   // console.log("ADMIN.parametres[salle].seuil",ADMIN.parametres[salle].seuil)
+        //   // console.log("salle.affluence",salle.affluence)
+        //   if(ACCUEIL.affSalles[salle]>=ADMIN.parametres[salle].seuil){
+        //     if (ACCUEIL.affSalles[salle]>=ADMIN.parametres[salle].capacité) color='red';
+        //     else color='orange';
+        //   }
+        //   return {backgroundColor: color}
+        // }
       },
 
-      computed: {
-  		  salle:function(){
-     			this.salle="";
-    			this.imageDeLaSalle="";
-     			this.affluence="";
-    			this.valeurMax="";
-    			this.valeurAlerte="";
-     		} 
-     	},
+      // computed: {
+  		  // salle:function(){
+     	// 		this.salle="";
+    		// 	this.imageDeLaSalle="";
+     	// 		this.affluence="";
+    		// 	this.valeurMax="";
+    		// 	this.valeurAlerte="";
+     	// // 	} 
+     	// },
 
    	  watch: {
     		BDD: function(){

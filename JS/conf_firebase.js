@@ -9,5 +9,6 @@
     messagingSenderId: "965924361390"
   };
   firebase.initializeApp(config);
-
-
+  
+var db = firebase.database();
+var CurrentRef = db.ref("HistoriqueSalles/current");
