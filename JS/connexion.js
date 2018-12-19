@@ -30,7 +30,7 @@
                                 console.log(error);
                             });
             if (firebase.auth().currentUser){
-                return NAV.toAccueil();
+                NAV.toAccueil();
             }                
         }
     }
