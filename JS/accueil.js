@@ -23,13 +23,13 @@ var ACCUEIL = new Vue({
 		},
 
    		myStyle: function(salle){
-    	  color='green';
+    	  color='#5e8d57';
     	  // console.log("salle.affluence",salle.affluence)
     	  // console.log("ADMIN.parametres[salle].seuil",ADMIN.parametres[salle].seuil)
     	  // console.log("salle.affluence",salle.affluence)
     	  if(ACCUEIL.affSalles[salle]>=ADMIN.parametres[salle].seuil){
-    	  	if (ACCUEIL.affSalles[salle]>=ADMIN.parametres[salle].capacité) color='red';
-    	  	else color='orange';
+    	  	if (ACCUEIL.affSalles[salle]>=ADMIN.parametres[salle].capacité) color='#ed1c24';
+    	  	else color='#ff7f27';
     	  }
     	  return {backgroundColor: color}
     	},
