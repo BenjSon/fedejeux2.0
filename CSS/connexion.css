@@ -6,6 +6,10 @@ body {
 	font-family: "Lato Light"
 }
 
+#fond {
+	width : 100%;
+}
+
 #Ludinord {
 	background-color: white;
 	background-image: url("./Ressources/jeux-societe-android.jpg")
@@ -15,8 +19,8 @@ body {
 
 #Ludinord>h1 {
   	color: #173f59;
-	font-style: bold;
 	font-family: "Lato Light";
+	font-weight: bold;
 	font-size: 40px ;
 	text-align: center;
 	white-space: nowrap;

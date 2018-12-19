@@ -36,7 +36,7 @@ getLastofH = function(numSalle){
 	lastMesureFocus.on('child_added', snapshot=>{
     		let LastMesure = snapshot.val();
     		console.log(LastMesure);
-    		TracerGraphe(LastMesure,)
+    		TracerGraphe(LastMesure,"containerGraphe");
     		
 	});
 	console.log(LastMesure);
