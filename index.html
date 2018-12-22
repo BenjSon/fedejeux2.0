@@ -67,7 +67,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<div id="accueil">
 		<template v-if="showAccueil">
 
-			<div class="container">	
+			<div class="container" :style="initAdmin()">	
 				<div class="row" id="AffluenceTotale"> 
 					<div class="col-xs-12">
 						<h1> AFFLUENCE TOTALE </h1>

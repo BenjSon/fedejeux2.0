@@ -28,12 +28,14 @@ var CurrentRef = db.ref("HistoriqueSalles/current");
 
 initAdmin = function(){
 	// données d'affluence
-	for(k=1; k<4; k++)
+	for(k=1; k<4; k++){
 		firebase.database().ref('HistoriqueSalles/current/salle'+k+'').limitToLast(1).on('child_added', function(snapshot){
 			var aff = snapshot.child('nbr').val();
 			// console.log('aff',aff);
 			ACCUEIL.getAffluence(aff,'salle'+k+'');
 		});
+	};
+	
 }
 
 
