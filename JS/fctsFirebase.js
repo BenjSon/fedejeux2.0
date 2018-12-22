@@ -3,27 +3,40 @@ var CurrentRef = db.ref("HistoriqueSalles/current");
 
 // ----- Variables de ref() ----- //
 
-// C'est vraiment pas très beau d'écrire le même code, on améliorera quand ça marchera
-var dataAffluence1 = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
-dataAffluence1.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle1');
-	})
+// // C'est vraiment pas très beau d'écrire le même code, on améliorera quand ça marchera
+// var dataAffluence1 = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
+// dataAffluence1.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		// console.log('aff',aff);
+// 		ACCUEIL.getAffluence(aff,'salle1');
+// 	})
 
-var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
-dataAffluence2.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle2');
-	})
+// var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
+// dataAffluence2.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		// console.log('aff',aff);
+// 		ACCUEIL.getAffluence(aff,'salle2');
+// 	})
 
-var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
-dataAffluence3.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle3');
-	})
+// var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
+// dataAffluence3.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		// console.log('aff',aff);
+// 		ACCUEIL.getAffluence(aff,'salle3');
+// 	})
+
+
+initAdmin = function(){
+	// données d'affluence
+	for(k=1; k<4; k++)
+		firebase.database().ref('HistoriqueSalles/current/salle'+k+'').limitToLast(1).on('child_added', function(snapshot){
+			var aff = snapshot.child('nbr').val();
+			// console.log('aff',aff);
+			ACCUEIL.getAffluence(aff,'salle'+k+'');
+		});
+}
+
+
 
 var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
