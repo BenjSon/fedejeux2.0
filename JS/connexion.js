@@ -15,7 +15,7 @@
             }
             var identifiant = this.user.identifiant;
             var mdp = this.user.mdp;
-            //on se connecte
+            //on se connecte avec une fonction implantée dans le framework firebase-auth
             firebase.auth().signInWithEmailAndPassword(identifiant, mdp)
                             .catch(function(error) {
                                 //on gère les erreurs ici
@@ -32,6 +32,14 @@
             if (firebase.auth().currentUser){
                 NAV.toAccueil();
             }                
+        },
+        deconnexion: function(){
+            // on déconnecte l'utilisateur
+            firebase.auth().signOut();
+        },
+        resetMdp:function(){
+            // renvoie un mot de passe à l'adresse e-mail
+            
         }
     }
 });
