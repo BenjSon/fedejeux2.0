@@ -27,10 +27,10 @@
                                 } else {
                                     alert(errorMessage);
                                 }
-                                console.log(error);
+                                // console.log(error);
                             });
             if (firebase.auth().currentUser){
-                return NAV.toAccueil();
+                NAV.toAccueil();
             }                
         }
     }
