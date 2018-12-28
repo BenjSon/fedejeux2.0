@@ -112,26 +112,26 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         	</div>
         	<div class="row" id="bouton-partie1">
         		<div class="col-sm-3 col-xs-6">
-        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles()" :style="myStyle('salle1')">
-                 		<h1 class="nom text-center ">SALLE DU FORT - {{pourcentage('salle1')}}%</h1>
+        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
+                 		<h1 class="nom text-center ">SALLE DU FORT</h1>
                 		<img src="./Ressources/sand-castle.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle1')}}%</h5>
               		</div>
             	</div>
             	<div class="col-sm-3 col-xs-6">
-              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles();" :style="myStyle('salle2')">
-                		<h1 class="nom text-center ">SALLE MONTAIGNE - {{pourcentage('salle2')}}%</h1>
+              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle2')" :style="myStyle('salle2')">
+                		<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
                 		<img src="./Ressources/students-cap.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle2')}}%</h5>
               		</div>
             	</div>
             </div>
             <div class="row" id="bouton-partie2">
           		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles()" :style="myStyle('salle3')">
-                		<h1 class="nom text-center">CHAPITEAU - {{pourcentage('salle3')}}%</h1>
+              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle3')" :style="myStyle('salle3')">
+                		<h1 class="nom text-center">CHAPITEAU</h1>
                 		<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle3')}}%</h5>
               		</div>
           		</div>
           		<div class="col-sm-3 col-xs-6">
@@ -199,11 +199,11 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<div id="salles" > 
 		<template v-if="showSalles">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
-			<h1 class="text-center" id="titreSalle"> AFFLUENCE - {{ salle }} Salle du Fort <img src="imageDeLaSalle"/> </h1>
+			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/> </h1>
 			<div class="container">
 				<div class="row" id="affluences"> 
             		<div class="col-sm-2 col-xs-6 text-center" id="actuelle">					
-			           		<span> Affluence actuelle </span> {{ affluence }} <p>867</p>		      		
+			           		<span> Affluence actuelle </span> <p>{{ affluence }}</p>		      		
 			       	</div>
 			       	<div class="col-sm-2 col-xs-6">
 		        		<div id="totale" class="text-center">
@@ -222,50 +222,14 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		            	<img src="./ressources/WARNING.png" class="warn">
 		            </div>
 		            <div class="col-xs-10" id="infos">
-			            <!--
-		    	        <h2>Capacité maximale : {{ parametres.salle.capacité }} </h2>
-		        	    <h2>Seuil d'alerte : {{ parametres.salle.seuil }} </h2>
-		        		-->
-		            	<h2>Capacité maximale : 800</h2>
-		            	<h2>Seuil d'alerte : 700</h2>
+		            	<h2>Capacité maximale : {{valeurMax}}</h2>
+		            	<h2>Seuil d'alerte : {{valeurAlerte}}</h2>
 		    		</div> 
 		    	</div>	
 	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
 	    	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
     	</template>
     </div>
-
-
-
-		<template v-if="showSalles">  
-	  		<div id="contenu">
-
-		        <div class="titre" :style="myStyle(salle)"> 
-		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
-		        </div>
-
-		        <div id="affluences">
-			        <div id="actuelle">
-			            <span> Affluence actuelle </span> {{ affluence }} 
-			        </div>
-
-			        <div id="totale">
-			           <span> Affluence totale </span> {{ limite }} 
-			        </div>
-		        </div>
-		        <div id="container" style="width:100%; height:400px;"></div>
-
-
-	        	<!-- Graphique -->
-			        <div id="tauxLimites">
-		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ valeurMax }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ valeurAlerte }}</div>
-		        </div>
-		    </div>
-	    </template>
-	</div>    
-
 	     
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 	        

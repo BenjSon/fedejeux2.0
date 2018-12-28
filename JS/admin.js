@@ -25,7 +25,7 @@ var ADMIN = new Vue({
 				ADMIN.parametres[salle].seuil = myObject[salle].seuil;
 				//}
 			}
-			console.log('parametres',ADMIN.parametres);
+			//console.log('parametres',ADMIN.parametres);
 		}
 //		parametresInForm: function(data,id){
 //			var elmt = document.getElementById(id);
