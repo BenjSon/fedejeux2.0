@@ -12,6 +12,7 @@
             if (firebase.auth().currentUser) {
                 //si quelqu'un est connecté on le déconnecte
                 firebase.auth().signOut();
+                console.log("déconnection de l'utilisateur précédent");
             }
             var identifiant = this.user.identifiant;
             var mdp = this.user.mdp;
@@ -35,7 +36,8 @@
         },
         deconnexion: function(){
             // on déconnecte l'utilisateur
-            firebase.auth().signOut();
+            /*firebase.auth().signOut();
+            alert("Vous avez été déconnecté")*/
         },
         resetMdp:function(){
             // renvoie un mot de passe à l'adresse e-mail
