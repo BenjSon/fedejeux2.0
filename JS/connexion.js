@@ -12,7 +12,7 @@
             if (firebase.auth().currentUser) {
                 //si quelqu'un est connecté on le déconnecte
                 firebase.auth().signOut();
-                console.log("déconnection de l'utilisateur précédent");
+                //console.log("déconnection de l'utilisateur précédent");
             }
             var identifiant = this.user.identifiant;
             var mdp = this.user.mdp;
@@ -36,8 +36,10 @@
         },
         deconnexion: function(){
             // on déconnecte l'utilisateur
-            /*firebase.auth().signOut();
-            alert("Vous avez été déconnecté")*/
+            // console.log("Je déconnecte");
+            firebase.auth().signOut();
+            NAV.toConnexion();
+            alert("Vous avez été déconnecté")
         },
         resetMdp:function(){
             // renvoie un mot de passe à l'adresse e-mail
@@ -48,7 +50,7 @@
                             })
                         .catch(function(error) {
                             console.log(error);
-                            alert("Une erreur s'est produite : Ecrire une adresse mail dans l'identifiant")
+                            alert("Une erreur s'est produite : Ecrire une adresse e-mail dans l'identifiant")
             });
         }
     }

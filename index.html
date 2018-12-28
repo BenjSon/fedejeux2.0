@@ -141,7 +141,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
         	</div>
-        	<div @lick="CONNEXION.deconnexion" class="btn btn-primary lien" id="deco">Déconnexion</div>
+        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
 
@@ -189,7 +189,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         		<div class="btn btn-primary validation" id="save">ENREGISTREMENT</div>
         		</form>
       		</div>
-      		<div @click="CONNEXION.deconnexion" class="btn btn-primary lien" id="deco">Déconnexion</div>
+      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
     	</template>
   	</div>
 
@@ -231,7 +231,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    		</div> 
 		    	</div>	
 	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
-	    	<div @click="CONNEXION.deconnexion" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
+	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
     	</template>
     </div>
 
