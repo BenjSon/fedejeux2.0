@@ -39,7 +39,15 @@
         },
         resetMdp:function(){
             // renvoie un mot de passe à l'adresse e-mail
-            
+            var emailAddress = this.user.identifiant;
+            firebase.auth().sendPasswordResetEmail(emailAddress)
+                        .then(function() {
+                              alert('Email envoyé !');
+                            })
+                        .catch(function(error) {
+                            console.log(error);
+                            alert("Une erreur s'est produite : Ecrire une adresse mail dans l'identifiant")
+            });
         }
     }
 });
