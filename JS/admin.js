@@ -7,7 +7,8 @@ var ADMIN = new Vue({
 			salle2: {seuil:0, capacité:0},
 			salle3: {seuil:0, capacité:0}
 		},
-		alert: "Etes-vous sûr de vouloir faire cette modification?"
+		alert: "Etes-vous sûr de vouloir faire cette modification?",
+		numHist: 0
 	},
 	methods:{
 		getParametres: function(myObject){
@@ -26,13 +27,11 @@ var ADMIN = new Vue({
 				//}
 			}
 			//console.log('parametres',ADMIN.parametres);
+		},
+
+		getNumHist: function(num){
+			ADMIN.numHist = num;
+			//console.log(ADMIN.numHist);
 		}
-//		parametresInForm: function(data,id){
-//			var elmt = document.getElementById(id);
-//			console.log(elmt);
-//			var data = JSON.stringify(data);
-//			console.log(data);
-//			elmt.value = data;
-//		}
 	}
 });

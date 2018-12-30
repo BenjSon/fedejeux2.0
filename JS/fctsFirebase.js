@@ -2,27 +2,32 @@
 
 // ----- Variables de ref() ----- //
 
-// C'est vraiment pas très beau d'écrire le même code, on améliorera quand ça marchera
-var dataAffluence1 = firebase.database().ref('HistoriqueSalles/current/salle1').limitToLast(1);
-dataAffluence1.on('child_added', function(snapshot){
+//On utilise la deuxième variable i car k vaut 4 dans la fonction
+var i = 1;
+for(var k = 1; k<=3;k++){
+	//console.log(k);
+	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
+	dataAffluence.on('child_added', function(snapshot){
 		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle1');
+		//console.log('aff'+i,aff);
+		ACCUEIL.getAffluence(aff,'salle'+i);
+		i++;
 	})
+}
 
-var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
-dataAffluence2.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle2');
-	})
+// var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
+// dataAffluence2.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		// console.log('aff',aff);
+// 		ACCUEIL.getAffluence(aff,'salle2');
+// 	})
 
-var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
-dataAffluence3.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		// console.log('aff',aff);
-		ACCUEIL.getAffluence(aff,'salle3');
-	})
+// var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
+// dataAffluence3.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		// console.log('aff',aff);
+// 		ACCUEIL.getAffluence(aff,'salle3');
+// 	})
 
 var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
@@ -55,40 +60,35 @@ getLastofH = function(numSalle){
 	console.log(LastMesure);
 };
 
-GetNumberLastHist = function(){
-	GetNumberLastHist.LastHistorique=null;
-	var Placenumber = db.ref("HistoriqueSalles").orderByChild("idHist").limitToLast(1);
-	Placenumber.once('value', function(snapshot) {
-  		snapshot.forEach( function(childSnapshot) {
-    		GetNumberLastHist.LastHistorique = childSnapshot.val();
-    		console.log(GetNumberLastHist.LastHistorique.idHist);
-    		// return LastHistorique.idHist;
-    	});
-	});
-	return GetNumberLastHist.LastHistorique.idHist;
-}
-ResetToZero = function(nombreSalles){
-	// 3 salles étant la base initiale du projet 
-	if((nombreSalles === undefined)){
-		var nombreSalles = 3;
-	}
 
-	db.ref("HistoriqueSalles/current3").set({"idHist":1});
-	for(var i = 1; i<=nombreSalles;i++){
-		db.ref("HistoriqueSalles/current3/salle"+i+"/mesure"+i+"0").set({
+
+db.ref("HistoriqueSalles").on('value', function(snapshot) {
+	var numOfHist = snapshot.numChildren();
+	ADMIN.getNumHist(numOfHist);
+});
+
+resetToZero = function(){
+	//console.log(ADMIN.numHist);
+	var numH = ADMIN.numHist;
+	//console.log(numNewHist);
+	//db.ref("HistoriqueSalles").push({["hist"+numNewHist]:{}});
+	db.ref("HistoriqueSalles").limitToFirst(1).on('child_added',function(snap){
+		var data = snap.val();
+		console.log(data);
+		db.ref("HistoriqueSalles/hist"+numH).set(data);
+		db.ref("HistoriqueSalles/hist"+numH).update({IdHist:numH});
+	});
+	for(var i = 1; i<=3;i++){
+		db.ref("HistoriqueSalles/current/salle"+i+"/mesure"+i+"0").set({
 			"nbr": 0,
 			"temps": 0,
 			"id": 0
 		});
-
-		// db.collection("HistoriqueSalles").doc("current").collection("Salle"+i).add({
-		// 	"nbr": 0,
-		// 	"temps": 0
-		// });
 	}
 }
 
+
 modifParametres = function(){
-	console.log(ADMIN.parametres);
+	//console.log(ADMIN.parametres);
 	db.ref('Paramètres').set(ADMIN.parametres);
 }
