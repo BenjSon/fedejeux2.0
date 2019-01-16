@@ -22,8 +22,8 @@
 <!-- 				SCRIPTS				 -->
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
-<!--   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase-auth.js"></script>
   <!-- <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script> -->
   <script src="./JS/conf_firebase.js"></script>
   <script src="./JS/fctsFirebase.js"></script>
@@ -74,12 +74,12 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 				<form>
 					<input type="text" class="zone" id="login" placeholder="Identifiant" v-model.lazy='user.identifiant' /><br />
 					<input type="password" class="zone" id="passe" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
-					<div onclick="NAV.toAccueil()" class="btn btn-primary" id="action">CONNEXION</div>
+					<div @click="seConnecter" class="btn btn-primary" id="action">CONNEXION</div>
 				</form>
                 <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
 			</div>
 			<!-- <div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div> -->
-			<div class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
+			<div @click="resetMdp" class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
 		</template>
 	</div>
 
@@ -139,7 +139,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
         	</div>
-        	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
 
@@ -187,7 +187,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         		<div class="btn btn-primary validation" id="save" onclick="if(confirm(ADMIN.alert)){modifParametres()};">ENREGISTREMENT</div>
         		</form>
       		</div>
-      		<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
     	</template>
   	</div>
 
@@ -225,7 +225,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    		</div> 
 		    	</div>	
 	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
-	    	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
+	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
     	</template>
     </div>
 	     
