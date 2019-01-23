@@ -42,7 +42,7 @@
             alert("Vous avez été déconnecté")
         },
         resetMdp:function(){
-            // renvoie un mot de passe à l'adresse e-mail
+            // renvoie un mot de passe à l'adresse e-mail inscrite dans l'identifiant
             var emailAddress = this.user.identifiant;
             firebase.auth().sendPasswordResetEmail(emailAddress)
                         .then(function() {
