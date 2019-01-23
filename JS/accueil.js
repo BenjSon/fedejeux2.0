@@ -12,7 +12,7 @@ var ACCUEIL = new Vue({
 	},
 	methods:{
 		
-		getAffluence: function(affluence,variable){
+		setAffluence: function(affluence,variable){
 			ACCUEIL.affSalles[variable] = affluence;
 			//console.log('affFort', ACCUEIL.affSalles[variable]);
 		},

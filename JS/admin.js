@@ -11,7 +11,7 @@ var ADMIN = new Vue({
 		numHist: 0
 	},
 	methods:{
-		getParametres: function(myObject){
+		setParametres: function(myObject){
 			//console.log('myObject',myObject);
 			var compteur = 0;
 			for (var salle in myObject){
@@ -27,6 +27,30 @@ var ADMIN = new Vue({
 				//}
 			}
 			//console.log('parametres',ADMIN.parametres);
+		},
+
+		checkPositiveInt: function(){
+			var check = true;
+			var test = null;
+			for (var salle in ADMIN.parametres){
+				for (var par in ADMIN.parametres[salle]){
+					test = ADMIN.parametres[salle][par];
+					// console.log('test:',test);
+					if(!Number.isInteger(test) | test<0){
+						check = false;
+					}
+				}
+			};
+			return check
+		},
+
+		checkSeuil: function(){
+			var check = true;
+			for (var salle in ADMIN.parametres){
+				if(ADMIN.parametres[salle].seuil >= ADMIN.parametres[salle].capacité)
+				check = false;
+			};
+			return check
 		},
 
 		getNumHist: function(num){

@@ -150,23 +150,9 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 	<div id="admin">
 		<template v-if="showAdmin">
-			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
+			<div onclick="NAV.toAccueil(); getParametres();" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
 			<div class="container" id="remiseZero">
-       			<!-- <form action="remiseAZero">
-          			<div class="row" id="cocherSalles"> 
-            			<div class="col-sm-2 col-xs-4">
-              				<div class="form-check text-center coche" id="CheckMontaigne"> 
-                				<p>Salle Montaigne</p> 
-                				<input type="checkbox" class="form-check-input"></input>   </div> </div>
-            			<div class="col-sm-2 col-xs-4">
-              				<div class="form-check text-center coche" id="CheckFort"> 
-                				<p> Salle du Fort</p> 
-                				<input type="checkbox" class="form-check-input"></input>    </div> </div>
-            			<div class="col-sm-2 col-xs-4">  
-              				<div class="form-check text-center coche" id="CheckChapiteau">
-                				<p>Le Chapiteau</p> 
-                				<input type="checkbox" class="form-check-input"></input>   </div> </div> </div> -->
           			<div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
         		<!-- </form> -->
       		</div>
@@ -186,7 +172,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 <td><input type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
                   <td><input type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
-        		<div class="btn btn-primary validation" id="save" onclick="if(confirm(ADMIN.alert)){modifParametres()};">ENREGISTREMENT</div>
+        		<div class="btn btn-primary validation" id="save" onclick="checkParametres();">ENREGISTREMENT</div>
         		</form>
       		</div>
       		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>

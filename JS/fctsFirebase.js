@@ -10,33 +10,23 @@ for(var k = 1; k<=3;k++){
 	dataAffluence.on('child_added', function(snapshot){
 		var aff = snapshot.child('nbr').val();
 		//console.log('aff'+i,aff);
-		ACCUEIL.getAffluence(aff,'salle'+i);
+		ACCUEIL.setAffluence(aff,'salle'+i);
 		i++;
 	})
 }
 
-// var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
-// dataAffluence2.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle2');
-// 	})
 
-// var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
-// dataAffluence3.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle3');
-// 	})
+getParametres = function(){
+	var dataParametres = db.ref('Paramètres');
+	dataParametres.on('value', function(snapshot){
+			var dataParametres = snapshot.val();
+//			var data = snapshot..child('salle1/seuil').val();
+//			console.log('dataparametres:',dataParametres);
+			ADMIN.setParametres(dataParametres);
+		})
+};
 
-var dataParametres = db.ref('Paramètres');
-dataParametres.once('value')
-	.then(function(snapshot){
-		var dataParametres = snapshot.val();
-//		var data = snapshot..child('salle1/seuil').val();
-//		console.log('dataparametres:',dataParametres);
-		ADMIN.getParametres(dataParametres);
-	})
+getParametres();
 
 
 
@@ -91,4 +81,23 @@ resetToZero = function(){
 modifParametres = function(){
 	//console.log(ADMIN.parametres);
 	db.ref('Paramètres').set(ADMIN.parametres);
-}
+};
+
+checkParametres = function(){
+	if (ADMIN.checkPositiveInt()){
+		if(ADMIN.checkSeuil()){
+			if(confirm("Cette action va réinitialiser les valeurs de seuil et de capacité. Souhaitez-vous continuer ?")){
+				modifParametres();
+			}
+			else getParametres();
+		}
+		else{
+			getParametres();
+			alert("Le seuil d’alerte d’une salle doit être inférieur à la capacité maximale.");
+		} 
+	}
+	else{
+		getParametres();
+		alert("Les valeurs doivent être des entiers positifs.");
+	}
+};
