@@ -52,8 +52,6 @@
 
             <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<script src="./JS/graphes.js"></script>
-
 
 <!-- ================================================================== -->
 
@@ -201,7 +199,9 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    	</div>
 		    	<div class="row" id="graph">
 		    		<div class="col-xs-12 col-sm-6">
-		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures</div>
+		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures
+                  <highcharts :options="Graphe" ref="highcharts" style="height: 200px;"></highcharts>
+              </div>
 		    		<!-- Graphique -->
 		    		</div>
 		    	</div>
@@ -224,7 +224,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 <div id="footer">
 	
 </div>
-
+<script src="./JS/graphes2.js"></script>
 <script src="./JS/navigation.js"></script>
 <script src="./JS/connexion.js"></script>
 <script src="./JS/accueil.js"></script>

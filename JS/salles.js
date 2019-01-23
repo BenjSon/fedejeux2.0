@@ -1,3 +1,5 @@
+
+
 var SALLES = new Vue({
       el:'#salles',
       
@@ -10,6 +12,7 @@ var SALLES = new Vue({
         valeurMax : "" ,
         valeurAlerte:"",
         styleSalle:"",
+        Graphe:""
       },
 
       methods: {
@@ -18,14 +21,17 @@ var SALLES = new Vue({
           if (salle == 'salle1'){
             SALLES.nomSalle = 'Salle du Fort';
             SALLES.imageDeLaSalle = "./Ressources/sand-castle.png";
+            SALLES.Graphe = setGrapheOptions(salle,SALLES.nomSalle);
           }
           else if (salle == 'salle2'){
             SALLES.nomSalle = 'Salle Montaigne';
             SALLES.imageDeLaSalle = './Ressources/students-cap.png';
+            SALLES.Graphe = setGrapheOptions(salle,SALLES.nomSalle);
           }
           else{
             SALLES.nomSalle = 'Chapiteau';
             SALLES.imageDeLaSalle = './Ressources/park-tent-of-a-circus.png';
+            SALLES.Graphe = setGrapheOptions(salle,SALLES.nomSalle);
           }
           //console.log('nomSalle',SALLES.nomSalle);
           SALLES.affluence = ACCUEIL.affSalles[salle];
