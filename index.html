@@ -7,29 +7,57 @@
 
   <title>index</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+  
 
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
 
+ <!-- 				stylesheets 				-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 
- <!-- 				stylesheet 			-->
   <link rel="stylesheet" href="./CSS/global.css">
   <link rel="stylesheet" href="./CSS/connexion.css">
   <link rel="stylesheet" href="./CSS/accueil.css">
   <link rel="stylesheet" href="./CSS/admin.css">
   <link rel="stylesheet" href="./CSS/salles.css">
   <link rel="stylesheet" href="./CSS/header.css">
-<!-- 				SCRIPTS				 -->
+
+
+<!-- 				========SCRIPTS=======				 -->
+
+<!--        VUE.js        -->
   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
-  <!-- <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script> -->
+ 
+<!--        FIREBASE        -->
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+
   <script src="./JS/conf_firebase.js"></script>
   <script src="./JS/fctsFirebase.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="./JS/graphes.js"></script>
+  
+<!-- 				HIGHCHARTS 				-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
+           
+<!-- explications? -->
+                  <!-- Additional files for the Highslide popup effect -->
+            <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+            <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+
+            <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+<script src="./JS/graphes.js"></script>
+
+
+<!-- ================================================================== -->
+
+
 
 </head>
 
@@ -50,12 +78,12 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 				<form>
 					<input type="text" class="zone" id="login" placeholder="Identifiant" v-model.lazy='user.identifiant' /><br />
 					<input type="password" class="zone" id="passe" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
-					<div onclick="NAV.toAccueil()" class="btn btn-primary" id="action">CONNEXION</div>
+					<div @click="seConnecter" class="btn btn-primary" id="action">CONNEXION</div>
 				</form>
                 <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
 			</div>
 			<!-- <div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div> -->
-			<div class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
+			<div @click="resetMdp" class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
 		</template>
 	</div>
 
@@ -79,35 +107,33 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
-            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE</h1>
-            			<h2>2000</h2>
-            			<h3>festivaliers</h3>
-            			<h4>91%</h4>
+            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> {{affluenceTotale()}} festivaliers -
+            {{pourcentageTotal()}}%</h1>
             		</div>
           		</div>
         	</div>
         	<div class="row" id="bouton-partie1">
         		<div class="col-sm-3 col-xs-6">
-        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles()">
+        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
                  		<h1 class="nom text-center ">SALLE DU FORT</h1>
                 		<img src="./Ressources/sand-castle.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle1')}}%</h5>
               		</div>
             	</div>
             	<div class="col-sm-3 col-xs-6">
-              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles();">
+              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle2')" :style="myStyle('salle2')">
                 		<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
                 		<img src="./Ressources/students-cap.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle2')}}%</h5>
               		</div>
             	</div>
             </div>
             <div class="row" id="bouton-partie2">
           		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles()">
+              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle3')" :style="myStyle('salle3')">
                 		<h1 class="nom text-center">CHAPITEAU</h1>
                 		<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
-                		<h5>0%</h5>
+                		<h5>{{pourcentage('salle3')}}%</h5>
               		</div>
           		</div>
           		<div class="col-sm-3 col-xs-6">
@@ -117,10 +143,9 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
         	</div>
-        	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
-
 
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
@@ -130,59 +155,43 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
 			<div class="container" id="remiseZero">
-       			<form action="remiseAZero">
-          			<div class="row" id="cocherSalles"> 
-            			<div class="col-sm-2 col-xs-4">
-              				<div class="form-check text-center coche" id="CheckMontaigne"> 
-                				<p>Salle Montaigne</p> 
-                				<input type="checkbox" class="form-check-input"></input>   </div> </div>
-            			<div class="col-sm-2 col-xs-4">
-              				<div class="form-check text-center coche" id="CheckFort"> 
-                				<p> Salle du Fort</p> 
-                				<input type="checkbox" class="form-check-input"></input>    </div> </div>
-            			<div class="col-sm-2 col-xs-4">  
-              				<div class="form-check text-center coche" id="CheckChapiteau">
-                				<p>Le Chapiteau</p> 
-                				<input type="checkbox" class="form-check-input"></input>   </div> </div> </div>
-          			<div class="btn btn-primary validation" id="RAZ">REMISE A ZERO</div>
-        		</form>
+          			<div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
+        		<!-- </form> -->
       		</div>
 			<div id="separation"> </div>
       		<div id="modifData">
         		<form action="modifData">
         		<table>
             			<tr>  
-            				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</td> </tr>
-            			<tr>  
-            				<td class="nm elt">Salle Montaigne</td>  
-            				<td><input type="text" name="seuilM" class="zoneText elt"></td>
-                			<td><input type="text" name="capM" class="zoneText elt"></td>  </tr>
-            			<tr>  
-            				<td class="nm elt">Salle du Fort</td>  
-            			    <td><input type="text" name="seuilF" class="zoneText elt"></td>
-                  			<td><input type="text" name="capF" class="zoneText elt"></td>  </tr>
-           				<tr>  
-           					<td class="nm elt">Le Chapiteau</td> 
-           					<td><input type="text" name="seuilC" class="zoneText elt"></td>
-                            <td><input type="text" name="capC" class="zoneText elt"></td>  </tr>
+            				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</t> </tr>
+            			<tr> <td>Salle du Fort</td>
+                <td><input type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
+                  <td><input type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
+                  <tr>  <td>Salle Montaigne</td>
+                <td><input type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
+                <td><input type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
+                  <tr>  <td>Le Chapiteau</td>
+                <td><input type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
+                  <td><input type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
-        		<div class="btn btn-primary validation" id="save">ENREGISTREMENT</div>
+        		<div class="btn btn-primary validation" id="save" onclick="if(confirm(ADMIN.alert)){modifParametres()};">ENREGISTREMENT</div>
         		</form>
       		</div>
-      		<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
     	</template>
   	</div>
+
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
 		<template v-if="showSalles">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
-			<h1 class="text-center" id="titreSalle"> AFFLUENCE - {{ salle }} Salle du Fort <img src="imageDeLaSalle"/> </h1>
+			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/> </h1>
 			<div class="container">
 				<div class="row" id="affluences"> 
             		<div class="col-sm-2 col-xs-6 text-center" id="actuelle">					
-			           		<span> Affluence actuelle </span> {{ affluence }} <p>867</p>		      		
+			           		<span> Affluence actuelle </span> <p>{{ affluence }}</p>		      		
 			       	</div>
 			       	<div class="col-sm-2 col-xs-6">
 		        		<div id="totale" class="text-center">
@@ -201,52 +210,14 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		            	<img src="./ressources/WARNING.png" class="warn">
 		            </div>
 		            <div class="col-xs-10" id="infos">
-			            <!--
-		    	        <h2>Capacité maximale : {{ parametres.salle.capacité }} </h2>
-		        	    <h2>Seuil d'alerte : {{ parametres.salle.seuil }} </h2>
-		        		-->
-		            	<h2>Capacité maximale : 800</h2>
-		            	<h2>Seuil d'alerte : 700</h2>
+		            	<h2>Capacité maximale : {{valeurMax}}</h2>
+		            	<h2>Seuil d'alerte : {{valeurAlerte}}</h2>
 		    		</div> 
 		    	</div>	
 	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
-	    	<div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
+	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
     	</template>
     </div>
-
-
-<!--
-		<template v-if="showSalles">  
-	  		<div id="contenu">
-		        <div class="titre" :style="myStyle(salle)">
-		            AFFLUENCE - {{ salle }} <img src="imageDeLaSalle"/>
-		        </div>
-
-		        <div id="affluences">
-			        <div id="actuelle">
-			            <span> Affluence actuelle </span> {{ affluence }} 
-			        </div>
-
-			        <div id="totale">
-			           <span> Affluence totale </span> {{ limite }} 
-			        </div>
-		        </div>
-		        <div id="container" style="width:100%; height:400px;"></div>
--->
-
-	        	<!-- Graphique -->
-<!--		        <div id="tauxLimites">
-		            <img src="ressources/WARNING.png"/>
-		            <div class="alerte"> Capacité maximale : {{ parametres.salle.capacité }}</div>
-		            <div class="alerte"> seuil d'alerte : {{ parametres.salle.seuil }}</div>
-		        </div>
-		    </div>
-
-	        <div class="bottomlink" onclick="NAV.toAdmin()">Page d'administration</div> - 
-	        <div class="bottomlink" onclick="NAV.toConnexion()">Déconnexion</div>
-	    </template>
-	</div>    
--->
 	     
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 	        

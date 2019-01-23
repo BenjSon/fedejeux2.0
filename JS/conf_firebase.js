@@ -1,9 +1,4 @@
 
-// const firebase = require("firebase");
-// // Required for side-effects
-// require("firebase/firestore");
-
-
 //Initialize Firebase
   var config = {
     apiKey: "AIzaSyBo63Tx09gzjbjNgQ76neGSNHalvpLeorY",
@@ -14,24 +9,6 @@
     messagingSenderId: "965924361390"
   };
   firebase.initializeApp(config);
-
-
-
-// Initialize Cloud Firestore through Firebase
-// var db = firebase.firestore();
-
-// Disable deprecated features
-// db.settings({
-//   timestampsInSnapshots: true
-// });
-
-// db.collection("Affluence").add({"id": 2});
-// db.collection("nHFtNm97HRqWfRy8voeM").get().then((querySnapshot) => {
-//     querySnapshot.forEach((doc) => {
-//         console.log(`${doc.id} => ${doc.data()}`);
-//     });
-// });
-
-// let data = firebase.database().ref("HistoriqueSalle/nHFtNm97HRqWfRy8voeM");
-// console.log(data);
-// firebase.database().ref("HistoriqueSalle/nHFtNm97HRqWfRy8voeM").update({"id": 2});
+  
+var db = firebase.database();
+var CurrentRef = db.ref("HistoriqueSalles/current");
