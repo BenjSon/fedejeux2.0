@@ -111,8 +111,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
             {{pourcentageTotal()}}%</h1>
             		</div>
           		</div>
-        	</div>
-        	<div class="row" id="bouton-partie1">
+        	
         		<div class="col-sm-3 col-xs-6">
         			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
                  		<h1 class="nom text-center ">SALLE DU FORT</h1>
@@ -127,8 +126,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 		<h5>{{pourcentage('salle2')}}%</h5>
               		</div>
             	</div>
-            </div>
-            <div class="row" id="bouton-partie2">
+            
           		<div class="col-sm-3 col-xs-6">
               		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle3')" :style="myStyle('salle3')">
                 		<h1 class="nom text-center">CHAPITEAU</h1>
@@ -142,6 +140,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 		<img src="./Ressources/settings.png" class="icone">
               		</div>
           		</div>
+              </div>
         	</div>
         	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
@@ -187,7 +186,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<div id="salles" > 
 		<template v-if="showSalles">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
-			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/> </h1>
+			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/ id='logoSalle'> </h1>
 			<div class="container">
 				<div class="row" id="affluences"> 
             		<div class="col-sm-2 col-xs-6 text-center" id="actuelle">					
@@ -198,9 +197,8 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		           			<span> Affluence totale </span> {{ limite }} <p>1437</p>
 		        		</div>		
 		        	</div>
-		    	</div>
-		    	<div class="row" id="graph">
-		    		<div class="col-xs-12 col-sm-6">
+		    	
+		    		<div class="col-xs-12 col-sm-8">
 		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures</div>
 		    		<!-- Graphique -->
 		    		</div>

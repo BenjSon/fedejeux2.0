@@ -89,3 +89,7 @@ body {
 #action:hover {
     background-color: #45a049;
 }
+
+#deco {
+	background-color: transparent;
+}
