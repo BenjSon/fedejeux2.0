@@ -52,8 +52,6 @@
 
             <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
-<script src="./JS/graphes.js"></script>
-
 
 <!-- ================================================================== -->
 
@@ -141,7 +139,6 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
               </div>
-        	</div>
         	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
@@ -197,9 +194,18 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		           			<span> Affluence totale </span> {{ limite }} <p>1437</p>
 		        		</div>		
 		        	</div>
+<<<<<<< HEAD
 		    	
 		    		<div class="col-xs-12 col-sm-8">
 		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures</div>
+=======
+		    	</div>
+		    	<div class="row" id="graph">
+		    		<div class="col-xs-12 col-sm-6">
+		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures
+                  <highcharts :options="Graphe" ref="highcharts" style="height: 200px;"></highcharts>
+              </div>
+>>>>>>> 7294cf0fa504c80aa07dcacff385bacc2c073cf4
 		    		<!-- Graphique -->
 		    		</div>
 		    	</div>
@@ -222,7 +228,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 <div id="footer">
 	
 </div>
-
+<script src="./JS/graphes2.js"></script>
 <script src="./JS/navigation.js"></script>
 <script src="./JS/connexion.js"></script>
 <script src="./JS/accueil.js"></script>

@@ -1,7 +1,7 @@
 
 var databaseRef = firebase.database().ref("Tests/");
 
-
+Vue.use(VueHighcharts);
 
 Highcharts.setOptions({
         global: {
