@@ -10,8 +10,12 @@ function activeLastPointToolip(chart) {
     var points = chart.series[0].points;
     chart.tooltip.refresh(points[points.length -1]); //Permet d'obtenir des indications sur le dernier point placé sur le graphe
 }
+
+	                var dataRef = firebase.database().ref("HistoriqueSalles/current/salle1/");
+
 function setGrapheOptions(idSalle,nomSalle){
 	var optionsDuGraphe = {
+		type: 'spline',
 		title: {
 		    text: nomSalle,
 		    x: -20 //center
@@ -21,26 +25,21 @@ function setGrapheOptions(idSalle,nomSalle){
 		    x: -20
 		},
 		xAxis: {
-		    type: 'datetime',
 	        tickPixelInterval: 150
 		},
 		yAxis: {
 		    title: {
 		      text: 'nombre de personnes'
 		    },
-		    plotLines: [{
-		      value: 0,
-		      width: 1,
-		      color: '#808080'
-		    }]
+		
 		},
-		tooltip: {
-	        formatter: function () {
-	            return '<b>' + this.series.name + '</b><br/>' +
-	                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' 
-	            	Highcharts.numberFormat(this.y, 0);
-	        }
-	    },
+		// tooltip: {
+	 //        formatter: function () {
+	 //            return '<b>' + this.series.name + '</b><br/>' +
+	 //                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' 
+	 //            	Highcharts.numberFormat(this.y, 0);
+	 //        }
+	 //    },
 		legend: {
 			layout: 'vertical',
 			align: 'right',
@@ -48,15 +47,15 @@ function setGrapheOptions(idSalle,nomSalle){
 		    borderWidth: 0
 		},
 		series: [{
-            name: 'Nombre de personne dans la salle',
-            data: [0,12,21,20,13,12]
+            
+            data: [0,0,0,0,0,0]
 	    }],
 	    events: {
 	        load: function () {
 	            //Load permet d'attendre de charger toutes les données
-	                var series = this.series[0],
-	                    chart = this;
-	                activeLastPointToolip(chart);
+	                // var series = this.series[0];
+	                    // chart = this;
+	                // activeLastPointToolip(chart);
 	                // setInterval(function () {
 	                //     var x = (new Date()).getTime(), 
 	                //         y = random();          
@@ -67,18 +66,16 @@ function setGrapheOptions(idSalle,nomSalle){
 
 
 	                // Jusqu'ici ce ne sont que des commentaires pour Fan, donc il n'utilise que ce qui vient : c'est le lien Firebase. 
-	                dataRef = db.ref("current/"+idSalle);
-
 	                dataRef.on('child_added', function (snap, previousKey) {
 
-	                    var x = (new Date()).getTime(),
-	                        y = snap.val().count;
-	                    console.log(y);
+	                    var x = snap.val().id,
+	                        y = snap.val().nbr;
+	                    console.log(x,y);
 
 	                        //le nom de sa valeur c'était count
 
 	                    series.addPoint([x, y], true, true);
-	                    activeLastPointToolip(chart);
+	                    // activeLastPointToolip(chart);
 	                })
 
             }
