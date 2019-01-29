@@ -1,0 +1,146 @@
+
+ <!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Test de graphe</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+<script src="https://npmcdn.com/vue/dist/vue.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+
+  <script src="./JS/conf_firebase.js"></script>
+
+
+</head>
+<body>
+	 <div id="container" style="width:100%; height:400px;"></div>
+<script>
+  
+var databaseRef = firebase.database().ref("HistoriqueSalles/current");
+
+Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+    activeLastPointToolip = function(chart) {
+        var points = chart.series[0].points;
+        chart.tooltip.refresh(points[points.length -1]); //Permet d'obtenir des indications sur le dernier point placé sur le graphe
+    };
+    // function random() {
+    //     var count = 0;
+    //     return count;
+
+    // }
+    var chart = Highcharts.chart('container', {
+        chart: {
+            type: 'spline',
+            marginRight: 10,
+            events: {
+                load: function () {
+                //Load permet d'attendre de charger toutes les données
+                    var series = this.series[0],
+                        chart = this;
+                    activeLastPointToolip(chart);
+                    // setInterval(function () {
+                    //     var x = (new Date()).getTime(), 
+                    //         y = random();          
+                    //     series.addPoint([x, y], true, true);
+                    //     activeLastPointToolip(chart);
+                    // }, 1000);
+
+
+
+                    databaseRef.child("salle1").on('child_added', function(snap1) {
+                        var x1 = snap1.val().temps,
+                            y1 = snap1.val().nbr;
+                        // console.log('x1:',x1,',y1:',y1);
+                        databaseRef.child("salle2").orderByChild('temps').endAt(x1).limitToLast(1)
+                            .on('child_added', function(snap2){
+                            var x2 = snap2.val().temps;
+                            var y2 = snap2.val().nbr;
+                            // console.log('x2:',x2,',y2:',y2);
+
+                            databaseRef.child("salle3").orderByChild('temps').endAt(x1).limitToLast(1)
+                                .on('child_added', function(snap3){
+                                var x3 = snap3.val().temps;
+                                var y3 = snap3.val().nbr;
+                                // console.log('x3:',x3,',y3:',y3);
+
+                                y1 = y1 + y2 + y3;
+                                // console.log('x1:',x1,',y1:',y1);
+                                series.addPoint([x1, y1], true, true);
+                            });
+                        
+                        activeLastPointToolip(chart);
+                        });
+                    });
+                }
+            }
+        },
+        title: {
+            text: 'Nombre de personne dans la salle'
+        },
+        xAxis: {
+            type: 'linear',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: null
+            }
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 0);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Nombre de personne dans la salle',
+            // data: (function () {
+            //     var data = [];
+            //     data.push({
+            //             x: 0,
+            //             y: 0
+            //         });
+            //     console.log('initialData:', data)
+            //     return data;
+            // }())
+
+            data: (function () {
+                var data = [],
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: i,
+                        y: 0
+                    });
+                }
+                return data;
+            }())
+
+        }]
+    });
+
+</script>
+
+
+</body>
+</html>
