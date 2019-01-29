@@ -20,7 +20,7 @@
 }
 
 #affluences {
-	margin-top : 110px;
+	margin-top : 100px;
 	height: 120px;
 }
 
@@ -83,6 +83,13 @@
 	padding-top: 10px;
 	height: 185px;
 	padding-bottom: 10px;
+
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+
+#blocGraph>p {
+	margin-bottom: 10px;
 }
 
 /*
@@ -91,14 +98,16 @@
 	margin-right: 7px;
 } */
 
-#tauxLimites {
-	margin-top: 5px;
-}
 
 .warn {
 	width: 50px;
 	margin-top: 20px;
 	margin-left: 30px;
+}
+
+#infos {
+	margin-top: -62px;
+	margin-left: 60px;
 }
 
 #infos>h2 {
