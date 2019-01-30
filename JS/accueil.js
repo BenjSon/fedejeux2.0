@@ -8,7 +8,7 @@ var ACCUEIL = new Vue({
 			salle2:0,
 			salle3:0
 		},
-		chosenSalle: {},
+		chosenSalle: {}
 	},
 	methods:{
 		

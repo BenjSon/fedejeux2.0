@@ -32,7 +32,9 @@
                             });
             if (firebase.auth().currentUser){
                 NAV.toAccueil();
-            }                
+            }   
+            // version test:
+            return NAV.toAccueil();         
         },
         deconnexion: function(){
             // on déconnecte l'utilisateur

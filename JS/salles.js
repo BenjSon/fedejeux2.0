@@ -8,7 +8,7 @@ var SALLES = new Vue({
         nomSalle: "" ,
         imageDeLaSalle: "" ,
         affluence: "" ,
-       	limite: "",
+       	total: "",
         valeurMax : "" ,
         valeurAlerte:"",
         styleSalle:"",
@@ -32,13 +32,16 @@ var SALLES = new Vue({
             SALLES.nomSalle = 'Chapiteau';
             SALLES.imageDeLaSalle = './Ressources/park-tent-of-a-circus.png';
             SALLES.Graphe = setGrapheOptions(salle,SALLES.nomSalle);
+
           }
           //console.log('nomSalle',SALLES.nomSalle);
           SALLES.affluence = ACCUEIL.affSalles[salle];
           SALLES.valeurMax = ADMIN.parametres[salle].capacité;
           SALLES.valeurAlerte = ADMIN.parametres[salle].seuil;
           SALLES.styleSalle = ACCUEIL.myStyle(salle);
+          SALLES.total = ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3;
         }
+
       },
 
       // computed: {
