@@ -64,18 +64,18 @@ Highcharts.setOptions({
 
 
                     databaseRef.child("salle1").on('child_added', function(snap1) {
-                        var x1 = snap1.val().temps,
+                        var x1 = (new Date(snap1.val().temps)).getTime(),
                             y1 = snap1.val().nbr;
                         // console.log('x1:',x1,',y1:',y1);
                         databaseRef.child("salle2").orderByChild('temps').endAt(x1).limitToLast(1)
                             .on('child_added', function(snap2){
-                            var x2 = snap2.val().temps;
+                            var x2 = (new Date(snap2.val().temps)).getTime();
                             var y2 = snap2.val().nbr;
                             // console.log('x2:',x2,',y2:',y2);
 
                             databaseRef.child("salle3").orderByChild('temps').endAt(x1).limitToLast(1)
                                 .on('child_added', function(snap3){
-                                var x3 = snap3.val().temps;
+                                var x3 = (new Date(snap3.val().temps)).getTime();
                                 var y3 = snap3.val().nbr;
                                 // console.log('x3:',x3,',y3:',y3);
 
@@ -94,7 +94,7 @@ Highcharts.setOptions({
             text: 'Nombre de personne dans la salle'
         },
         xAxis: {
-            type: 'linear',
+            type: 'datetime',
             tickPixelInterval: 150
         },
         yAxis: {
@@ -127,9 +127,9 @@ Highcharts.setOptions({
             data: (function () {
                 var data = [],
                     i;
-                for (i = -19; i <= 0; i += 1) {
+                for (i = 0; i <= 20; i += 1) {
                     data.push({
-                        x: i,
+                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
                         y: 0
                     });
                 }
