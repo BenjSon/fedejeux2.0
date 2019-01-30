@@ -79,7 +79,7 @@ Highcharts.setOptions({
 
                     databaseRef.on('child_added', function (snap, previousKey) {
 
-                        var x = (new Date()).getTime(),
+                        var x = snap.val().temps,
                             y = snap.val().nbr;
 
                         series.addPoint([x, y], true, true);
@@ -92,7 +92,7 @@ Highcharts.setOptions({
             text: 'Nombre de personne dans la salle'
         },
         xAxis: {
-            type: 'datetime',
+            type: 'linear',
             tickPixelInterval: 150
         },
         yAxis: {
@@ -114,11 +114,10 @@ Highcharts.setOptions({
             name: 'Nombre de personne dans la salle',
             data: (function () {
                 var data = [],
-                    time = (new Date()).getTime(),
                     i;
                 for (i = -19; i <= 0; i += 1) {
                     data.push({
-                        x: time + i * 1000,
+                        x: i,
                         y: 0
                     });
                 }
