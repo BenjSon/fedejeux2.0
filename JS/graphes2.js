@@ -23,7 +23,9 @@ function setGrapheOptions(idSalle,nomSalle){
             type: 'spline',
             marginRight: 10,
             marginleft:0,
+            
         chart:{
+            backgroundColor:'#2e778d',
             events: {
 
                 load: function () {
@@ -57,18 +59,33 @@ function setGrapheOptions(idSalle,nomSalle){
         },
         
         title: {
-            text: 'Nombre de personne dans la salle'
+            text: null
         },
         xAxis: {
             type: 'datetime',
             startOnTick: true,
-            endOnTick: true
+            endOnTick: true,
+            labels: {
+                style: {
+                    color: 'white',
+                    font: '11px Lato'
+                }
+            }
         },
         yAxis: {
             title: {
                 text: null
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: '11px Lato'
+                }
             }
         },
+        colors: [
+                '#7cd63b'
+                ],
         tooltip: {
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' +
@@ -223,17 +240,35 @@ function setGrapheSommeOptions(){
             }
         },
         title: {
-            text: 'Nombre de personne dans la salle'
+            text: null
         },
         xAxis: {
             type: 'datetime',
-            tickPixelInterval: 150
+            tickPixelInterval: 150,
+            labels: {
+                style: {
+                    color: 'white',
+                    font: '11px Lato'
+                }
+            }
         },
         yAxis: {
             title: {
                 text: null
+            },
+            labels: {
+                style: {
+                    color: 'white',
+                    font: '11px Lato'
+                }
             }
         },
+        colors: [
+                '#7cd63b'
+                ],
+
+        chart: { polar: true, type: 'line', backgroundColor:'#2e778d' }, 
+
         tooltip: {
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' +

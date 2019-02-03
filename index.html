@@ -105,13 +105,12 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
-            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> {{affluenceTotale()}} festivaliers -
-            {{pourcentageTotal()}}%</h1>
-            <highcharts :options="GrapheSomme" ref="highcharts" style="height: 200px;"></highcharts>
+            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> <h2>{{affluenceTotale()}} festivaliers -
+            {{pourcentageTotal()}}%</h2> </h1>
+            <highcharts :options="GrapheSomme" ref="highcharts" style="height: 160px;"></highcharts>
           </div>
         </div>
-      </div>
-        	<div class="row" id="bouton-partie1">
+        	
         		<div class="col-sm-3 col-xs-6">
         			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
                  		<h1 class="nom text-center ">SALLE DU FORT</h1>
@@ -140,7 +139,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 		<img src="./Ressources/settings.png" class="icone">
               		</div>
           		</div>
-              </div>
+            </div>
         	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
@@ -199,7 +198,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    	
 		    		<div class="col-xs-12 col-sm-8">
 		    			<div class="text-center" id="blocGraph"><p>Evolution de l'affluence sur les dernières heures</p>
-                <highcharts :options="Graphe" ref="highcharts" style="height: 200px;"></highcharts>
+                <highcharts :options="Graphe" ref="highcharts" style="height: 175px;"></highcharts>
                 </div>
 <!--
 		    	</div>
