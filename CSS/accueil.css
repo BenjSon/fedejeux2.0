@@ -14,10 +14,12 @@ body {
 
 
 #blocTot {
+	display: block;
+
 	background-color: #2e778d;
 
-	height: 200px;
-	margin-top: -8px;
+	height: 232px;
+	margin-top: -5px;
 	margin-left: 6px;
 	margin-right: 6px;
 
@@ -34,20 +36,20 @@ body {
 
 #blocTot>h2 {
 	font-size: 275%;
-	margin-left: -55%;
+	margin-left: -70%;
 	margin-top: 35px;
 }
 
 #blocTot>h3 {
 	font-size: 137.5%;
-	margin-left: -55%;
+	margin-left: -70%;
 	margin-top: -10px;
 }
 
 #blocTot>h4 {
 	font-size: 190%;
 	font-weight: bold;
-	margin-left: -55%;
+	margin-left: -70%;
 	margin-top: 15px;
 }
 
@@ -59,7 +61,7 @@ body {
 
 	/*width: 262.5px;*/
 	width: 98%;
-	height : 100px;
+	height : 105px;
 
 }
 
@@ -83,14 +85,23 @@ body {
 }
 
 .icone {
-	height: 40%;
+	height: 40px;
 }
 
 .salle {
-	padding-left: 20px;
+	margin-top: 8px;
+	margin-left: -75px;
 }
 
+h5 {
+	margin-top: -35px;
+	margin-left: 65px;
 
+	font-family: "Lato";
+	font-size: 30px;
+	color: white;
+
+}
 
 
 
@@ -117,12 +128,3 @@ body {
 }
 
 
-h5 {
-	margin-top: -33px;
-	margin-left : 55%;
-
-	font-family: "Lato";
-	font-size: 27.5px;
-	color: white;
-
-}
