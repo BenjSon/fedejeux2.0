@@ -107,9 +107,10 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 					<div id="blocTot">
             			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> {{affluenceTotale()}} festivaliers -
             {{pourcentageTotal()}}%</h1>
-            		</div>
-          		</div>
-        	</div>
+            <highcharts :options="GrapheSomme" ref="highcharts" style="height: 200px;"></highcharts>
+          </div>
+        </div>
+      </div>
         	<div class="row" id="bouton-partie1">
         		<div class="col-sm-3 col-xs-6">
         			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">

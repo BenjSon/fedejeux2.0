@@ -8,10 +8,13 @@ var ACCUEIL = new Vue({
 			salle2:0,
 			salle3:0
 		},
-		chosenSalle: {}
+		chosenSalle: {},
+        GrapheSomme:""
 	},
 	methods:{
-		
+		tracerGrapheSomme: function(){
+                    },
+
 		getAffluence: function(affluence,variable){
 			ACCUEIL.affSalles[variable] = affluence;
 			//console.log('affFort', ACCUEIL.affSalles[variable]);
@@ -33,12 +36,14 @@ var ACCUEIL = new Vue({
     		return (ACCUEIL.affSalles[salle]*100/ADMIN.parametres[salle].capacité).toFixed(0)
     	},
     	affluenceTotale: function(){
-    		return ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3
+            ACCUEIL.GrapheSomme = setGrapheSommeOptions();
+    	    return ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3
     	},
     	pourcentageTotal: function(){
     		return ((ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3)*100/
     		(ADMIN.parametres.salle1.capacité+ADMIN.parametres.salle2.capacité+ADMIN.parametres.salle3.capacité)).toFixed(0)
     	}
+      
 
     	// chooseSalle: function(salle){
     	// 	if (salle == 'salle1') chosenSalle = {salle1: 'Fort'};
@@ -46,5 +51,9 @@ var ACCUEIL = new Vue({
     	// 	else chosenSalle = {salle3: 'Chapiteau'};
     	// 	console.log(ACCUEIL.chosenSalle);
     	// }
-	}
+	},
+
+    computed:{
+
+    }
 });
