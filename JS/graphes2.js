@@ -194,10 +194,6 @@ function setGrapheSommeOptions(){
                     //     series.addPoint([x, y], true, true);
                     //     activeLastPointToolip(chart);
                     // }, 1000);
-
-
-                            console.log("hellobitches");
-
                     databaseRef.child("salle1").on('child_added', function(snap1) {
                         var x1 = (new Date(snap1.val().temps)).getTime(),
                             y1 = snap1.val().nbr;
