@@ -31,7 +31,7 @@
 
 	
 }
-
+/*
 #cocherSalles { 
 	margin-top : 100px;
 	margin-left: 15px;
@@ -58,6 +58,13 @@
 	left: 50%;
 	transform: translate(-50%);
 }
+*/
+#modifData {
+	position : absolute;
+	top : 150px;
+	
+}
+
 
 #save {
 	width: 155px;
@@ -68,6 +75,7 @@
 	transform: translate(-50%);
 }
 
+
 .validation {
 	background-color: #20556e;
 	color: white;
@@ -76,17 +84,18 @@
 	line-height: 16px;
 	text-align: center;
 
-	 margin-top: 10px;
+	margin-top: 10px;
     border: none;
     border-radius: 13px;
     cursor: pointer;
 }
 
+/*
 #separation {
 	background-color: #2e778d;
 	height : 4px;
 	margin-top : 65px;
-}
+} */
 
 .zoneText {
 	width: 70px;
@@ -111,8 +120,8 @@
 .nm {
 	color: white;
 	font-family: "Lato Light";
-	font-size: 18px ;
-	line-height: 18px;
+	font-size: 17.5px ;
+	line-height: 17.5px;
 	text-align: right;
 }
 

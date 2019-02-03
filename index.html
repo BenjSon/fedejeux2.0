@@ -150,27 +150,27 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 	<div id="admin">
 		<template v-if="showAdmin">
-			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
+			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc">  < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
-			<div class="container" id="remiseZero">
+			<!-- <div class="container" id="remiseZero">
           			<div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
-        		<!-- </form> -->
-      		</div>
-			<div id="separation"> </div>
+        		</form>
+      		</div> 
+			<div id="separation"> </div> -->
       		<div id="modifData">
         		<form action="modifData">
         		<table>
             			<tr>  
             				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</t> </tr>
-            			<tr> <td>Salle du Fort</td>
-                <td><input type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
-                  <td><input type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
-                  <tr>  <td>Salle Montaigne</td>
-                <td><input type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
-                <td><input type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
-                  <tr>  <td>Le Chapiteau</td>
-                <td><input type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
-                  <td><input type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
+            			<tr> <td class="nm">Salle du Fort</td>
+                <td><input class="zoneText" type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
+                  <td><input class="zoneText" type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
+                  <tr>  <td class="nm">Salle Montaigne</td>
+                <td><input class="zoneText" type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
+                <td><input class="zoneText" type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
+                  <tr>  <td class="nm">Le Chapiteau</td>
+                <td><input class="zoneText" type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
+                  <td><input class="zoneText" type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
         		<div class="btn btn-primary validation" id="save" onclick="if(confirm(ADMIN.alert)){modifParametres()};">ENREGISTREMENT</div>
         		</form>
