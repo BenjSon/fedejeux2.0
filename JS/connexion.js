@@ -34,7 +34,7 @@
                 NAV.toAccueil();
             }
             // version test:
-            return NAV.toAccueil();         
+            // return NAV.toAccueil();         
         },
         deconnexion: function(){
             // on déconnecte l'utilisateur
