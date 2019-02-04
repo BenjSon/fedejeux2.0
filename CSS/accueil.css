@@ -35,9 +35,9 @@ body {
 }
 
 #blocTot>h2 {
-	font-size: 275%;
-	margin-left: -70%;
-	margin-top: 35px;
+	font-size: 20px;
+	/*margin-left: -70%;*/
+	margin-top: -7px;
 }
 
 #blocTot>h3 {
@@ -90,12 +90,12 @@ body {
 
 .salle {
 	margin-top: 8px;
-	margin-left: -75px;
+	margin-left: -60px;
 }
 
 h5 {
 	margin-top: -35px;
-	margin-left: 65px;
+	margin-left: 70px;
 
 	font-family: "Lato";
 	font-size: 30px;

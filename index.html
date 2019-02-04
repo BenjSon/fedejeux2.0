@@ -105,13 +105,12 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
-            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> {{affluenceTotale()}} festivaliers -
-            {{pourcentageTotal()}}%</h1>
-            <highcharts :options="GrapheSomme" ref="highcharts" style="height: 200px;"></highcharts>
+            			<h1 class="text-center" id="AffluenceTotale">AFFLUENCE TOTALE <br> <h2>{{affluenceTotale()}} festivaliers -
+            {{pourcentageTotal()}}%</h2> </h1>
+            <highcharts :options="GrapheSomme" ref="highcharts" style="height: 160px;"></highcharts>
           </div>
         </div>
-      </div>
-        	<div class="row" id="bouton-partie1">
+        	
         		<div class="col-sm-3 col-xs-6">
         			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
                  		<h1 class="nom text-center ">SALLE DU FORT</h1>
@@ -140,7 +139,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 		<img src="./Ressources/settings.png" class="icone">
               		</div>
           		</div>
-              </div>
+            </div>
         	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
         </template>
   	</div>
@@ -150,27 +149,27 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 	<div id="admin">
 		<template v-if="showAdmin">
-			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
+			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc">  < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
-			<div class="container" id="remiseZero">
+			<!-- <div class="container" id="remiseZero">
           			<div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
-        		<!-- </form> -->
-      		</div>
-			<div id="separation"> </div>
+        		</form>
+      		</div> 
+			<div id="separation"> </div> -->
       		<div id="modifData">
         		<form action="modifData">
         		<table>
             			<tr>  
             				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</t> </tr>
-            			<tr> <td>Salle du Fort</td>
-                <td><input type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
-                  <td><input type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
-                  <tr>  <td>Salle Montaigne</td>
-                <td><input type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
-                <td><input type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
-                  <tr>  <td>Le Chapiteau</td>
-                <td><input type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
-                  <td><input type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
+            			<tr> <td class="nm">Salle du Fort</td>
+                <td><input class="zoneText" type="text" id='seuil1' v-model.number="parametres.salle1.seuil"></td>
+                  <td><input class="zoneText" type="text" id='cap1' v-model.number="parametres.salle1.capacité"></td>  </tr>
+                  <tr>  <td class="nm">Salle Montaigne</td>
+                <td><input class="zoneText" type="text" id='seuil2' v-model.number="parametres.salle2.seuil"></td>
+                <td><input class="zoneText" type="text" id='cap2' v-model.number="parametres.salle2.capacité"></td>  </tr>
+                  <tr>  <td class="nm">Le Chapiteau</td>
+                <td><input class="zoneText" type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
+                  <td><input class="zoneText" type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
         		<div class="btn btn-primary validation" id="save" onclick="if(confirm(ADMIN.alert)){modifParametres()};">ENREGISTREMENT</div>
         		</form>
@@ -199,7 +198,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    	
 		    		<div class="col-xs-12 col-sm-8">
 		    			<div class="text-center" id="blocGraph"><p>Evolution de l'affluence sur les dernières heures</p>
-                <highcharts :options="Graphe" ref="highcharts" style="height: 200px;"></highcharts>
+                <highcharts :options="Graphe" ref="highcharts" style="height: 175px;"></highcharts>
                 </div>
 <!--
 		    	</div>
