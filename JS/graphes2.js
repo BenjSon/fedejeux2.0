@@ -43,7 +43,8 @@ function setGrapheOptions(idSalle,nomSalle){
                     //     activeLastPointToolip(chart);
                     // }, 1000);
 
-
+                    serieCapacite.name = capacite;
+                    serieSeuil.name = seuil;
 
                     databaseRef.child(idSalle).on('child_added', function(snap1) {
                         var x1 = (new Date(snap1.val().temps)).getTime(),
