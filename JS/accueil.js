@@ -51,9 +51,5 @@ var ACCUEIL = new Vue({
     	// 	else chosenSalle = {salle3: 'Chapiteau'};
     	// 	console.log(ACCUEIL.chosenSalle);
     	// }
-	},
-
-    computed:{
-
-    }
+	}
 });
