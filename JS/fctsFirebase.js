@@ -60,21 +60,24 @@ db.ref("HistoriqueSalles").on('value', function(snapshot) {
 resetToZero = function(){
 	//console.log(ADMIN.numHist);
 	var numH = ADMIN.numHist;
+	var temps = ((((new Date()).getTime()).toISOString()).replace('T',' ')).slice(0,-5);
+	console.log('temps:',temps);
 	//console.log(numNewHist);
 	//db.ref("HistoriqueSalles").push({["hist"+numNewHist]:{}});
-	db.ref("HistoriqueSalles").limitToFirst(1).on('child_added',function(snap){
-		var data = snap.val();
-		console.log(data);
-		db.ref("HistoriqueSalles/hist"+numH).set(data);
-		db.ref("HistoriqueSalles/hist"+numH).update({IdHist:numH});
-	});
-	for(var i = 1; i<=3;i++){
-		db.ref("HistoriqueSalles/current/salle"+i+"/mesure"+i+"0").set({
-			"nbr": 0,
-			"temps": 0,
-			"id": 0
-		});
-	}
+	// db.ref("HistoriqueSalles").limitToFirst(1).on('child_added',function(snap){
+	// 	var data = snap.val();
+	// 	console.log(data);
+	// 	db.ref("HistoriqueSalles/hist"+numH).set(data);
+	// 	db.ref("HistoriqueSalles/hist"+numH).update({IdHist:numH});
+	// });
+	// for(var i = 1; i<=3;i++){
+	// 	db.ref("HistoriqueSalles/current/salle"+i).set({
+	// 		"initialisation":{
+	// 			"nbr": 0,
+	// 			"temps": temps
+	// 		}
+	// 	});
+	// }
 }
 
 

@@ -61,7 +61,7 @@ Highcharts.setOptions({
                     //     activeLastPointToolip(chart);
                     // }, 1000);
 
-                    databaseRef.child("salle1").on('child_added', function(snap) {
+                    databaseRef.child("salle2").on('child_added', function(snap) {
                         //temps sous le format string: MM-JJ-AAAA HH:MM:SS
                         var x = (new Date(snap.val().temps)).getTime(),
                             y = snap.val().nbr;
@@ -69,17 +69,6 @@ Highcharts.setOptions({
                         series.addPoint([x, y], true, true);
                         activeLastPointToolip(chart);
                     });
-                    //databaseRef.child("salle1").off('child_added')
-                    // setInterval(function(){
-                    // databaseRef.child("salle1").limitToLast(1).once('child_added', function(snap1) {
-                    //     //'01/30/19 13:30:56' ou AAAA-MM-JJ ou dans un autre sens
-                    //     var x1 = snap1.val().temps,
-                    //         y1 = snap1.val().nbr;
-                    //     console.log('x1:',x1,',y1:',y1);
-                    //     series.addPoint([x1, y1], true, true);
-                    //     activeLastPointToolip(chart);
-                    // });
-                    //  } ,10000);
                 }
             }
         },
@@ -88,7 +77,8 @@ Highcharts.setOptions({
         },
         xAxis: {
             type: 'datetime',
-            tickPixelInterval: 150
+            endOnTick: true,
+            startOnTick: true
         },
         yAxis: {
             title: {
@@ -107,23 +97,21 @@ Highcharts.setOptions({
         },
         series: [{
             name: 'Nombre de personne dans la salle',
-            // data: (function () {
-            //     var data = [];
-            //     data.push({
-            //             x: 0,
-            //             y: 0
-            //         });
-            //     console.log('initialData:', data)
-            //     return data;
-            // }())
+            dataGrouping: {
+                smoothed: true,
+                groupPixelWidth: 5,
+                forced: true
+            },
 
             data: (function () {
                 var data = [],
                     i;
-                for (i = 0; i <= 20; i += 1) {
+                for (i = 0; i <= 30; i += 1) {
                     data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
-                        y: 0
+                        x: null,
+                        y: null
+                        // x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
+                        // y: 0
                     });
                 }
                 return data;

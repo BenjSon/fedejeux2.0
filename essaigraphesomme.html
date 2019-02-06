@@ -39,11 +39,17 @@ Highcharts.setOptions({
         var points = chart.series[0].points;
         chart.tooltip.refresh(points[points.length -1]); //Permet d'obtenir des indications sur le dernier point placé sur le graphe
     };
-    // function random() {
-    //     var count = 0;
-    //     return count;
+    // dateToString = function(date){
+    //     date+= (1000*60*60) //une heure de déc
+    //     var d = new Date();
+    //     d.setTime(date);
+    //     dateString = d.toISOString();
+    //     //console.log (dateString);
+    //     var newDate = dateString.replace('T',' ').slice(0,-5)
+    //     //console.log(newDate);
+    //     return newDate
+    // };
 
-    // }
     var chart = Highcharts.chart('container', {
         chart: {
             type: 'spline',
@@ -54,39 +60,82 @@ Highcharts.setOptions({
                     var series = this.series[0],
                         chart = this;
                     activeLastPointToolip(chart);
-                    // setInterval(function () {
-                    //     var x = (new Date()).getTime(), 
-                    //         y = random();          
-                    //     series.addPoint([x, y], true, true);
-                    //     activeLastPointToolip(chart);
-                    // }, 1000);
 
-
+                    var initialDataLoaded = false; 
 
                     databaseRef.child("salle1").on('child_added', function(snap1) {
-                        var x1 = (new Date(snap1.val().temps)).getTime(),
-                            y1 = snap1.val().nbr;
-                        // console.log('x1:',x1,',y1:',y1);
-                        databaseRef.child("salle2").orderByChild('temps').endAt(x1).limitToLast(1)
-                            .on('child_added', function(snap2){
-                            var x2 = (new Date(snap2.val().temps)).getTime();
-                            var y2 = snap2.val().nbr;
-                            // console.log('x2:',x2,',y2:',y2);
+                        if (initialDataLoaded) {
+                            console.log('Initialisation terminée');
+                            databaseRef.child("salle1").off('child_added');
+                        } 
+                        else {
+                            console.log('Initialisation en cours');
+                            var x1 = snap1.val().temps,
+                                y1 = snap1.val().nbr;
+                            console.log('x1:',x1,',y1:',y1);
 
-                            databaseRef.child("salle3").orderByChild('temps').endAt(x1).limitToLast(1)
-                                .on('child_added', function(snap3){
-                                var x3 = (new Date(snap3.val().temps)).getTime();
-                                var y3 = snap3.val().nbr;
-                                // console.log('x3:',x3,',y3:',y3);
+                            databaseRef.child("salle2").orderByChild('temps').endAt(x1)
+                            .limitToLast(1).on('child_added', function(snap2){
+                                //var x2 = (new Date(snap2.val().temps)).getTime(),
+                                var y2 = snap2.val().nbr;
+                                console.log('y2:',y2);
 
-                                y1 = y1 + y2 + y3;
-                                // console.log('x1:',x1,',y1:',y1);
-                                series.addPoint([x1, y1], true, true);
+                                databaseRef.child("salle3").orderByChild('temps').endAt(x1)
+                                .limitToLast(1).on('child_added', function(snap3){
+                                    //var x3 = (new Date(snap3.val().temps)).getTime(),
+                                    var y3 = snap3.val().nbr;
+                                    console.log('y3:',y3);
+
+                                    y = y1 + y2 + y3;
+                                    x = (new Date(x1)).getTime();
+                                    console.log('x:',x,',y:',y);
+                                    var index = series.xData.indexOf(x);
+                                    console.log('index', index);
+                                    if (index == -1){                                    
+                                        series.addPoint([x, y], true, true);
+                                    }
+                                });
                             });
-                        
-                        activeLastPointToolip(chart);
-                        });
+                        }
                     });
+
+                    databaseRef.child("salle1").once('value', function(snap) {
+                      initialDataLoaded = true;
+                    });
+
+                    setInterval( function(){
+                        console.log('hh');
+                        databaseRef.child("salle1").limitToLast(1).on('child_added', function(snap1) {
+                            var x1 = (new Date(snap1.val().temps)).getTime(),
+                                y1 = snap1.val().nbr;
+                            console.log('x1:',x1,',y1:',y1);
+                            databaseRef.child("salle2").limitToLast(1)
+                                .on('child_added', function(snap2){
+                                var x2 = (new Date(snap2.val().temps)).getTime(),
+                                    y2 = snap2.val().nbr;
+                                console.log('x2:',x2,',y2:',y2);
+
+                                databaseRef.child("salle3").limitToLast(1)
+                                    .on('child_added', function(snap3){
+                                    var x3 = (new Date(snap3.val().temps)).getTime(),
+                                        y3 = snap3.val().nbr;
+                                    console.log('x3:',x3,',y3:',y3);
+
+                                    y = y1 + y2 + y3;
+                                    x = Math.max(x1,x2,x3);
+                                    console.log('x:',x,',y:',y);
+                                    var index = series.xData.indexOf(x);
+                                    console.log('index', index);
+                                    if (index == -1){                                    
+                                        series.addPoint([x, y], true, true);
+                                    }
+                                });
+                            
+                            activeLastPointToolip(chart);
+                            });
+                        });
+                    }, 10000);
+                    
                 }
             }
         },
@@ -100,6 +149,12 @@ Highcharts.setOptions({
         yAxis: {
             title: {
                 text: null
+            }
+        },
+        labels:{
+            style:{
+                "color": "#222222",
+                "position": "absolute"
             }
         },
         tooltip: {
@@ -129,8 +184,8 @@ Highcharts.setOptions({
                     i;
                 for (i = 0; i <= 20; i += 1) {
                     data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
-                        y: 0
+                        x: null,
+                        y: null
                     });
                 }
                 return data;
