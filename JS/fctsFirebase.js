@@ -10,33 +10,23 @@ for(var k = 1; k<=3;k++){
 	dataAffluence.on('child_added', function(snapshot){
 		var aff = snapshot.child('nbr').val();
 		//console.log('aff'+i,aff);
-		ACCUEIL.getAffluence(aff,'salle'+i);
+		ACCUEIL.setAffluence(aff,'salle'+i);
 		i++;
 	})
 }
 
-// var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
-// dataAffluence2.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle2');
-// 	})
 
-// var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
-// dataAffluence3.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle3');
-// 	})
+getParametres = function(){
+	var dataParametres = db.ref('Paramètres');
+	dataParametres.on('value', function(snapshot){
+			var dataParametres = snapshot.val();
+//			var data = snapshot..child('salle1/seuil').val();
+//			console.log('dataparametres:',dataParametres);
+			ADMIN.setParametres(dataParametres);
+		})
+};
 
-var dataParametres = db.ref('Paramètres');
-dataParametres.once('value')
-	.then(function(snapshot){
-		var dataParametres = snapshot.val();
-//		var data = snapshot..child('salle1/seuil').val();
-//		console.log('dataparametres:',dataParametres);
-		ADMIN.getParametres(dataParametres);
-	})
+getParametres();
 
 
 
@@ -70,8 +60,13 @@ db.ref("HistoriqueSalles").on('value', function(snapshot) {
 resetToZero = function(){
 	//console.log(ADMIN.numHist);
 	var numH = ADMIN.numHist;
+	var d = new Date();
+	d = d.setTime(d.getTime() + 1000 * 3600);
+	var date = new Date(d);
+	var temps = date.toISOString().replace('T',' ').slice(0,-5);
+	//console.log('date:',date,'temps:',temps);
 	//console.log(numNewHist);
-	//db.ref("HistoriqueSalles").push({["hist"+numNewHist]:{}});
+	db.ref("HistoriqueSalles").push({["hist"+numNewHist]:{}});
 	db.ref("HistoriqueSalles").limitToFirst(1).on('child_added',function(snap){
 		var data = snap.val();
 		console.log(data);
@@ -79,16 +74,37 @@ resetToZero = function(){
 		db.ref("HistoriqueSalles/hist"+numH).update({IdHist:numH});
 	});
 	for(var i = 1; i<=3;i++){
-		db.ref("HistoriqueSalles/current/salle"+i+"/mesure"+i+"0").set({
+		var refSalle = db.ref("HistoriqueSalles/current/salle"+i)
+		refSalle.set({'tempo':'tempo'});
+		refSalle.push({
 			"nbr": 0,
-			"temps": 0,
-			"id": 0
+			"temps": temps
 		});
-	}
+		refSalle.child("tempo").remove();
+	}	
 }
 
 
 modifParametres = function(){
 	//console.log(ADMIN.parametres);
 	db.ref('Paramètres').set(ADMIN.parametres);
-}
+};
+
+checkParametres = function(){
+	if (ADMIN.checkPositiveInt()){
+		if(ADMIN.checkSeuil()){
+			if(confirm("Cette action va réinitialiser les valeurs de seuil et de capacité. Souhaitez-vous continuer ?")){
+				modifParametres();
+			}
+			else getParametres();
+		}
+		else{
+			getParametres();
+			alert("Le seuil d’alerte d’une salle doit être inférieur à la capacité maximale.");
+		} 
+	}
+	else{
+		getParametres();
+		alert("Les valeurs doivent être des entiers positifs.");
+	}
+};
