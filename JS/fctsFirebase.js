@@ -85,10 +85,26 @@ resetToZero = function(){
 			"id": 0
 		});
 	}
-}
+};
 
 
 modifParametres = function(){
 	//console.log(ADMIN.parametres);
 	db.ref('Paramètres').set(ADMIN.parametres);
+};
+
+getParGraphe = function(salle){
+	db.ref("HistoriqueSalles/current/"+salle).once('value',function(snap){
+		var nbrdata = snap.numChildren();
+		ACCUEIL.setParGraphe('nbrData',nbrdata);
+	});
+	db.ref("HistoriqueSalles/current/"+salle).limitToFirst(1).once('child_added',function(snap){
+		var mintemps = snap.child('temps').val();
+		ACCUEIL.setParGraphe('minTemps',(new Date(mintemps)).getTime());
+	});	
+	db.ref("HistoriqueSalles/current/"+salle).limitToLast(1).once('child_added',function(snap){
+		var maxtemps = snap.child('temps').val();
+		ACCUEIL.setParGraphe('maxTemps',(new Date(maxtemps)).getTime());
+	});
+	console.log(ACCUEIL.parGraphe);
 }
