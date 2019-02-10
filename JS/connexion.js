@@ -1,13 +1,13 @@
- var CONNEXION = new Vue({
+var CONNEXION = new Vue({
 	el: "#connexion",
 	data: {
 		showConnexion: true,
         user: {identifiant: "", mdp: ""}
 	},
 	methods:{
-        // fonction qui redirige vers l'accueil si l'utilisateur existe.
+        // fonction qui redirige vers l'accueil si l'utilisateur existe en cliquant sur le bouton.
         seConnecter:function(){
-            console.log(this.user);
+            // console.log(this.user);
             // on vérifie si quelqu'un est déjà connecté
             if (firebase.auth().currentUser) {
                 //si quelqu'un est connecté on le déconnecte
@@ -33,6 +33,17 @@
             if (firebase.auth().currentUser){
                 NAV.toAccueil();
             }                
+        },
+        // fonction qui redirige vers l'accueil si l'utilisateur existe en appuyant sur "Entrée".
+        connection:function(){
+            var input = document.getElementById("passe");
+            input.addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode == 13) {
+                    //console.log("appel de fct");
+                    CONNEXION.seConnecter();
+                }
+            }) 
         },
         /* ----------------------------------Création du jeton de connexion--------------------------------------------------------
         // When the user signs in with email and password.

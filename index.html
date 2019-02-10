@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>index</title>
+  <title>Fédéjeux</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
@@ -54,7 +54,6 @@
   };
   firebase.initializeApp(config);
 </script>
-
 </head>
 
 <body>
@@ -73,7 +72,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<div id="identification">
 				<form>
 					<input type="text" class="zone" id="login" placeholder="Identifiant" v-model.lazy='user.identifiant' /><br />
-					<input type="password" class="zone" id="passe" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
+					<input type="password" class="zone" id="passe" v-on:keyup="connection" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
 					<div @click="seConnecter" class="btn btn-primary" id="action">CONNEXION</div>
 				</form>
                 <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
@@ -86,7 +85,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 
-	<div id="header" onclick="NAV.toAccueil()">
+	<div id="header">
 		<template v-if="showHeader">
 			<!-- <div onclick="NAV.toAccueil()"> Retour à l'accueil </div> -->
 			<div>
