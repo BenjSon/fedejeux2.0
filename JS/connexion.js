@@ -2,7 +2,7 @@ var CONNEXION = new Vue({
 	el: "#connexion",
 	data: {
 		showConnexion: true,
-        user: {identifiant: "", mdp: ""}
+        user: {identifiant: "", mdp: "",connect: ""}
 	},
 	methods:{
         // fonction qui redirige vers l'accueil si l'utilisateur existe en cliquant sur le bouton.
@@ -31,6 +31,8 @@ var CONNEXION = new Vue({
                                 // console.log(error);
                             });
             if (firebase.auth().currentUser){
+                this.user.connect = firebase.auth().currentUser;
+                this.user.connect.freeze;
                 NAV.toAccueil();
             }                
         },
