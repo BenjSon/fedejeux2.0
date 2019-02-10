@@ -35,14 +35,17 @@ getDataSalle = function(salle){
 };
 
 
-var dataParametres = db.ref('Paramètres');
-dataParametres.once('value')
-	.then(function(snapshot){
-		var dataParametres = snapshot.val();
-//		var data = snapshot..child('salle1/seuil').val();
-//		console.log('dataparametres:',dataParametres);
-		ADMIN.getParametres(dataParametres);
-	})
+getParametres = function(){
+	var dataParametres = db.ref('Paramètres');
+	dataParametres.on('value', function(snapshot){
+			var dataParametres = snapshot.val();
+//			var data = snapshot..child('salle1/seuil').val();
+//			console.log('dataparametres:',dataParametres);
+			ADMIN.setParametres(dataParametres);
+		})
+};
+
+getParametres();
 
 
 
@@ -66,14 +69,11 @@ getLastofH = function(numSalle){
 	console.log(LastMesure);
 };
 
-
-
-db.ref("HistoriqueSalles").on('value', function(snapshot) {
-	var numOfHist = snapshot.numChildren();
-	ADMIN.getNumHist(numOfHist);
-});
-
 resetToZero = function(){
+	db.ref("HistoriqueSalles").once('value', function(snapshot) {
+		var numOfHist = snapshot.numChildren();
+		ADMIN.getNumHist(numOfHist);
+	});
 	//console.log(ADMIN.numHist);
 	var numH = ADMIN.numHist;
 	//console.log(numNewHist);
@@ -97,6 +97,25 @@ resetToZero = function(){
 modifParametres = function(){
 	//console.log(ADMIN.parametres);
 	db.ref('Paramètres').set(ADMIN.parametres);
+};
+
+checkParametres = function(){
+	if (ADMIN.checkPositiveInt()){
+		if(ADMIN.checkSeuil()){
+			if(confirm("Cette action va réinitialiser les valeurs de seuil et de capacité. Souhaitez-vous continuer ?")){
+				modifParametres();
+			}
+			else getParametres();
+		}
+		else{
+			getParametres();
+			alert("Le seuil d’alerte d’une salle doit être inférieur à la capacité maximale.");
+		} 
+	}
+	else{
+		getParametres();
+		alert("Les valeurs doivent être des entiers positifs.");
+	}
 };
 
 getParGraphe = function(salle){
