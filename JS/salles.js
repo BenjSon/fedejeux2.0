@@ -35,24 +35,16 @@ var SALLES = new Vue({
 
           }
           //console.log('nomSalle',SALLES.nomSalle);
-          SALLES.affluence = ACCUEIL.affSalles[salle];
-          SALLES.valeurMax = ADMIN.parametres[salle].capacité;
-          SALLES.valeurAlerte = ADMIN.parametres[salle].seuil;
+          getDataSalle(salle);
           SALLES.styleSalle = ACCUEIL.myStyle(salle);
           SALLES.total = ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3;
+        },
+
+        setDataSalle: function(nomData,data){
+          SALLES[nomData] = data;
         }
 
       },
-
-      // computed: {
-  		  // salle:function(){
-     	// 		this.salle="";
-    		// 	this.imageDeLaSalle="";
-     	// 		this.affluence="";
-    		// 	this.valeurMax="";
-    		// 	this.valeurAlerte="";
-     	// // 	} 
-     	// },
 
    	  watch: {
     		BDD: function(){

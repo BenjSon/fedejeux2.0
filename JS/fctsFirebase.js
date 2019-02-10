@@ -3,31 +3,37 @@
 // ----- Variables de ref() ----- //
 
 //On utilise la deuxième variable i car k vaut 4 dans la fonction
-var i = 1;
-for(var k = 1; k<=3;k++){
-	//console.log(k);
-	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
-	dataAffluence.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		//console.log('aff'+i,aff);
-		ACCUEIL.getAffluence(aff,'salle'+i);
-		i++;
-	})
-}
-
-// var dataAffluence2 = firebase.database().ref('HistoriqueSalles/current/salle2').limitToLast(1);
-// dataAffluence2.on('child_added', function(snapshot){
+// var i = 1;
+// for(var k = 1; k<=3;k++){
+// 	//console.log(k);
+// 	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
+// 	dataAffluence.on('child_added', function(snapshot){
 // 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle2');
+// 		console.log('aff'+i,aff);
+// 		ACCUEIL.getAffluence(aff,'salle'+i);
+// 		i++;
 // 	})
+// }
 
-// var dataAffluence3 = firebase.database().ref('HistoriqueSalles/current/salle3').limitToLast(1);
-// dataAffluence3.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		// console.log('aff',aff);
-// 		ACCUEIL.getAffluence(aff,'salle3');
-// 	})
+getDataSalle = function(salle){
+	var ref = firebase.database().ref('HistoriqueSalles/current/'+salle);
+	ref.limitToLast(1).on('child_added', function(snapshot){
+			var aff = snapshot.child('nbr').val();
+			//console.log('aff',aff);
+			SALLES.setDataSalle('affluence', aff);
+		});
+
+	var refPar = firebase.database().ref('Paramètres/'+salle);
+	refPar.once('value', function(snapshot){
+			var seuil = snapshot.child('seuil').val();
+			//console.log('seuil',seuil);
+			SALLES.setDataSalle('valeurAlerte', seuil);
+
+			var capacité = snapshot.child('capacité').val();
+			SALLES.setDataSalle('valeurMax',capacité);
+		});
+};
+
 
 var dataParametres = db.ref('Paramètres');
 dataParametres.once('value')
