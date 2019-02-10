@@ -12,15 +12,14 @@ var ACCUEIL = new Vue({
         GrapheSomme:""
 	},
 	methods:{
-<<<<<<< HEAD
+
 		tracerGrapheSomme: function(){
                     },
 
-		getAffluence: function(affluence,variable){
-=======
+	
 		
 		setAffluence: function(affluence,variable){
->>>>>>> Léna_dev4
+
 			ACCUEIL.affSalles[variable] = affluence;
 			//console.log('affFort', ACCUEIL.affSalles[variable]);
 		},
