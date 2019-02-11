@@ -5,7 +5,7 @@ var CONNEXION = new Vue({
         user: {identifiant: "", mdp: "",connect: ""}
 	},
 	methods:{
-        // fonction qui redirige vers l'accueil si l'utilisateur existe en cliquant sur le bouton.
+        // fonction qui redirige vers l'accueil si l'utilisateur existe.
         seConnecter:function(){
             // on vérifie si quelqu'un est déjà connecté
             if (firebase.auth().currentUser) {
@@ -32,12 +32,6 @@ var CONNEXION = new Vue({
                 this.user.connect.freeze;
                 NAV.toAccueil();
             }                
-        },
-        // fonction qui redirige vers l'accueil si l'utilisateur existe en appuyant sur "Entrée".
-        connection:function(event){
-            if (event.keyCode == 13) {
-                CONNEXION.seConnecter();
-            } 
         },
         // fonction de déconnexion de l'utilisateur  
         deconnexion: function(){

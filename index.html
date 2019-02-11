@@ -74,7 +74,7 @@
 			<div id="identification">
 				<form>
 					<input type="text" class="zone" id="login" placeholder="Identifiant" v-model.lazy='user.identifiant' /><br />
-					<input type="password" class="zone" id="passe" v-on:keyup="connection" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
+					<input type="password" class="zone" id="passe" v-on:keyup.enter="seConnecter" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
 					<div @click="seConnecter" class="btn btn-primary" id="action">CONNEXION</div>
 				</form>
 			</div>
