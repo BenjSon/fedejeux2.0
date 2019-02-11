@@ -32,10 +32,9 @@
                             });
             if (firebase.auth().currentUser){
                 NAV.toAccueil();
-            }
-            // version test:
-            // return NAV.toAccueil();         
+            }                
         },
+        // fonction de déconnexion de l'utilisateur  
         deconnexion: function(){
             // on déconnecte l'utilisateur
             // console.log("Je déconnecte");
