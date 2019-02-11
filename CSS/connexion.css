@@ -2,12 +2,25 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
+
+
+/* --FONT FACE-- */
+@font-face {
+	font-family: "Lato Light";
+ 	src: url("/fonts/Lato-Regular.ttf") format("ttf")
+}
+
+
 .text {
 	font-family: "Lato Light"
 }
 
 #fond {
-	width : 100%;
+	width : 420px;
+
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 #Ludinord {
@@ -26,7 +39,7 @@ body {
 	white-space: nowrap;
 
 	position: absolute;
-	top : 192.5px; left: 50%;
+	top : 222.5px; left: 50%;
 	transform: translate(-50%);
 }
 
@@ -36,6 +49,11 @@ body {
 	position : absolute;
 	top : 85px ; left: 50%;
 	transform: translate(-50%);
+}
+
+#identification {
+	margin-top: 25px;
+
 }
 
 .zone {
@@ -90,6 +108,11 @@ body {
     background-color: #45a049;
 }
 
-#deco {
+#deco1 {
 	background-color: transparent;
+	position : absolute;
+	left: 50%;
+	transform: translate(-50%);
+
+	margin-top: 90%;
 }

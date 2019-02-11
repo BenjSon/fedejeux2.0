@@ -81,7 +81,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
                 <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
 			</div>
 			<!-- <div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div> -->
-			<div @click="resetMdp" class="btn btn-primary lien" id="deco">Mot de passe oublié ?</div>
+			<div @click="resetMdp" class="btn btn-primary lien" id="deco1">Mot de passe oublié ?</div>
 		</template>
 	</div>
 
@@ -140,7 +140,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
               		</div>
           		</div>
             </div>
-        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco2">Déconnexion</div>
         </template>
   	</div>
 
@@ -175,7 +175,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         		<div class="btn btn-primary validation" id="save" onclick="checkParametres();">ENREGISTREMENT</div>
         		</form>
       		</div>
-      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div>
+      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco2">Déconnexion</div>
     	</template>
   	</div>
 
@@ -188,10 +188,10 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/ id='logoSalle'> </h1>
 			<div class="container">
 				<div class="row" id="affluences"> 
-            		<div class="col-sm-2 col-xs-6 text-center" id="actuelle">					
+            		<div class="col-sm-2 col-xs-4 text-center" id="actuelle">					
 			           		<span> Affluence actuelle </span> <p>{{ affluence }}</p>		      		
 			       	</div>
-			       	<div class="col-sm-2 col-xs-6">
+			       	<div class="col-sm-2 col-xs-4">
 		        		<div id="totale" class="text-center">
 		           			<span> Affluence totale </span>  <p>{{ total }}</p>
 		        		</div>		
@@ -213,7 +213,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    		</div>
 		    	</div>
 		    	<div class="row" id="tauxLimites">
-					  <img src="./ressources/WARNING.png" class="warn">	      
+					  <img src="./Ressources/WARNING.png" class="warn">	      
 		          <div id="infos">
 		            	<h2>Capacité maximale : {{valeurMax}}</h2>
 		            	<h2>Seuil d'alerte : {{valeurAlerte}}</h2>
