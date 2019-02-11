@@ -42,6 +42,7 @@ function setGrapheOptions(idSalle,nomSalle){
                     //     series.addPoint([x, y], true, true);
                     //     activeLastPointToolip(chart);
                     // }, 1000);
+                    
 
                     serieCapacite.name = capacite;
                     serieSeuil.name = seuil;

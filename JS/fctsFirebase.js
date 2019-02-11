@@ -3,17 +3,38 @@
 // ----- Variables de ref() ----- //
 
 //On utilise la deuxième variable i car k vaut 4 dans la fonction
-var i = 1;
-for(var k = 1; k<=3;k++){
-	//console.log(k);
-	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
-	dataAffluence.on('child_added', function(snapshot){
-		var aff = snapshot.child('nbr').val();
-		//console.log('aff'+i,aff);
-		ACCUEIL.setAffluence(aff,'salle'+i);
-		i++;
-	})
-}
+
+// var i = 1;
+// for(var k = 1; k<=3;k++){
+// 	//console.log(k);
+// 	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
+// 	dataAffluence.on('child_added', function(snapshot){
+// 		var aff = snapshot.child('nbr').val();
+// 		console.log('aff'+i,aff);
+// 		ACCUEIL.getAffluence(aff,'salle'+i);
+// 		i++;
+// 	})
+// }
+
+getDataSalle = function(salle){
+	var ref = firebase.database().ref('HistoriqueSalles/current/'+salle);
+	ref.limitToLast(1).on('child_added', function(snapshot){
+			var aff = snapshot.child('nbr').val();
+			//console.log('aff',aff);
+			SALLES.setDataSalle('affluence', aff);
+		});
+
+	var refPar = firebase.database().ref('Paramètres/'+salle);
+	refPar.once('value', function(snapshot){
+			var seuil = snapshot.child('seuil').val();
+			//console.log('seuil',seuil);
+			SALLES.setDataSalle('valeurAlerte', seuil);
+
+			var capacité = snapshot.child('capacité').val();
+			SALLES.setDataSalle('valeurMax',capacité);
+		});
+};
+
 
 
 getParametres = function(){
@@ -50,14 +71,11 @@ getLastofH = function(numSalle){
 	console.log(LastMesure);
 };
 
-
-
-db.ref("HistoriqueSalles").on('value', function(snapshot) {
-	var numOfHist = snapshot.numChildren();
-	ADMIN.getNumHist(numOfHist);
-});
-
 resetToZero = function(){
+	db.ref("HistoriqueSalles").once('value', function(snapshot) {
+		var numOfHist = snapshot.numChildren();
+		ADMIN.getNumHist(numOfHist);
+	});
 	//console.log(ADMIN.numHist);
 	var numH = ADMIN.numHist;
 	var d = new Date();
@@ -80,9 +98,9 @@ resetToZero = function(){
 			"nbr": 0,
 			"temps": temps
 		});
-		refSalle.child("tempo").remove();
-	}	
-}
+	}
+};
+
 
 
 modifParametres = function(){
@@ -108,3 +126,20 @@ checkParametres = function(){
 		alert("Les valeurs doivent être des entiers positifs.");
 	}
 };
+
+getParGraphe = function(salle){
+	db.ref("HistoriqueSalles/current/"+salle).once('value',function(snap){
+		var nbrdata = snap.numChildren();
+		ACCUEIL.setParGraphe('nbrData',nbrdata);
+	});
+	db.ref("HistoriqueSalles/current/"+salle).limitToFirst(1).once('child_added',function(snap){
+		var mintemps = snap.child('temps').val();
+		ACCUEIL.setParGraphe('minTemps',(new Date(mintemps)).getTime());
+	});	
+	db.ref("HistoriqueSalles/current/"+salle).limitToLast(1).once('child_added',function(snap){
+		var maxtemps = snap.child('temps').val();
+		ACCUEIL.setParGraphe('maxTemps',(new Date(maxtemps)).getTime());
+	});
+	console.log(ACCUEIL.parGraphe);
+}
+
