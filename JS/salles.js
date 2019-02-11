@@ -8,7 +8,8 @@ var SALLES = new Vue({
         affluence: "" ,
        	limite: "",
         valeurMax : "" ,
-        valeurAlerte:""
+        valeurAlerte:"",
+        connect: Object.freeze(CONNEXION.user.connect)
       },
 
       methods: {

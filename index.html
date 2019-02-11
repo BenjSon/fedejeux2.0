@@ -101,7 +101,7 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div class="container" id="accueil">
-		<template v-if="showAccueil">
+		<template v-if="showAccueil && connect">
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
@@ -151,7 +151,7 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="admin">
-		<template v-if="showAdmin">
+		<template v-if="showAdmin && connect">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
 			<div class="container" id="remiseZero">
@@ -199,7 +199,7 @@
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 	<div id="salles" > 
-		<template v-if="showSalles">
+		<template v-if="showSalles && connect">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
 			<h1 class="text-center" id="titreSalle"> AFFLUENCE - {{ salle }} Salle du Fort <img src="imageDeLaSalle"/> </h1>
 			<div class="container">
@@ -239,7 +239,7 @@
 
 
 
-		<template v-if="showSalles">  
+		<template v-if="showSalles && connect">  
 	  		<div id="contenu">
 
 		        <div class="titre" :style="myStyle(salle)"> 

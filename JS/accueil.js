@@ -9,6 +9,7 @@ var ACCUEIL = new Vue({
 			salle3:0
 		},
 		chosenSalle: {},
+        connect: Object.freeze(CONNEXION.user.connect)
 	},
 	methods:{
 		

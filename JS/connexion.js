@@ -2,7 +2,7 @@ var CONNEXION = new Vue({
 	el: "#connexion",
 	data: {
 		showConnexion: true,
-        user: {identifiant: "", mdp: "",connect: ""}
+        user: {identifiant: "", mdp: ""}
 	},
 	methods:{
         // fonction qui redirige vers l'accueil si l'utilisateur existe.
@@ -28,8 +28,9 @@ var CONNEXION = new Vue({
                                 }
                             });
             if (firebase.auth().currentUser){
-                this.user.connect = firebase.auth().currentUser;
-                this.user.connect.freeze;
+                ACCUEIL.connect = Object.freeze(firebase.auth().currentUser);
+                ADMIN.connect = Object.freeze(firebase.auth().currentUser);
+                SALLES.connect = Object.freeze(firebase.auth().currentUser);
                 NAV.toAccueil();
             }                
         },
@@ -37,8 +38,9 @@ var CONNEXION = new Vue({
         deconnexion: function(){
             // déconnexion de l'utilisateur puis redirection
             firebase.auth().signOut();
-            NAV.toConnexion();
-            alert("Vous avez été déconnecté")
+            alert("Vous avez été déconnecté");
+            window.location.reload();
+            //NAV.toConnexion();
         },
         // fonction de réinitialisation du mot de passe grâce à un lien envoyé par e-mail (adresse qui est saisie dan sl'identifiant).
         resetMdp:function(){
