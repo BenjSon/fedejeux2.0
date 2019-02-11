@@ -9,7 +9,7 @@ body {
 
 #Ld { position: absolute; left: 20px; }
 
-#Af { position: absolute; right: 25px; }
+#Af { position: absolute; right: 25px; } */
 /*----- fin header------*/
 
 
@@ -121,10 +121,10 @@ h5 {
 	margin-top: 6px;
 }
 
-#footer {
-	position : absolute;
-	bottom : 85px ; left: 50%;
+#deco2 {
+	position : absolute; left: 50%;
 	transform: translate(-50%);
+	margin-top: 55px;
 }
 
 
