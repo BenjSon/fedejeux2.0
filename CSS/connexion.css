@@ -7,7 +7,11 @@ body {
 }
 
 #fond {
-	width : 100%;
+	width : 420px;
+
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 #Ludinord {
@@ -26,7 +30,7 @@ body {
 	white-space: nowrap;
 
 	position: absolute;
-	top : 192.5px; left: 50%;
+	top : 223px; left: 50%;
 	transform: translate(-50%);
 }
 
@@ -36,6 +40,10 @@ body {
 	position : absolute;
 	top : 85px ; left: 50%;
 	transform: translate(-50%);
+}
+
+#identification{
+	margin-top: 32px
 }
 
 .zone {
