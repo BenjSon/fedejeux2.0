@@ -30,12 +30,14 @@ var CONNEXION = new Vue({
             if (firebase.auth().currentUser){
                 this.user.connect = firebase.auth().currentUser;
                 this.user.connect.freeze;
-                NAV.toAccueil();
+                
+                setTimeout(NAV.toAccueil(),3000 );
             }
             // version test:
             ACCUEIL.GrapheSomme = setGrapheSommeOptions();
-            getParGraphe("salle1");
-            return NAV.toAccueil();         
+
+            // getParGraphe("salle1");
+            // return NAV.toAccueil();         
         },
         // fonction qui redirige vers l'accueil si l'utilisateur existe en appuyant sur "Entrée".
         connection:function(event){

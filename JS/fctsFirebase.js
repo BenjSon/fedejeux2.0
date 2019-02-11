@@ -47,18 +47,7 @@ getParametres = function(){
 		})
 };
 
-getParametres();
 
-
-
-getHistory = function(numSalle){
-	CurrentRef.child("salle" + numSalle).on('child_added',snapshot=>{
-		var historique = snapshot.val();
-		console.log(historique);
-		TracerGraphe(LastMesure,)
-		
-	});
-};
 
 getLastofH = function(numSalle){
 	var lastMesureFocus = db.ref("HistoriqueSalles/current/salle" + numSalle).orderByChild("id").limitToLast(1);
