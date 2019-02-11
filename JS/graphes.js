@@ -50,9 +50,9 @@ function setGrapheOptions(idSalle,nomSalle){
                         var x1 = (new Date(snap1.val().temps)).getTime(),
                             y1 = snap1.val().nbr;
                         console.log('x1:',x1,',y1:',y1);
-                        series.addPoint([x1, y1], true, true);
-                        serieCapacite.addPoint([x1,capacite], true, true);
-                        serieSeuil.addPoint([x1,seuil], true, true);
+                        series.addPoint([x1, y1], true, false);
+                        serieCapacite.addPoint([x1,capacite], true, false);
+                        serieSeuil.addPoint([x1,seuil], true, false);
                         activeLastPointToolip(chart);
                     });
                 }
@@ -231,7 +231,7 @@ function setGrapheSommeOptions(){
 
                                 y1 = y1 + y2 + y3;
                                 // console.log('x1:',x1,',y1:',y1);
-                                series.addPoint([x1, y1], true, true);
+                                series.addPoint([x1, y1], true, false);
                             });
                         
                         activeLastPointToolip(chart);
