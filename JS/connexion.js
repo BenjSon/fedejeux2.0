@@ -26,7 +26,6 @@ var CONNEXION = new Vue({
                                 } else {
                                     alert(errorMessage);
                                 }
-                                // console.log(error);
                             });
             if (firebase.auth().currentUser){
                 this.user.connect = firebase.auth().currentUser;
