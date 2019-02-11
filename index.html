@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>index</title>
+  <title>Fédéjeux</title>
 
   
 
@@ -56,7 +56,6 @@
 <!-- ================================================================== -->
 
 
-
 </head>
 
 <body>
@@ -70,17 +69,17 @@
 				<img src="./Ressources/jeux-societe-android.jpg" id="fond">
 				<h1>LUDINORD 2019</h1>
 			</div>	
-<!-- Form de connexion: partie inférieure de la page 
-Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe de l'utilisateur. Le form fait appel à la fonction "seConnecter" pour vérifier que cet utilisateur existe bien. -->
+            <!-- Form de connexion: partie inférieure de la page 
+            Avec l'utilisation de v-model pour récupérer les identifiants 
+            et mot de passe de l'utilisateur. Le form fait appel à la 
+            fonction "seConnecter" pour vérifier que cet utilisateur existe bien. -->
 			<div id="identification">
 				<form>
 					<input type="text" class="zone" id="login" placeholder="Identifiant" v-model.lazy='user.identifiant' /><br />
-					<input type="password" class="zone" id="passe" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
+					<input type="password" class="zone" id="passe" v-on:keyup="connection" placeholder="Mot de passe" v-model.lazy='user.mdp'/><br />
 					<div @click="seConnecter" class="btn btn-primary" id="action">CONNEXION</div>
 				</form>
-                <!-- Lien pour reset le mot de passe pas mail : pour ce faire il faut remplir l'identifiant avec un mail qui est un identifiant existant dans la base de donnée. <div @click="CONNEXION.restetMdp()"> Mot de Passe oublié ? </div> -->
 			</div>
-			<!-- <div onclick="NAV.toConnexion()" class="btn btn-primary lien" id="deco">Déconnexion</div> -->
 			<div @click="resetMdp" class="btn btn-primary lien" id="deco1">Mot de passe oublié ?</div>
 		</template>
 	</div>
@@ -88,7 +87,9 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
 
-	<div id="header" onclick="NAV.toAccueil(); getParametres();">
+
+	<div id="header" onclick="getParametres();">
+
 		<template v-if="showHeader">
 			<!-- <div onclick="NAV.toAccueil()"> Retour à l'accueil </div> -->
 			<div>
