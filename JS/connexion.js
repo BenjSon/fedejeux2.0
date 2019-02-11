@@ -20,7 +20,7 @@ var CONNEXION = new Vue({
                                 //on gère les erreurs ici
                                 var errorCode = error.code;
                                 var errorMessage = error.message;
-                                //on affiche les erreurs possibles
+                                //on modifie le message d'erreur en cas de mot de passe erroné
                                 if (errorCode === 'auth/wrong-password') {
                                     alert('Mauvais mot de passe');
                                 } else {
@@ -34,31 +34,28 @@ var CONNEXION = new Vue({
             }                
         },
         // fonction qui redirige vers l'accueil si l'utilisateur existe en appuyant sur "Entrée".
-        connection:function(){
-            var input = document.getElementById("passe");
-            input.addEventListener("keyup", function(event) {
-                event.preventDefault();
-                if (event.keyCode == 13) {
-                    CONNEXION.seConnecter();
-                }
-            }) 
+        connection:function(event){
+            if (event.keyCode == 13) {
+                CONNEXION.seConnecter();
+            } 
         },
+        // fonction de déconnexion de l'utilisateur  
         deconnexion: function(){
-            // on déconnecte l'utilisateur
+            // déconnexion de l'utilisateur puis redirection
             firebase.auth().signOut();
             NAV.toConnexion();
             alert("Vous avez été déconnecté")
         },
+        // fonction de réinitialisation du mot de passe grâce à un lien envoyé par e-mail (adresse qui est saisie dan sl'identifiant).
         resetMdp:function(){
-            // renvoie un mot de passe à l'adresse e-mail inscrite dans l'identifiant
             var emailAddress = this.user.identifiant;
+            //on envoire l'e-mail avec une fonction implantée dans le framework firebase-auth
             firebase.auth().sendPasswordResetEmail(emailAddress)
                         .then(function() {
                               alert('Email envoyé !');
                             })
                         .catch(function(error) {
-                            console.log(error);
-                            alert("Une erreur s'est produite : Ecrire une adresse e-mail dans l'identifiant")
+                            alert("Une erreur s'est produite : Ecrire une adresse e-mail valide dans l'identifiant")
             });
         }
     }
