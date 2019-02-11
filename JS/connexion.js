@@ -34,6 +34,8 @@
                 NAV.toAccueil();
             }
             // version test:
+            ACCUEIL.GrapheSomme = setGrapheSommeOptions();
+            getParGraphe("salle1");
             return NAV.toAccueil();         
         },
         deconnexion: function(){

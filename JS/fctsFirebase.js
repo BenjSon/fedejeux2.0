@@ -4,17 +4,17 @@
 
 //On utilise la deuxième variable i car k vaut 4 dans la fonction
 
-// var i = 1;
-// for(var k = 1; k<=3;k++){
-// 	//console.log(k);
-// 	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
-// 	dataAffluence.on('child_added', function(snapshot){
-// 		var aff = snapshot.child('nbr').val();
-// 		console.log('aff'+i,aff);
-// 		ACCUEIL.getAffluence(aff,'salle'+i);
-// 		i++;
-// 	})
-// }
+var i = 1;
+for(var k = 1; k<=3;k++){
+	//console.log(k);
+	var dataAffluence = firebase.database().ref('HistoriqueSalles/current/salle'+k).limitToLast(1);
+	dataAffluence.on('child_added', function(snapshot){
+		var aff = snapshot.child('nbr').val();
+		console.log('aff'+i,aff);
+		ACCUEIL.setAffluence(aff,'salle'+i);
+		i++;
+	})
+}
 
 getDataSalle = function(salle){
 	var ref = firebase.database().ref('HistoriqueSalles/current/'+salle);
@@ -130,6 +130,7 @@ checkParametres = function(){
 getParGraphe = function(salle){
 	db.ref("HistoriqueSalles/current/"+salle).once('value',function(snap){
 		var nbrdata = snap.numChildren();
+		console.log(salle);
 		ACCUEIL.setParGraphe('nbrData',nbrdata);
 	});
 	db.ref("HistoriqueSalles/current/"+salle).limitToFirst(1).once('child_added',function(snap){

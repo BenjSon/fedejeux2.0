@@ -45,7 +45,6 @@ var ACCUEIL = new Vue({
     		return (ACCUEIL.affSalles[salle]*100/ADMIN.parametres[salle].capacité).toFixed(0)
     	},
     	affluenceTotale: function(){
-            ACCUEIL.GrapheSomme = setGrapheSommeOptions();
     	    return ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3
     	},
     	pourcentageTotal: function(){
