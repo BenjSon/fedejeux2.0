@@ -91,7 +91,7 @@
 
 
 		<template v-if="showHeader">
-			<!-- <div onclick="NAV.toAccueil()"> Retour à l'accueil </div> -->
+			<!-- <div onclick="NAV.toAccueil(); getParametres();"> Retour à l'accueil </div> -->
 			<div>
 				<img src="./Ressources/logo-ludinord.png" class="logo-entete" id="Ld"> 
 				<img src="./Ressources/Association Fédéjeux.png" class="logo-entete" id="Af">
@@ -135,7 +135,7 @@
               		</div>
           		</div>
           		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton text-center droite bas" id="ADMINISTRATION" onclick = "NAV.toAdmin()">
+              		<div class="bouton text-center droite bas" id="ADMINISTRATION" onclick = "NAV.toAdmin(); getNumHist();">
                 		<h1 class="nom">PAGE D'ADMINISTRATION</h1>
                 		<img src="./Ressources/settings.png" class="icone">
               		</div>
@@ -222,7 +222,7 @@
 		    		</div> 
             </div>
 		    	</div>	
-	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
+	    	<div onclick="NAV.toAdmin(); getNumHist();" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
 	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
     	</template>
     </div>

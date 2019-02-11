@@ -9,15 +9,17 @@ var ACCUEIL = new Vue({
 			salle3:0
 		},
 		chosenSalle: {},
-        GrapheSomme:""
+        GrapheSomme:"",
+        parGraphe:{
+            nbrData:0,
+            minTemps:"",
+            maxTemps:""
+        }
 	},
 	methods:{
-		tracerGrapheSomme: function(){
-                    },
-
-		getAffluence: function(affluence,variable){
+		setAffluence: function(affluence,variable){
 			ACCUEIL.affSalles[variable] = affluence;
-			//console.log('affFort', ACCUEIL.affSalles[variable]);
+			// console.log('affFort', ACCUEIL.affSalles[variable]);
 		},
 
    		myStyle: function(salle){
@@ -36,20 +38,15 @@ var ACCUEIL = new Vue({
     		return (ACCUEIL.affSalles[salle]*100/ADMIN.parametres[salle].capacité).toFixed(0)
     	},
     	affluenceTotale: function(){
-            ACCUEIL.GrapheSomme = setGrapheSommeOptions();
     	    return ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3
     	},
     	pourcentageTotal: function(){
     		return ((ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3)*100/
     		(ADMIN.parametres.salle1.capacité+ADMIN.parametres.salle2.capacité+ADMIN.parametres.salle3.capacité)).toFixed(0)
-    	}
+    	},
       
-
-    	// chooseSalle: function(salle){
-    	// 	if (salle == 'salle1') chosenSalle = {salle1: 'Fort'};
-    	// 	else if (salle == 'salle2') chosenSalle = {salle2: 'Montaigne'};
-    	// 	else chosenSalle = {salle3: 'Chapiteau'};
-    	// 	console.log(ACCUEIL.chosenSalle);
-    	// }
+        setParGraphe: function(nomPar,par){
+            ACCUEIL.parGraphe[nomPar] = par;
+        }
 	}
 });

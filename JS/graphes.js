@@ -5,7 +5,16 @@ function activeLastPointToolip(chart) {
     chart.tooltip.refresh(points[points.length -1]); //Permet d'obtenir des indications sur le dernier point placé sur le graphe
 }
 
-	                
+function dateToString(date){
+    date+= (1000*60*60) //une heure de décalage
+    var d = new Date();
+    d.setTime(date);
+    dateString = d.toISOString();
+    //console.log (dateString);
+    var newDate = dateString.replace('T',' ').slice(0,-5)
+    //console.log(newDate);
+    return newDate
+};            
 
 function setGrapheOptions(idSalle,nomSalle){
 	Vue.use(VueHighcharts);
@@ -36,25 +45,53 @@ function setGrapheOptions(idSalle,nomSalle){
                     	serieCapacite = this.series[1],
                         chart = this;
                     activeLastPointToolip(chart);
-                    // setInterval(function () {
-                    //     var x = (new Date()).getTime(), 
-                    //         y = random();          
-                    //     series.addPoint([x, y], true, true);
-                    //     activeLastPointToolip(chart);
-                    // }, 1000);
 
                     serieCapacite.name = capacite;
                     serieSeuil.name = seuil;
 
-                    databaseRef.child(idSalle).on('child_added', function(snap1) {
-                        var x1 = (new Date(snap1.val().temps)).getTime(),
-                            y1 = snap1.val().nbr;
-                        console.log('x1:',x1,',y1:',y1);
-                        series.addPoint([x1, y1], true, false);
-                        serieCapacite.addPoint([x1,capacite], true, false);
-                        serieSeuil.addPoint([x1,seuil], true, false);
-                        activeLastPointToolip(chart);
-                    });
+                    var nbrSamples = 40; //nbr de points attribué à l'initialisation du graphe
+                    
+                    if(nbrSamples >= ACCUEIL.parGraphe.nbrData){
+                        databaseRef.child(idSalle).on('child_added', function(snap) {
+                            var x = (new Date(snap.val().temps)).getTime(),
+                                y = snap.val().nbr;
+                            //console.log('x:',x,',y:',y);
+                            series.addPoint([x, y], true, false);
+                            serieCapacite.addPoint([x,capacite], true, false);
+                            serieSeuil.addPoint([x,seuil], true, false);
+                            activeLastPointToolip(chart);
+                        });
+                    }
+
+                    else{
+                        var tickSample = parseInt((ACCUEIL.parGraphe.maxTemps-ACCUEIL.parGraphe.minTemps)/nbrSamples);
+                        var i=0;
+
+                        for(i=ACCUEIL.parGraphe.minTemps; i<=ACCUEIL.parGraphe.maxTemps; i+=tickSample){
+                            iString = dateToString(i);
+                            //console.log(i);
+                            databaseRef.child(idSalle).orderByChild('temps').endAt(iString)
+                            .limitToLast(1).once('child_added', function(snap) {
+                                var x = (new Date(snap.val().temps)).getTime(),
+                                    y = snap.val().nbr;
+                                //console.log('x:',x,',y:',y);
+                                series.addPoint([x, y], true, false);
+                                serieCapacite.addPoint([x,capacite], true, false);
+                                serieSeuil.addPoint([x,seuil], true, false);                           
+                                activeLastPointToolip(chart);
+                            });
+                        }
+
+                        databaseRef.child(idSalle).limitToLast(1).on('child_added', function(snap) {
+                            var x = (new Date(snap.val().temps)).getTime(),
+                                y = snap.val().nbr;
+                            //console.log('x:',x,',y:',y);
+                            series.addPoint([x, y], true, false);
+                            serieCapacite.addPoint([x,capacite], true, false);
+                            serieSeuil.addPoint([x,seuil], true, false);
+                            activeLastPointToolip(chart);
+                        });
+                    }
                 }
             }
         },
@@ -114,7 +151,7 @@ function setGrapheOptions(idSalle,nomSalle){
                     i;
                 for (i = 0; i <= 20; i += 1) {
                     data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
+                        x: null,
                         y: null
                     });
                 }
@@ -132,7 +169,7 @@ function setGrapheOptions(idSalle,nomSalle){
                     i;
                 for (i = 0; i <= 20; i += 1) {
                     data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
+                        x: null,
                         y: capacite
                     });
                 }
@@ -151,7 +188,7 @@ function setGrapheOptions(idSalle,nomSalle){
                     i;
                 for (i = 0; i <= 20; i += 1) {
                     data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
+                        x: null,
                         y: seuil
                     });
                 }

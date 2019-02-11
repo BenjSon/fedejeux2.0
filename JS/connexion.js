@@ -7,7 +7,7 @@
 	methods:{
         // fonction qui redirige vers l'accueil si l'utilisateur existe.
         seConnecter:function(){
-            console.log(this.user);
+            //console.log(this.user);
             // on vérifie si quelqu'un est déjà connecté
             if (firebase.auth().currentUser) {
                 //si quelqu'un est connecté on le déconnecte
@@ -31,6 +31,10 @@
                                 // console.log(error);
                             });
             if (firebase.auth().currentUser){
+                getParametres();
+                getAffluence();
+                getParGraphe('salle1');
+                ACCUEIL.GrapheSomme = setGrapheSommeOptions();
                 NAV.toAccueil();
             }                
         },
