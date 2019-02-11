@@ -49,6 +49,7 @@
 .form-check-input {
 	padding-top: 50px;
 }
+*/
 
 #RAZ {
 	width: 135px;
@@ -57,11 +58,13 @@
     position : absolute;
 	left: 50%;
 	transform: translate(-50%);
+
+	margin-top: 130px;
 }
-*/
+
 #modifData {
 	position : absolute;
-	top : 150px;
+	top : 280px;
 	left: 50%;
 	transform: translate(-55%);
 	
@@ -92,12 +95,12 @@
     cursor: pointer;
 }
 
-/*
+
 #separation {
 	background-color: #2e778d;
 	height : 4px;
-	margin-top : 65px;
-} */
+	margin-top : 200px;
+}
 
 .zoneText {
 	width: 70px;
@@ -137,7 +140,8 @@ table {
 	margin-top: 30px;
 }
 
-#deco {
+
+#deco2 {
 	position : absolute;
 	left: 50%; bottom: 20px;
 	transform: translate(-50%);

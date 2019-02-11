@@ -38,11 +38,12 @@
 }
 
 #actuelle>span {
-	font-size: 18px ;
-	line-height: 18px;
+	font-size: 120% ;
+	line-height: 120%;
 	font-style: italic;
 	margin-left: -20px;
 	margin-right: -20px;
+	white-space: nowrap;
 }
 
 #actuelle>p {
