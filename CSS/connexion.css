@@ -7,7 +7,7 @@ body {
 /* --FONT FACE-- */
 @font-face {
 	font-family: "Lato Light";
- 	src: url("/fonts/Lato-Regular.ttf") format("ttf")
+ 	src: url(".ressources/fonts/Lato-Light.woff2") format("woff2")
 }
 
 
@@ -24,7 +24,7 @@ body {
 }
 
 #Ludinord {
-	background-color: white;
+	background-color: #173f59;
 	background-image: url("./Ressources/jeux-societe-android.jpg")
 	background-position: center;
   	height: 250px;
@@ -49,6 +49,7 @@ body {
 	position : absolute;
 	top : 85px ; left: 50%;
 	transform: translate(-50%);
+	z-index: 1;
 }
 
 #identification {
@@ -114,5 +115,5 @@ body {
 	left: 50%;
 	transform: translate(-50%);
 
-	margin-top: 90%;
+	margin-top: 80%;
 }

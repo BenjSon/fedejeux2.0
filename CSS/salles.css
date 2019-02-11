@@ -109,6 +109,7 @@
 #infos {
 	margin-top: -62px;
 	margin-left: 60px;
+	white-space: nowrap;
 }
 
 #infos>h2 {
@@ -131,10 +132,13 @@
 
 #lienAdmin {
 	position: absolute;
-	bottom: 20px; left: 17%
+	left: 17%;
+
+	margin-top: 40px;
 }
 
 #lienDeco {
 	position: absolute;
-	bottom: 20px; right: 17%;
+	right: 17%;
+	margin-top: 40px;
 }

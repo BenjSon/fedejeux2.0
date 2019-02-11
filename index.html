@@ -7,14 +7,12 @@
 
   <title>index</title>
 
-  
-
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
 
  <!-- 				stylesheets 				-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
   <link rel="stylesheet" href="./CSS/global.css">
   <link rel="stylesheet" href="./CSS/connexion.css">
@@ -87,8 +85,9 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 
 	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
-
-	<div id="header" onclick="NAV.toAccueil(); getParametres();">
+<!--
+	<div id="header" onclick="NAV.toAccueil(); getParametres();"> -->
+    <div id="header">
 		<template v-if="showHeader">
 			<!-- <div onclick="NAV.toAccueil()"> Retour à l'accueil </div> -->
 			<div>
@@ -175,7 +174,7 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
         		<div class="btn btn-primary validation" id="save" onclick="checkParametres();">ENREGISTREMENT</div>
         		</form>
       		</div>
-      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco2">Déconnexion</div>
+      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco3">Déconnexion</div>
     	</template>
   	</div>
 
@@ -213,11 +212,13 @@ Avec l'utilisation de v-model pour récupérer les identifiants et mot de passe 
 		    		</div>
 		    	</div>
 		    	<div class="row" id="tauxLimites">
+            <div class="col-xs-12 cols-sm-12">
 					  <img src="./Ressources/WARNING.png" class="warn">	      
 		          <div id="infos">
 		            	<h2>Capacité maximale : {{valeurMax}}</h2>
 		            	<h2>Seuil d'alerte : {{valeurAlerte}}</h2>
 		    		</div> 
+            </div>
 		    	</div>	
 	    	<div onclick="NAV.toAdmin()" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
 	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>

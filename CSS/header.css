@@ -1,7 +1,7 @@
-/* #header { background-color: #14364c; height: 60px; }
+#header>div { background-color: #14364c; height: 60px; }
 
 .logo-entete { height: 35px; margin-top: 13px; }
 
 #Ld { position: absolute; left: 20px; }
 
-#Af { position: absolute; right: 25px; } */
+#Af { position: absolute; right: 25px; } 
