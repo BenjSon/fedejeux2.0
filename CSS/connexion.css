@@ -39,7 +39,7 @@ body {
 	white-space: nowrap;
 
 	position: absolute;
-	top : 223px; left: 50%;
+	top : 222.5px; left: 50%;
 	transform: translate(-50%);
 }
 
@@ -51,12 +51,8 @@ body {
 	transform: translate(-50%);
 }
 
-
 #identification {
 	margin-top: 25px;
-
-#identification{
-	margin-top: 32px
 
 }
 
