@@ -12,7 +12,8 @@ var SALLES = new Vue({
         valeurMax : "" ,
         valeurAlerte:"",
         styleSalle:"",
-        Graphe:""
+        Graphe:"",
+        connect: Object.freeze(CONNEXION.user.connect)
       },
 
       methods: {

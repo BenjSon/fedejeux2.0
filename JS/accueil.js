@@ -14,7 +14,8 @@ var ACCUEIL = new Vue({
             nbrData:0,
             minTemps:"",
             maxTemps:""
-        }
+        },
+        connect: Object.freeze(CONNEXION.user.connect)
 	},
 	methods:{
 		setAffluence: function(affluence,variable){
