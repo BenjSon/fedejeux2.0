@@ -34,7 +34,6 @@ var SALLES = new Vue({
             SALLES.Graphe = setGrapheOptions(salle,SALLES.nomSalle);
 
           }
-          //console.log('nomSalle',SALLES.nomSalle);
           getDataSalle(salle);
           SALLES.styleSalle = ACCUEIL.myStyle(salle);
           SALLES.total = ACCUEIL.affSalles.salle1+ACCUEIL.affSalles.salle2+ACCUEIL.affSalles.salle3;

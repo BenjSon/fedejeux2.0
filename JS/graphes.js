@@ -10,9 +10,7 @@ function dateToString(date){
     var d = new Date();
     d.setTime(date);
     dateString = d.toISOString();
-    //console.log (dateString);
     var newDate = dateString.replace('T',' ').slice(0,-5)
-    //console.log(newDate);
     return newDate
 };            
 
@@ -55,7 +53,6 @@ function setGrapheOptions(idSalle,nomSalle){
                         databaseRef.child(idSalle).on('child_added', function(snap) {
                             var x = (new Date(snap.val().temps)).getTime(),
                                 y = snap.val().nbr;
-                            //console.log('x:',x,',y:',y);
                             series.addPoint([x, y], true, false);
                             serieCapacite.addPoint([x,capacite], true, false);
                             serieSeuil.addPoint([x,seuil], true, false);
@@ -67,12 +64,10 @@ function setGrapheOptions(idSalle,nomSalle){
                         var i=0;
                         for(i=ACCUEIL.parGraphe.minTemps; i<=ACCUEIL.parGraphe.maxTemps; i+=tickSample){
                             iString = dateToString(i);
-                            //console.log(i);
                             databaseRef.child(idSalle).orderByChild('temps').endAt(iString)
                             .limitToLast(1).once('child_added', function(snap) {
                                 var x = (new Date(snap.val().temps)).getTime(),
                                     y = snap.val().nbr;
-                                //console.log('x:',x,',y:',y);
                                 series.addPoint([x, y], true, false);
                                 serieCapacite.addPoint([x,capacite], true, false);
                                 serieSeuil.addPoint([x,seuil], true, false);                           
@@ -82,7 +77,6 @@ function setGrapheOptions(idSalle,nomSalle){
                         databaseRef.child(idSalle).limitToLast(1).on('child_added', function(snap) {
                             var x = (new Date(snap.val().temps)).getTime(),
                                 y = snap.val().nbr;
-                            //console.log('x:',x,',y:',y);
                             series.addPoint([x, y], true, false);
                             serieCapacite.addPoint([x,capacite], true, false);
                             serieSeuil.addPoint([x,seuil], true, false);
@@ -212,13 +206,11 @@ function setGrapheOptions(idSalle,nomSalle){
 
 function setGraphe(idGraphe, chart, nomSeries){
     var databaseRef = firebase.database().ref("HistoriqueSalles/current");
-    console.log("je suis la");
     var nbrSamples = 40; //nbr de points attribué à l'initialisation du graphe
     if(nbrSamples >= ACCUEIL.parGraphe.nbrData){
         databaseRef.child(idGraphe).on('child_added', function(snap) {
             var x = (new Date(snap.val().temps)).getTime(),
                 y = snap.val().nbr;
-            //console.log('x:',x,',y:',y);
             nomSeries.addPoint([x, y], true, false);
             activeLastPointToolip(chart);
         });
@@ -230,7 +222,6 @@ function setGraphe(idGraphe, chart, nomSeries){
 
         for(i=ACCUEIL.parGraphe.minTemps; i<=ACCUEIL.parGraphe.maxTemps; i+=tickSample){
             iString = dateToString(i);
-            //console.log(i);
             databaseRef.child(idGraphe).orderByChild('temps').endAt(iString)
             .limitToLast(1).once('child_added', function(snap) {
                 var x = (new Date(snap.val().temps)).getTime(),
@@ -244,7 +235,6 @@ function setGraphe(idGraphe, chart, nomSeries){
             var x = (new Date(snap.val().temps)).getTime(),
                 y = snap.val().nbr;
             nomSeries.addPoint([x, y], true, false);
-            console.log(nomSeries);
             activeLastPointToolip(chart);
         });
     }

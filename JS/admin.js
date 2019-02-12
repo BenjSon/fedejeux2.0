@@ -17,7 +17,6 @@ var ADMIN = new Vue({
 				ADMIN.parametres[salle].capacité = myObject[salle].capacité;
 				ADMIN.parametres[salle].seuil = myObject[salle].seuil;
 			}
-			//console.log('parametres',ADMIN.parametres);
 		},
 
 		checkPositiveInt: function(){
@@ -26,7 +25,6 @@ var ADMIN = new Vue({
 			for (var salle in ADMIN.parametres){
 				for (var par in ADMIN.parametres[salle]){
 					test = ADMIN.parametres[salle][par];
-					// console.log('test:',test);
 					if(!Number.isInteger(test) | test<0){
 						check = false;
 					}
@@ -46,7 +44,6 @@ var ADMIN = new Vue({
 
 		setNumHist: function(num){
 			ADMIN.numHist = num;
-			//console.log(ADMIN.numHist);
 		}
 	}
 });
