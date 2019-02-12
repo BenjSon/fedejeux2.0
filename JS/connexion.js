@@ -39,7 +39,7 @@
                 setTimeout(function(){
                     ACCUEIL.GrapheSomme = setGrapheSommeOptions();
                     NAV.toAccueil();
-                }, 2000)
+                }, 1000)
                 
             }                
         },
