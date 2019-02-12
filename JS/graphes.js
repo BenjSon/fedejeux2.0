@@ -62,11 +62,9 @@ function setGrapheOptions(idSalle,nomSalle){
                             activeLastPointToolip(chart);
                         });
                     }
-
                     else{
                         var tickSample = parseInt((ACCUEIL.parGraphe.maxTemps-ACCUEIL.parGraphe.minTemps)/nbrSamples);
                         var i=0;
-
                         for(i=ACCUEIL.parGraphe.minTemps; i<=ACCUEIL.parGraphe.maxTemps; i+=tickSample){
                             iString = dateToString(i);
                             //console.log(i);
@@ -81,7 +79,6 @@ function setGrapheOptions(idSalle,nomSalle){
                                 activeLastPointToolip(chart);
                             });
                         }
-
                         databaseRef.child(idSalle).limitToLast(1).on('child_added', function(snap) {
                             var x = (new Date(snap.val().temps)).getTime(),
                                 y = snap.val().nbr;
@@ -136,16 +133,6 @@ function setGrapheOptions(idSalle,nomSalle){
         },
         series: [{
             name: 'Nombre de personne dans la salle',
-            // data: (function () {
-            //     var data = [];
-            //     data.push({
-            //             x: 0,
-            //             y: 0
-            //         });
-            //     console.log('initialData:', data)
-            //     return data;
-            // }())
-
             data: (function () {
                 var data = [],
                     i;
@@ -157,7 +144,6 @@ function setGrapheOptions(idSalle,nomSalle){
                 }
                 return data;
             }())
-
         },
 
         {	
@@ -223,8 +209,48 @@ function setGrapheOptions(idSalle,nomSalle){
 
 	return optionsDuGraphe;
 };
-// var test= setOptions();
-// console.log(test);
+
+function setGraphe(idGraphe, chart, nomSeries){
+    var databaseRef = firebase.database().ref("HistoriqueSalles/current");
+    console.log("je suis la");
+    var nbrSamples = 40; //nbr de points attribué à l'initialisation du graphe
+    if(nbrSamples >= ACCUEIL.parGraphe.nbrData){
+        databaseRef.child(idGraphe).on('child_added', function(snap) {
+            var x = (new Date(snap.val().temps)).getTime(),
+                y = snap.val().nbr;
+            //console.log('x:',x,',y:',y);
+            nomSeries.addPoint([x, y], true, false);
+            activeLastPointToolip(chart);
+        });
+    }
+
+    else{
+        var tickSample = parseInt((ACCUEIL.parGraphe.maxTemps-ACCUEIL.parGraphe.minTemps)/nbrSamples);
+        var i=0;
+
+        for(i=ACCUEIL.parGraphe.minTemps; i<=ACCUEIL.parGraphe.maxTemps; i+=tickSample){
+            iString = dateToString(i);
+            //console.log(i);
+            databaseRef.child(idGraphe).orderByChild('temps').endAt(iString)
+            .limitToLast(1).once('child_added', function(snap) {
+                var x = (new Date(snap.val().temps)).getTime(),
+                    y = snap.val().nbr;
+                nomSeries.addPoint([x, y], true, false);                     
+                activeLastPointToolip(chart);
+            });
+        }
+
+        databaseRef.child(idGraphe).limitToLast(1).on('child_added', function(snap) {
+            var x = (new Date(snap.val().temps)).getTime(),
+                y = snap.val().nbr;
+            nomSeries.addPoint([x, y], true, false);
+            console.log(nomSeries);
+            activeLastPointToolip(chart);
+        });
+    }
+}
+
+
 function setGrapheSommeOptions(){
     Vue.use(VueHighcharts);
     var databaseRef = firebase.database().ref("HistoriqueSalles/current");
@@ -234,47 +260,24 @@ function setGrapheSommeOptions(){
         }
     });
     var OptionSomme = {
+        marginRight: 10,
+        type: 'spline',
         chart: {
-            type: 'spline',
-            marginRight: 10,
+            backgroundColor:'#2e778d',
             events: {
                 load: function () {
                 //Load permet d'attendre de charger toutes les données
-                    var series = this.series[0],
+                    var series1 = this.series[0],
+                        series2 = this.series[1],
+                        series3 = this.series[2],
                         chart = this;
+                    
+                    setGraphe("salle1", chart, series1);
+                    setGraphe("salle2", chart, series2);
+                    setGraphe("salle3", chart, series3);
                     activeLastPointToolip(chart);
-                    // setInterval(function () {
-                    //     var x = (new Date()).getTime(), 
-                    //         y = random();          
-                    //     series.addPoint([x, y], true, true);
-                    //     activeLastPointToolip(chart);
-                    // }, 1000);
-                    databaseRef.child("salle1").on('child_added', function(snap1) {
-                        var x1 = (new Date(snap1.val().temps)).getTime(),
-                            y1 = snap1.val().nbr;
-
-                        // console.log('x1:',x1,',y1:',y1);
-                        databaseRef.child("salle2").orderByChild('temps').endAt(x1).limitToLast(1)
-                            .on('child_added', function(snap2){
-                            var x2 = (new Date(snap2.val().temps)).getTime();
-                            var y2 = snap2.val().nbr;
-                            // console.log('x2:',x2,',y2:',y2);
-
-                            databaseRef.child("salle3").orderByChild('temps').endAt(x1).limitToLast(1)
-                                .on('child_added', function(snap3){
-                                var x3 = (new Date(snap3.val().temps)).getTime();
-                                var y3 = snap3.val().nbr;
-                                // console.log('x3:',x3,',y3:',y3);
-
-                                y1 = y1 + y2 + y3;
-                                // console.log('x1:',x1,',y1:',y1);
-                                series.addPoint([x1, y1], true, false);
-                            });
-                        
-                        activeLastPointToolip(chart);
-                        });
-                    });
                 }
+
             }
         },
         title: {
@@ -301,12 +304,6 @@ function setGrapheSommeOptions(){
                 }
             }
         },
-        colors: [
-                '#7cd63b'
-                ],
-
-        chart: { polar: true, type: 'line', backgroundColor:'#2e778d' }, 
-
         tooltip: {
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' +
@@ -317,31 +314,55 @@ function setGrapheSommeOptions(){
         legend: {
             enabled: false
         },
-        series: [{
-            name: 'Nombre de personne dans la salle',
-            // data: (function () {
-            //     var data = [];
-            //     data.push({
-            //             x: 0,
-            //             y: 0
-            //         });
-            //     console.log('initialData:', data)
-            //     return data;
-            // }())
-
-            data: (function () {
-                var data = [],
-                    i;
-                for (i = 0; i <= 20; i += 1) {
-                    data.push({
-                        x: (new Date('2019-01-30 11:59:0'+i)).getTime(),
-                        y: 0
-                    });
-                }
-                return data;
-            }())
-
-        }]
+        series: [
+            {
+                data: (function () {
+                    var data = [],
+                        i;
+                    for (i = 0; i <= 20; i += 1) {
+                        data.push({
+                            x: null,
+                            y: null
+                        });
+                    }
+                    return data;
+                }()),
+                color: "#f8c100",
+                name: 'Nombre de personne dans la salle1'
+         
+            },
+            {   
+         
+                data: (function () {
+                    var data = [],
+                        i;
+                    for (i = 0; i <= 20; i += 1) {
+                        data.push({
+                            x: null,
+                            y: null
+                        });
+                    }
+                    return data;
+                }()),
+                colors: '#7cd63b',
+                name: 'Nombre de personne dans la salle2'
+            },
+            {
+                data: (function () {
+                    var data = [],
+                        i;
+                    for (i = 0; i <= 20; i += 1) {
+                        data.push({
+                            x: null,
+                            y: null
+                        });
+                    }
+                    return data;
+                }()),
+                color: "#7cd63b",
+                name: 'Nombre de personne dans la salle3'
+            }
+        ]
     };
     return OptionSomme;
 
