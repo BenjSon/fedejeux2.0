@@ -318,7 +318,7 @@ function setGrapheSommeOptions(){
                     return data;
                 }()),
                 color: "#f8c100",
-                name: 'Nombre de personne dans la salle1'
+                name: 'Nombre de personne dans le Fort'
          
             },
             {   
@@ -335,7 +335,7 @@ function setGrapheSommeOptions(){
                     return data;
                 }()),
                 colors: '#7cd63b',
-                name: 'Nombre de personne dans la salle2'
+                name: 'Nombre de personne dans la salle Montaigne'
             },
             {
                 data: (function () {
@@ -350,7 +350,7 @@ function setGrapheSommeOptions(){
                     return data;
                 }()),
                 color: "#7cd63b",
-                name: 'Nombre de personne dans la salle3'
+                name: 'Nombre de personne dans le Chapiteau'
             }
         ]
     };
