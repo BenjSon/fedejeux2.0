@@ -25,38 +25,30 @@
 <!-- 				========SCRIPTS=======				 -->
 
 <!--        VUE.js        -->
-  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+   <script src="https://npmcdn.com/vue/dist/vue.js"></script>
  
 <!--        FIREBASE        -->
-<!-- Firebase App is always required and must be first -->
-<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
-
-<!-- Add additional services that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
-
-<!-- Comment out (or don't include) services that you don't want to use -->
-<!-- <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-storage.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
 
   <script src="./JS/conf_firebase.js"></script>
   <script src="./JS/fctsFirebase.js"></script>
   
 <!-- 				HIGHCHARTS 				-->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-highcharts/dist/vue-highcharts.min.js"></script>
            
-<!-- explications? -->
-                  <!-- Additional files for the Highslide popup effect -->
-            <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
-            <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
-
-            <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+  <!-- Additional files for the Highslide popup effect -->
+  <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+  <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
 
 
 <!-- ================================================================== -->
@@ -90,16 +82,13 @@
 		</template>
 	</div>
 
-	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
 
-
-
+<!-- ================================================================== -->
 
 	<div id="header">
 
 
 		<template v-if="showHeader">
-			<!-- <div onclick="NAV.toAccueil(); getParametres();"> Retour à l'accueil </div> -->
 			<div>
 				<img src="./Ressources/logo-ludinord.png" class="logo-entete" id="Ld"> 
 				<img src="./Ressources/Association Fédéjeux.png" class="logo-entete" id="Af">
@@ -107,7 +96,7 @@
 		</template>
 	</div>
 
-	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+<!-- ================================================================== -->
 
 	<div class="container" id="accueil">
 		<template v-if="showAccueil">
@@ -120,54 +109,56 @@
           </div>
         </div>
         	
-        		<div class="col-sm-3 col-xs-6">
-        			<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
-                 		<h1 class="nom text-center ">SALLE DU FORT</h1>
-                		<img src="./Ressources/sand-castle.png" class="icone salle">
-                		<h5>{{pourcentage('salle1')}}%</h5>
-              		</div>
-            	</div>
-            	<div class="col-sm-3 col-xs-6">
-              		<div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle2')" :style="myStyle('salle2')">
-                		<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
-                		<img src="./Ressources/students-cap.png" class="icone salle">
-                		<h5>{{pourcentage('salle2')}}%</h5>
-              		</div>
-            	</div>
+        <div class="col-sm-3 col-xs-6">
+        	<div class="bouton gauche haut" id="FORT" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle1')" :style="myStyle('salle1')">
+                 	<h1 class="nom text-center ">SALLE DU FORT</h1>
+                	<img src="./Ressources/sand-castle.png" class="icone salle">
+                	<h5>{{pourcentage('salle1')}}%</h5>
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-xs-6">
+          <div class="bouton droite haut" id="MONTAIGNE" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle2')" :style="myStyle('salle2')">
+                	<h1 class="nom text-center ">SALLE MONTAIGNE</h1>
+                	<img src="./Ressources/students-cap.png" class="icone salle">
+                	<h5>{{pourcentage('salle2')}}%</h5>
+          </div>
+        </div>
             
-          		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle3')" :style="myStyle('salle3')">
-                		<h1 class="nom text-center">CHAPITEAU</h1>
-                		<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
-                		<h5>{{pourcentage('salle3')}}%</h5>
-              		</div>
-          		</div>
-          		<div class="col-sm-3 col-xs-6">
-              		<div class="bouton text-center droite bas" id="ADMINISTRATION" onclick = "NAV.toAdmin(); getNumHist();">
-                		<h1 class="nom">PAGE D'ADMINISTRATION</h1>
-                		<img src="./Ressources/settings.png" class="icone">
-              		</div>
-          		</div>
-            </div>
-        	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco2">Déconnexion</div>
-        </template>
-  	</div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="bouton gauche bas" id="CHAPITEAU" onclick = "NAV.toSalles(); SALLES.chooseSalle('salle3')" :style="myStyle('salle3')">
+                	<h1 class="nom text-center">CHAPITEAU</h1>
+                	<img src="./Ressources/park-tent-of-a-circus.png" class="icone salle">
+                	<h5>{{pourcentage('salle3')}}%</h5>
+          </div>
+        </div>
 
+        <div class="col-sm-3 col-xs-6">
+          <div class="bouton text-center droite bas" id="ADMINISTRATION" onclick = "NAV.toAdmin(); getNumHist();">
+                	<h1 class="nom">PAGE D'ADMINISTRATION</h1>
+                	<img src="./Ressources/settings.png" class="icone">
+          </div>
+        </div>
+      </div>
+      <div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco2">Déconnexion</div>
+    </template>
+  </div>
 
-	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+<!-- ================================================================== -->
 
 	<div id="admin">
 		<template v-if="showAdmin">
 			<div onclick="NAV.toAccueil(); getParametres();" class="btn btn-primary" id="retourAcc">  < <u>Retour à l'accueil</u> </div>
-			<h1 class="text-center" id="titreAdmin">Page d'administration</h1>
+			   <h1 class="text-center" id="titreAdmin">Page d'administration</h1>
 
 			<div class="container" id="remiseZero">
-          			<div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
-        		</form>
-      		</div> 
+          <div class="btn btn-primary validation" id="RAZ" onclick="if(confirm(ADMIN.alert)){resetToZero()};">REMISE A ZERO</div>
+        	</form>
+      </div> 
+
 			<div id="separation"> </div>
-      		<div id="modifData">
-        		<form action="modifData">
+      	<div id="modifData">
+        	<form action="modifData">
         		<table>
             			<tr>  
             				<td>&nbsp;</td> <td class="zoneText tp elt">Seuil</td>  <td class="zoneText tp elt">Capacité</t> </tr>
@@ -181,20 +172,20 @@
                 <td><input class="zoneText" type="text" id='seuil3' v-model.number="parametres.salle3.seuil"></td>
                   <td><input class="zoneText" type="text" id='cap3' v-model.number="parametres.salle3.capacité"></td>  </tr>
         		</table>
-        		<div class="btn btn-primary validation" id="save" onclick="checkParametres();">ENREGISTREMENT</div>
-        		</form>
-      		</div>
-      		<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco3">Déconnexion</div>
-    	</template>
-  	</div>
+            <div class="btn btn-primary validation" id="save" onclick="checkParametres();">ENREGISTREMENT</div>
+        	</form>
+      	</div>
+      	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="deco3">Déconnexion</div>
+    </template>
+  </div>
 
 
-	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+<!-- ================================================================== -->
 
 	<div id="salles" > 
 		<template v-if="showSalles">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
-			<h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/ id='logoSalle'> </h1>
+			 <h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/ id='logoSalle'> </h1>
 			<div class="container">
 				<div class="row" id="affluences"> 
             		<div class="col-sm-2 col-xs-4 text-center" id="actuelle">					
@@ -210,15 +201,8 @@
 		    			<div class="text-center" id="blocGraph"><p>Evolution de l'affluence sur les dernières heures</p>
                 <highcharts :options="Graphe" ref="highcharts" style="height: 175px;"></highcharts>
                 </div>
-<!--
-		    	</div>
-		    	<div class="row" id="graph">
-		    		<div class="col-xs-12 col-sm-6">
-		    			<div class="text-center" id="blocGraph">Evolution de l'affluence sur les dernières heures
-                  <highcharts :options="Graphe" ref="highcharts" style="height: 200px;"></highcharts>
-              </div>
--->
-		    		<!-- Graphique -->
+
+<!-- Graphique -->
 		    		</div>
 		    	</div>
 		    	<div class="row" id="tauxLimites">
@@ -232,10 +216,10 @@
 		    	</div>	
 	    	<div onclick="NAV.toAdmin(); getNumHist();" class="btn btn-primary lien" id="lienAdmin">Page d'administration</div>
 	    	<div onclick="CONNEXION.deconnexion()" class="btn btn-primary lien" id="lienDeco">Déconnexion</div>
-    	</template>
-    </div>
+    </template>
+  </div>
 	     
-	<!-- tenez bien une incrémentation claire (trop de sauts de lignes, div pas claires etc...) -->
+<!-- ================================================================== -->
 	        
 <div id="footer">
 	
