@@ -2,8 +2,6 @@ body {
 	margin: 0px 0px 0px 0px;
 }
 
-
-
 /* --FONT FACE-- */
 @font-face {
 	font-family: "Lato Light";
@@ -12,7 +10,7 @@ body {
 
 
 .text {
-	font-family: "Lato Light"
+	font-family: "Lato Light";
 }
 
 #fond {
