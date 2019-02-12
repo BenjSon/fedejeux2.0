@@ -34,8 +34,12 @@
                 getParametres();
                 getAffluence();
                 getParGraphe('salle1');
-                ACCUEIL.GrapheSomme = setGrapheSommeOptions();
-                NAV.toAccueil();
+                
+                setTimeout(function(){
+                    ACCUEIL.GrapheSomme = setGrapheSommeOptions();
+                    NAV.toAccueil();
+                }, 2000)
+                
             }                
         },
         // fonction de déconnexion de l'utilisateur  
