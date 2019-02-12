@@ -8,7 +8,8 @@ var ADMIN = new Vue({
 			salle3: {seuil:0, capacité:0}
 		},
 		alert: "Etes-vous sûr de vouloir faire cette modification?",
-		numHist: 0
+		numHist: 0,
+        connect: Object.freeze(CONNEXION.user.connect)
 	},
 	methods:{
 		setParametres: function(myObject){

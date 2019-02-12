@@ -97,7 +97,7 @@
 <!-- ================================================================== -->
 
 	<div class="container" id="accueil">
-		<template v-if="showAccueil">
+		<template v-if="showAccueil && connect">
 			<div class="row text-center"> 
 				<div class="col-xs-12 col-sm-6">
 					<div id="blocTot">
@@ -145,7 +145,7 @@
 <!-- ================================================================== -->
 
 	<div id="admin">
-		<template v-if="showAdmin">
+		<template v-if="showAdmin && connect">
 			<div onclick="NAV.toAccueil(); getParametres();" class="btn btn-primary" id="retourAcc">  < <u>Retour à l'accueil</u> </div>
 			   <h1 class="text-center" id="titreAdmin">Page d'administration</h1>
 
@@ -181,7 +181,7 @@
 <!-- ================================================================== -->
 
 	<div id="salles" > 
-		<template v-if="showSalles">
+		<template v-if="showSalles && connect">
 			<div onclick="NAV.toAccueil()" class="btn btn-primary" id="retourAcc"> < <u>Retour à l'accueil</u> </div>
 			 <h1 class="text-center" id="titreSalle" :style='styleSalle'> AFFLUENCE - {{ nomSalle }} <img v-bind:src="imageDeLaSalle"/ id='logoSalle'> </h1>
 			<div class="container">

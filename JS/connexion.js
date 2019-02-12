@@ -32,10 +32,14 @@
                 getAffluence();
                 getParGraphe('salle1');
                 
+                ACCUEIL.connect = Object.freeze(firebase.auth().currentUser);
+                ADMIN.connect = Object.freeze(firebase.auth().currentUser);
+                SALLES.connect = Object.freeze(firebase.auth().currentUser);
+                
                 setTimeout(function(){
                     ACCUEIL.GrapheSomme = setGrapheSommeOptions();
                     NAV.toAccueil();
-                }, 2000)
+                }, 1000)
                 
             }                
         },
@@ -43,7 +47,7 @@
         deconnexion: function(){
             // on déconnecte l'utilisateur
             firebase.auth().signOut();
-            NAV.toConnexion();
+            window.location.reload();
             alert("Vous avez été déconnecté")
         },
         resetMdp:function(){
