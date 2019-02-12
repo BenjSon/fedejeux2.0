@@ -2,17 +2,6 @@ body {
 	background-color: #173f59;
 }
 
-/*----- header------*/ /*
-#header { background-color: #14364c; height: 62px; }
-
-.logo-entete { height: 35px; margin-top: 13px; }
-
-#Ld { position: absolute; left: 20px; }
-
-#Af { position: absolute; right: 25px; } */
-/*----- fin header------*/
-
-
 #blocTot {
 	display: block;
 
